@@ -1,4 +1,4 @@
-﻿using Microsoft.Owin.Logging;
+﻿using EquipmentStore.Core.Loggers;
 using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Filters

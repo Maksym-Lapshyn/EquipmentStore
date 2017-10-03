@@ -47,7 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseContext\MachineStoreContext.cs" />
+    <Compile Include="DatabaseContext\DefaultInitializer.cs" />
+    <Compile Include="DatabaseContext\EquipmentStoreContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IImageRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />

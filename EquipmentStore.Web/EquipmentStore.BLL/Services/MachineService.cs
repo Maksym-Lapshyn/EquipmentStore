@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using EquipmentStore.BLL.Dtos;
 using EquipmentStore.Core.Entities;
-using EquipmentStore.DAL.Repositories;
 using EquipmentStore.DAL.UnitOfWork;
 using System.Collections.Generic;
 
@@ -9,25 +8,19 @@ namespace EquipmentStore.BLL.Services
 {
 	public class MachineService : IService<MachineDto>
 	{
-		private readonly IRepository<Machine> _machineRepository;
 		private readonly IUnitOfWork _unitOfWork;
-		private readonly IImageRepository<MachineImage> _imageRepository;
 		private readonly IMapper _mapper;
 
-		public MachineService(IRepository<Machine> machineRepository,
-			IUnitOfWork unitOfWork,
-			IImageRepository<MachineImage> imageRepository,
+		public MachineService(IUnitOfWork unitOfWork,
 			IMapper mapper)
 		{
-			_machineRepository = machineRepository;
 			_unitOfWork = unitOfWork;
-			_imageRepository = imageRepository;
 			_mapper = mapper;
 		}
 
 		public MachineDto GetSingleOrDefault(int id)
 		{
-			var entity = _machineRepository.GetSingleOrDefault(id);
+			var entity = _unitOfWork.MachineRepository.GetSingleOrDefault(id);
 			var dto = _mapper.Map<Machine, MachineDto>(entity);
 
 			return dto;
@@ -35,7 +28,7 @@ namespace EquipmentStore.BLL.Services
 
 		public IEnumerable<MachineDto> GetAll()
 		{
-			var entities = _machineRepository.GetAll();
+			var entities = _unitOfWork.MachineRepository.GetAll();
 			var dtos = _mapper.Map<IEnumerable<Machine>, List<MachineDto>>(entities);
 
 			return dtos;
@@ -44,24 +37,25 @@ namespace EquipmentStore.BLL.Services
 		public void Add(MachineDto dto)
 		{
 			var entity = _mapper.Map<MachineDto, Machine>(dto);
+			entity.MainImage.Machine = entity;
 
-			_machineRepository.Add(entity);
+			_unitOfWork.MachineRepository.Add(entity);
 			_unitOfWork.Save();
 		}
 
 		public void Update(MachineDto dto)
 		{
-			var entity = _machineRepository.GetSingleOrDefault(dto.Id);
+			var entity = _unitOfWork.MachineRepository.GetSingleOrDefault(dto.Id);
 			entity = _mapper.Map(dto, entity);
 
-			_machineRepository.Update(entity);
+			_unitOfWork.MachineRepository.Update(entity);
 			_unitOfWork.Save();
 		}
 
 		public void Delete(int id)
 		{
-			_machineRepository.Delete(id);
-			_imageRepository.DeleteRange(i => i.Machine.Id == id);
+			_unitOfWork.MachineRepository.Delete(id);
+			_unitOfWork.MachineImageRepository.DeleteRange(i => i.Machine.Id == id);
 			_unitOfWork.Save();
 		}
 	}

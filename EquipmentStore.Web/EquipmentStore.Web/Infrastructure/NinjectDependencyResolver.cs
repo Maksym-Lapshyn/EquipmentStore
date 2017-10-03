@@ -1,4 +1,6 @@
-﻿using EquipmentStore.BLL.Infrastructure;
+﻿using AutoMapper;
+using EquipmentStore.BLL.Infrastructure;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -30,7 +32,7 @@ namespace EquipmentStore.Web.Infrastructure
 		{
 			Mapper.Initialize(cfg =>
 			{
-				cfg.AddProfile(new WebAutomapperProfile());
+				cfg.AddProfile(new WebAutoMapperProfile());
 				cfg.AddProfile(new BllAutomapperProfile());
 			});
 

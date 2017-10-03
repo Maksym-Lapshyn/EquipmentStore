@@ -1,4 +1,5 @@
 ﻿using EquipmentStore.Core.Loggers;
+using Ninject.Modules;
 
 namespace EquipmentStore.Common.NinjectModules
 {

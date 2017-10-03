@@ -1,5 +1,6 @@
 ﻿using EquipmentStore.BLL.Dtos;
 using EquipmentStore.BLL.Services;
+using Ninject.Modules;
 
 namespace EquipmentStore.Common.NinjectModules
 {

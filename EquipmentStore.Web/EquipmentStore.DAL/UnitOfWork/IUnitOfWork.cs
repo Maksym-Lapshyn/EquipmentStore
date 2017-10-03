@@ -5,9 +5,13 @@ namespace EquipmentStore.DAL.UnitOfWork
 {
 	public interface IUnitOfWork
 	{
-		IRepository<Machine> ProductRepository { get; }
+		IRepository<Machine> MachineRepository { get; }
 
 		IRepository<Labour> LabourRepository { get; }
+
+		IImageRepository<MachineImage> MachineImageRepository { get; }
+
+		IImageRepository<LabourImage> LabourImageRepository { get; }
 
 		void Save();
 	}

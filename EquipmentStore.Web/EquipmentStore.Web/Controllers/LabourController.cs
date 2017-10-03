@@ -1,4 +1,5 @@
-﻿using EquipmentStore.BLL.Dtos;
+﻿using AutoMapper;
+using EquipmentStore.BLL.Dtos;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Web.Models;
 using System.Collections.Generic;

@@ -1,11 +1,12 @@
-﻿using EquipmentStore.BLL.Dtos;
+﻿using AutoMapper;
+using EquipmentStore.BLL.Dtos;
 using EquipmentStore.Web.Models;
 
 namespace EquipmentStore.Web.Infrastructure
 {
 	public class WebAutoMapperProfile : Profile
 	{
-		public WebAutomapperProfile()
+		public WebAutoMapperProfile()
 		{
 			CreateMap<MachineDto, MachineViewModel>()
 				.ForMember(viewModel => viewModel.ImageData, opt => opt.MapFrom(dto => dto.MainImage))

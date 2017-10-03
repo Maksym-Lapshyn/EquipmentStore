@@ -1,7 +1,7 @@
-﻿using EquipmentStore.Core.Entities;
-using EquipmentStore.DAL.DatabaseContext;
-using EquipmentStore.DAL.Repositories;
+﻿using EquipmentStore.DAL.DatabaseContext;
 using EquipmentStore.DAL.UnitOfWork;
+using Ninject.Modules;
+using Ninject.Web.Common;
 
 namespace EquipmentStore.Common.NinjectModules
 {
@@ -16,12 +16,8 @@ namespace EquipmentStore.Common.NinjectModules
 
 		public override void Load()
 		{
-			Bind<IRepository<Labour>>().To<LabourRepository>();
-			Bind<IRepository<Machine>>().To<MachineRepository>();
-			Bind<IImageRepository<MachineImage>>().To<MachineImageRepository>();
-			Bind<IImageRepository<LabourImage>>().To<LabourImageRepository>();
 			Bind<IUnitOfWork>().To<UnitOfWork>();
-			Bind<MachineStoreContext>().ToSelf().WithConstructorArgument(_connectionString);
+			Bind<EquipmentStoreContext>().ToSelf().InRequestScope().WithConstructorArgument(_connectionString);
 		}
 	}
 }

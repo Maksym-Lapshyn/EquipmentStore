@@ -9,9 +9,9 @@ namespace EquipmentStore.DAL.Repositories
 {
 	public class MachineRepository : IRepository<Machine>
 	{
-		private readonly MachineStoreContext _context;
+		private readonly EquipmentStoreContext _context;
 
-		public MachineRepository(MachineStoreContext context)
+		public MachineRepository(EquipmentStoreContext context)
 		{
 			_context = context;
 		}

@@ -1,4 +1,5 @@
-﻿using EquipmentStore.BLL.Dtos;
+﻿using AutoMapper;
+using EquipmentStore.BLL.Dtos;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Web.Models;
 using System.Collections.Generic;
@@ -10,168 +11,165 @@ namespace EquipmentStore.Web.Controllers
 {
 	public class MachineController : Controller
 	{
-		public class MachineController : Controller
+		private const string TempDataMessageKey = "Message";
+
+		private readonly IService<MachineDto> _machineService;
+		private readonly IImageService<MachineImageDto> _imageService;
+		private readonly IMapper _mapper;
+
+		public MachineController(IService<MachineDto> machineService,
+			IImageService<MachineImageDto> imageService,
+			IMapper mapper)
 		{
-			private const string TempDataMessageKey = "Message";
+			_machineService = machineService;
+			_imageService = imageService;
+			_mapper = mapper;
+		}
 
-			private readonly IService<MachineDto> _machineService;
-			private readonly IImageService<MachineImageDto> _imageService;
-			private readonly IMapper _mapper;
+		[HttpGet]
+		[Route("products/create")]
+		public ActionResult Create()
+		{
+			var model = new MachineViewModel();
 
-			public MachineController(IService<MachineDto> machineService,
-				IImageService<MachineImageDto> imageService,
-				IMapper mapper)
+			return View(model);
+		}
+
+		[HttpPost]
+		[Route("products/create")]
+		public ActionResult Create(MachineViewModel model)
+		{
+			if (!ModelState.IsValid)
 			{
-				_machineService = machineService;
-				_imageService = imageService;
-				_mapper = mapper;
+				return View(model);
 			}
 
-			[HttpGet]
-			[Route("products/create")]
-			public ActionResult Create()
+			model.ImageData = ConvertFileBaseToImageViewModel(model.ImageInput);
+			model.ImageInput = null;
+
+			var dto = _mapper.Map<MachineViewModel, MachineDto>(model);
+
+			_machineService.Add(dto);
+
+			TempData[TempDataMessageKey] = "Новое оборудование было добавлено";
+
+			return RedirectToAction("Index", "Admin");
+		}
+
+		[HttpPost]
+		[Route("products/delete/{id}")]
+		public ActionResult Delete(int id)
+		{
+			_machineService.Delete(id);
+
+			TempData[TempDataMessageKey] = "Оборудование было добавлено";
+
+			return RedirectToAction("Index", "Admin");
+		}
+
+		[HttpGet]
+		[Route("products")]
+		public ActionResult ReadAll()
+		{
+			var models = _machineService.GetAll();
+			var dtos = _mapper.Map<IEnumerable<MachineDto>, List<MachineViewModel>>(models);
+
+			return View(dtos);
+		}
+
+		[HttpGet]
+		[Route("products/{id}")]
+		public ActionResult Read(int id)
+		{
+			var dto = _machineService.GetSingleOrDefault(id);
+
+			if (dto != null)
 			{
-				var model = new MachineViewModel();
+				var model = _mapper.Map<MachineDto, MachineViewModel>(dto);
 
 				return View(model);
 			}
 
-			[HttpPost]
-			[Route("products/create")]
-			public ActionResult Create(MachineViewModel model)
+			TempData[TempDataMessageKey] = "Оборудование с таким id не сушествует";
+
+			return RedirectToAction("Index", "Admin");
+		}
+
+		[HttpGet]
+		[Route("products/update/{id}")]
+		public ActionResult Update(int id)
+		{
+			var dto = _machineService.GetSingleOrDefault(id);
+
+			if (dto != null)
 			{
-				if (!ModelState.IsValid)
-				{
-					return View(model);
-				}
+				var model = _mapper.Map<MachineDto, MachineViewModel>(dto);
 
-				model.ImageData = ConvertFileBaseToImageViewModel(model.ImageInput);
-				model.ImageInput = null;
+				return View(model);
+			}
 
-				var dto = _mapper.Map<MachineViewModel, MachineDto>(model);
+			TempData[TempDataMessageKey] = "Оборудование с таким id не сушествует";
 
-				_machineService.Add(dto);
+			return RedirectToAction("Index", "Admin");
+		}
 
-				TempData[TempDataMessageKey] = "Новое оборудование было добавлено";
+		[HttpPost]
+		[Route("products/update/{id}")]
+		public ActionResult Update(MachineViewModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+
+			model.ImageData = ConvertFileBaseToImageViewModel(model.ImageInput);
+			model.ImageInput = null;
+
+			var dto = _mapper.Map<MachineViewModel, MachineDto>(model);
+
+			_machineService.Update(dto);
+
+			TempData[TempDataMessageKey] = "Оборудование было обновлено";
+
+			return View();
+		}
+
+		public ActionResult AddImage(HttpPostedFileBase image)
+		{
+			if (image == null)
+			{
+				TempData[TempDataMessageKey] = "Ошибка при загрузке фотографии";
 
 				return RedirectToAction("Index", "Admin");
 			}
 
-			[HttpPost]
-			[Route("products/delete/{id}")]
-			public ActionResult Delete(int id)
+			var model = ConvertFileBaseToImageViewModel(image);
+
+			var dto = _mapper.Map<ImageViewModel, MachineImageDto>(model);
+
+			_imageService.Add(dto);
+
+			TempData[TempDataMessageKey] = "Новая фотография была добавлена";
+
+			return RedirectToAction("Index", "Admin");
+		}
+
+		private ImageViewModel ConvertFileBaseToImageViewModel(HttpPostedFileBase image)
+		{
+
+			var model = new ImageViewModel
 			{
-				_machineService.Delete(id);
+				Id = default(int),
+				Name = image.FileName,
+				MimeType = image.ContentType
+			};
 
-				TempData[TempDataMessageKey] = "Оборудование было добавлено";
-
-				return RedirectToAction("Index", "Admin");
+			using (var br = new BinaryReader(image.InputStream))
+			{
+				model.Data = br.ReadBytes(image.ContentLength);
 			}
 
-			[HttpGet]
-			[Route("products")]
-			public ActionResult ReadAll()
-			{
-				var models = _machineService.GetAll();
-				var dtos = _mapper.Map<IEnumerable<MachineDto>, List<MachineViewModel>>(models);
-
-				return View(dtos);
-			}
-
-			[HttpGet]
-			[Route("products/{id}")]
-			public ActionResult Read(int id)
-			{
-				var dto = _machineService.GetSingleOrDefault(id);
-
-				if (dto != null)
-				{
-					var model = _mapper.Map<MachineDto, MachineViewModel>(dto);
-
-					return View(model);
-				}
-
-				TempData[TempDataMessageKey] = "Оборудование с таким id не сушествует";
-
-				return RedirectToAction("Index", "Admin");
-			}
-
-			[HttpGet]
-			[Route("products/update/{id}")]
-			public ActionResult Update(int id)
-			{
-				var dto = _machineService.GetSingleOrDefault(id);
-
-				if (dto != null)
-				{
-					var model = _mapper.Map<MachineDto, MachineViewModel>(dto);
-
-					return View(model);
-				}
-
-				TempData[TempDataMessageKey] = "Оборудование с таким id не сушествует";
-
-				return RedirectToAction("Index", "Admin");
-			}
-
-			[HttpPost]
-			[Route("products/update/{id}")]
-			public ActionResult Update(MachineViewModel model)
-			{
-				if (!ModelState.IsValid)
-				{
-					return View(model);
-				}
-
-				model.ImageData = ConvertFileBaseToImageViewModel(model.ImageInput);
-				model.ImageInput = null;
-
-				var dto = _mapper.Map<MachineViewModel, MachineDto>(model);
-
-				_machineService.Update(dto);
-
-				TempData[TempDataMessageKey] = "Оборудование было обновлено";
-
-				return View();
-			}
-
-			public ActionResult AddImage(HttpPostedFileBase image)
-			{
-				if (image == null)
-				{
-					TempData[TempDataMessageKey] = "Ошибка при загрузке фотографии";
-
-					return RedirectToAction("Index", "Admin");
-				}
-
-				var model = ConvertFileBaseToImageViewModel(image);
-
-				var dto = _mapper.Map<ImageViewModel, MachineImageDto>(model);
-
-				_imageService.Add(dto);
-
-				TempData[TempDataMessageKey] = "Новая фотография была добавлена";
-
-				return RedirectToAction("Index", "Admin");
-			}
-
-			private ImageViewModel ConvertFileBaseToImageViewModel(HttpPostedFileBase image)
-			{
-
-				var model = new ImageViewModel
-				{
-					Id = default(int),
-					Name = image.FileName,
-					MimeType = image.ContentType
-				};
-
-				using (var br = new BinaryReader(image.InputStream))
-				{
-					model.Data = br.ReadBytes(image.ContentLength);
-				}
-
-				return model;
-			}
+			return model;
 		}
 	}
 }

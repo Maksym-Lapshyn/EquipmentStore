@@ -8,9 +8,9 @@ namespace EquipmentStore.DAL.Repositories
 {
 	public class MachineImageRepository : IImageRepository<MachineImage>
 	{
-		private readonly MachineStoreContext _context;
+		private readonly EquipmentStoreContext _context;
 
-		public MachineImageRepository(MachineStoreContext context)
+		public MachineImageRepository(EquipmentStoreContext context)
 		{
 			_context = context;
 		}
