@@ -1,0 +1,86 @@
+﻿@model EquipmentStore.Web.Models.CompositeViewModel
+
+@{
+	ViewBag.Title = "Оборудование и услуги";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Оборудование</h2>
+
+@if (Model.Machines.Count != 0)
+{
+	<table class="table table-striped table-bordered">
+		<tr>
+			<th style="width:10%;">ID</th>
+			<th style="width:25%;">Название</th>
+			<th style="width:25%;">Описание</th>
+			<th style="width:40%;">Действия</th>
+		</tr>
+
+		@foreach (var machine in Model.Machines)
+		{
+			<tr>
+				<td>@machine.Id</td>
+				<td>@machine.Name</td>
+				<td>@machine.ShortDescription</td>
+				<td>
+					<p>
+						@Html.ActionLink("Изменить", "Update", "Machine", new { id = machine.Id }, new { @class = "btn btn-success" })
+					</p>
+
+					<p>
+						@using (Html.BeginForm("Delete", "Machine", FormMethod.Post))
+						{
+							@Html.Hidden("id", machine.Id)
+							<input type="submit" class="btn btn-danger" value="Удалить" />
+						}
+					</p>
+				</td>
+			</tr>
+		}
+	</table>
+}
+
+<p>
+	@Html.ActionLink("Добавить оборудование", "Create", "Machine", null, new { @class = "btn btn-success" })
+</p>
+
+<h2>Услуги</h2>
+
+@if (Model.Labours.Count != 0)
+{
+	<table class="table table-striped table-bordered">
+		<tr>
+			<th style="width:10%;">ID</th>
+			<th style="width:25%;">Название</th>
+			<th style="width:25%;">Описание</th>
+			<th style="width:40%;">Действия</th>
+		</tr>
+
+		@foreach (var labour in Model.Labours)
+		{
+			<tr>
+				<td>@labour.Id</td>
+				<td>@labour.Name</td>
+				<td>@labour.ShortDescription</td>
+				<td>
+					<p>
+						@Html.ActionLink("Изменить", "Update", "Labour", new { id = labour.Id }, new { @class = "btn btn-success" })
+					</p>
+
+					<p>
+						@using (Html.BeginForm("Delete", "Labour", FormMethod.Post))
+						{
+							@Html.Hidden("id", labour.Id)
+							<input type="submit" class="btn btn-danger" value="Удалить" />
+						}
+					</p>
+				</td>
+			</tr>
+		}
+	</table>
+}
+
+<p>
+	@Html.ActionLink("Добавить услугу", "Create", "Labour", null, new { @class = "btn btn-success" })
+</p>
