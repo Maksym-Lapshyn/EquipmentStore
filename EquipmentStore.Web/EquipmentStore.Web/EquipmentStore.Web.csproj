@@ -219,10 +219,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\EmailSenders\GmailEmailSender.cs" />
+    <Compile Include="Infrastructure\EmailSenders\IEmailSender.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\WebAutoMapperProfile.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CompositeViewModel.cs" />
+    <Compile Include="Models\Enums\FeedbackTopic.cs" />
+    <Compile Include="Models\FeedbackViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImageViewModel.cs" />
     <Compile Include="Models\LabourViewModel.cs" />

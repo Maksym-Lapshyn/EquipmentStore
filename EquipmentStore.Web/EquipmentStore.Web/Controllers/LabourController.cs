@@ -3,6 +3,7 @@ using EquipmentStore.BLL.Dtos;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Web.Models;
 using System.Collections.Generic;
+using System.IO;
 using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
@@ -34,18 +35,20 @@ namespace EquipmentStore.Web.Controllers
 		[Route("services/create")]
 		public ActionResult Create(LabourViewModel model)
 		{
-			if (ModelState.IsValid)
+			if (!ModelState.IsValid)
 			{
 				return View(model);
 			}
+
+			UpdateImage(model);
 
 			var dto = _mapper.Map<LabourViewModel, LabourDto>(model);
 
 			_labourService.Add(dto);
 
-			TempData[TempDataMessageKey] = "Услуга была добавлена";
+			TempData[TempDataMessageKey] = "Новая услуга была добавлена";
 
-			return View();
+			return RedirectToAction("Index", "Admin");
 		}
 
 		[HttpPost]
@@ -56,7 +59,7 @@ namespace EquipmentStore.Web.Controllers
 
 			TempData[TempDataMessageKey] = "Услуга была удалена";
 
-			return View();
+			return RedirectToAction("Index", "Admin");
 		}
 
 		[HttpGet]
@@ -84,7 +87,7 @@ namespace EquipmentStore.Web.Controllers
 
 			TempData[TempDataMessageKey] = "Услуга с таким id не сушествует";
 
-			return View();
+			return RedirectToAction("Index", "Admin");
 		}
 
 		[HttpGet]
@@ -109,10 +112,12 @@ namespace EquipmentStore.Web.Controllers
 		[Route("services/update/{id}")]
 		public ActionResult Update(LabourViewModel model)
 		{
-			if (ModelState.IsValid)
+			if (!ModelState.IsValid)
 			{
 				return View(model);
 			}
+
+			UpdateImage(model);
 
 			var dto = _mapper.Map<LabourViewModel, LabourDto>(model);
 
@@ -120,7 +125,32 @@ namespace EquipmentStore.Web.Controllers
 
 			TempData[TempDataMessageKey] = "Услуга была обновлена";
 
-			return View();
+			return RedirectToAction("Index", "Admin");
+		}
+
+		private void UpdateImage(LabourViewModel model)
+		{
+			if (model.ImageInput == null)
+			{
+				return;
+			}
+
+			var id = model.ImageData?.Id ?? default(int);
+
+			var image = new ImageViewModel
+			{
+				Id = id,
+				Name = model.ImageInput.FileName,
+				MimeType = model.ImageInput.ContentType
+			};
+
+			using (var br = new BinaryReader(model.ImageInput.InputStream))
+			{
+				image.Data = br.ReadBytes(model.ImageInput.ContentLength);
+			}
+
+			model.ImageData = image;
+			model.ImageInput = null;
 		}
 	}
 }

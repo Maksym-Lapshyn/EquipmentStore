@@ -40,14 +40,14 @@ namespace EquipmentStore.DAL.Repositories
 
 		public Machine GetSingleOrDefault(int id)
 		{
-			var product = _context.Machines.Include(m => m.Images).SingleOrDefault(m => m.Id == id);
+			var product = _context.Machines.SingleOrDefault(m => m.Id == id);
 
 			return product;
 		}
 
 		public void Update(Machine entity)
 		{
-			throw new NotImplementedException();
+			_context.Entry(entity).State = EntityState.Modified;
 		}
 	}
 }

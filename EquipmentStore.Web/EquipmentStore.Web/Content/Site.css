@@ -1,1 +1,42 @@
-﻿
+﻿.field-validation-error {
+	color: #b94a48;
+}
+ 
+.field-validation-valid {
+	display: none;
+}
+ 
+input.input-validation-error {
+	border: 1px solid #b94a48;
+}
+ 
+.validation-summary-errors {
+	color: #b94a48;
+}
+ 
+.validation-summary-valid {
+	display: none;
+}
+
+textarea {
+	resize: none;
+}
+
+body {
+	background-image: url("../Images/bg.png");
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+}
+.content {
+	min-height: 100%;
+}
+.content-inside {
+	padding-bottom: 50px;
+}
+.footer {
+	height: 50px;
+	margin-top: -50px;
+}

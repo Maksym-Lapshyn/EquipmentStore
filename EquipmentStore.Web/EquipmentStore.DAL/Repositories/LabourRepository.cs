@@ -2,6 +2,7 @@
 using EquipmentStore.DAL.DatabaseContext;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace EquipmentStore.DAL.Repositories
@@ -46,7 +47,7 @@ namespace EquipmentStore.DAL.Repositories
 
 		public void Update(Labour entity)
 		{
-			throw new NotImplementedException();
+			_context.Entry(entity).State = EntityState.Modified;
 		}
 	}
 }

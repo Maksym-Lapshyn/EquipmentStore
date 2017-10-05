@@ -37,7 +37,6 @@ namespace EquipmentStore.BLL.Services
 		public void Add(MachineDto dto)
 		{
 			var entity = _mapper.Map<MachineDto, Machine>(dto);
-			entity.MainImage.Machine = entity;
 
 			_unitOfWork.MachineRepository.Add(entity);
 			_unitOfWork.Save();

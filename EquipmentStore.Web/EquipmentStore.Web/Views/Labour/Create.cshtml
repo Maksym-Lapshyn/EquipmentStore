@@ -1,7 +1,50 @@
-﻿
+﻿@model EquipmentStore.Web.Models.LabourViewModel
+
 @{
-    ViewBag.Title = "Create";
+	ViewBag.Title = "Добавление новой услуги";
 }
 
-<h2>Create</h2>
+@using (Html.BeginForm("Create", "Labour", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(m => m.Id)
 
+	<b>
+		@Html.LabelFor(m => m.Name)
+	</b>
+	<p>
+		@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.Name)
+	</p>
+
+	<b>
+		@Html.LabelFor(m => m.ShortDescription)
+	</b>
+	<p>
+		@Html.TextAreaFor(m => m.ShortDescription, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.ShortDescription)
+	</p>
+
+	<b>
+		@Html.LabelFor(m => m.LongDescription)
+	</b>
+	<p>
+		@Html.TextAreaFor(m => m.LongDescription, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.LongDescription)
+	</p>
+
+	<b>
+		@Html.LabelFor(m => m.ImageInput)
+	</b>
+	<p>
+		@Html.TextBoxFor(m => m.ImageInput, new { type = "file", style = "width: 100%" })
+		@Html.ValidationMessageFor(m => m.ImageInput)
+	</p>
+
+	<p>
+		<button type="submit" class="btn btn-success">Добавить</button>
+	</p>
+
+	<p>
+		@Html.ActionLink("Назад", "Index", "Admin", null, new { @class = "btn btn-default" })
+	</p>
+}

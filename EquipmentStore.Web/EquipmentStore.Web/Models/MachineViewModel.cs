@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
 
@@ -35,21 +34,17 @@ namespace EquipmentStore.Web.Models
 		[DisplayName("Максимальный размер упаковки (мм)")]
 		public string MaximumPackageSize { get; set; }
 
+		[Required(ErrorMessage = "Укажите упаковочный материал")]
+		[DisplayName("Упаковочный материал")]
+		public string PackageMaterial { get; set; }
+
 		[Required(ErrorMessage = "Укажите максимальнаю глубину формования")]
 		[DisplayName("Максимальная глубина формования (мм)")]
 		public string MaxMoldingDepth { get; set; }
 
-		[Required(ErrorMessage = "Укажите воздушное давление")]
-		[DisplayName("Воздушное давление (МПа)")]
-		public string AirPressure { get; set; }
-
-		[Required(ErrorMessage = "Укажите охлаждение")]
-		[DisplayName("Охлаждение ")]
-		public string CoolingType { get; set; }
-
-		[Required(ErrorMessage = "Укажите воздушный компрессор")]
-		[DisplayName("Воздушный компрессор (м3/мин)")]
-		public string AirCompressor { get; set; }
+		[Required(ErrorMessage = "Укажите напряжение")]
+		[DisplayName("Напряжение")]
+		public string Voltage { get; set; }
 
 		[Required(ErrorMessage = "Укажите размер")]
 		[DisplayName("Размер (мм)")]
@@ -58,8 +53,5 @@ namespace EquipmentStore.Web.Models
 		[Required(ErrorMessage = "Укажите вес")]
 		[DisplayName("Вес")]
 		public int Weight { get; set; }
-
-		[DisplayName("Примеры продукции")]
-		public List<ImageViewModel> Images { get; set; }
 	}
 }

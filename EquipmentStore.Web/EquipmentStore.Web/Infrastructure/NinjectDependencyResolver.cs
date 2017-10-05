@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EquipmentStore.BLL.Infrastructure;
+using EquipmentStore.Web.Infrastructure.EmailSenders;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,7 @@ namespace EquipmentStore.Web.Infrastructure
 			});
 
 			_kernel.Bind<IMapper>().ToConstant(Mapper.Instance);
+			_kernel.Bind<IEmailSender>().To<GmailEmailSender>();
 		}
 	}
 }

@@ -1,4 +1,6 @@
-﻿namespace EquipmentStore.Core.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace EquipmentStore.Core.Entities
 {
 	public class Labour
 	{
@@ -10,6 +12,7 @@
 
 		public string LongDescription { get; set; }
 
+		[Required]
 		public virtual LabourImage MainImage { get; set; }
 	}
 }

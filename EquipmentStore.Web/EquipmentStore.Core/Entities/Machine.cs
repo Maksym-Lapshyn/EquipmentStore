@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EquipmentStore.Core.Entities
 {
@@ -16,20 +16,17 @@ namespace EquipmentStore.Core.Entities
 
 		public string MaximumPackageSize { get; set; }
 
+		public string PackageMaterial { get; set; }
+
 		public string MaxMoldingDepth { get; set; }
 
-		public string AirPressure { get; set; }
-
-		public string CoolingType { get; set; }
-
-		public string AirCompressor { get; set; }
+		public string Voltage { get; set; }
 
 		public string Size { get; set; }
 
 		public int Weight { get; set; }
 
+		[Required]
 		public virtual MachineImage MainImage { get; set; }
-
-		public ICollection<MachineImage> Images { get; set; }
 	}
 }

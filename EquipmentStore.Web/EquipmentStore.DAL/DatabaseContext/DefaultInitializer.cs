@@ -11,9 +11,6 @@ namespace EquipmentStore.DAL.DatabaseContext
 
 			var machine = new Machine
 			{
-				AirCompressor = testString,
-				AirPressure = testString,
-				CoolingType = testString,
 				CuttingFrequency = testString,
 				LongDescription = testString,
 				ShortDescription = testString,

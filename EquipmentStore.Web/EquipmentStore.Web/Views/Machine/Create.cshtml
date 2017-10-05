@@ -66,27 +66,19 @@
 	</p>
 
 	<b>
-		@Html.LabelFor(m => m.AirPressure)
+		@Html.LabelFor(m => m.PackageMaterial)
 	</b>
 	<p>
-		@Html.TextBoxFor(m => m.AirPressure, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.AirPressure)
+		@Html.TextBoxFor(m => m.PackageMaterial, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.PackageMaterial)
 	</p>
 
 	<b>
-		@Html.LabelFor(m => m.CoolingType)
+		@Html.LabelFor(m => m.Voltage)
 	</b>
 	<p>
-		@Html.TextBoxFor(m => m.CoolingType, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.CoolingType)
-	</p>
-
-	<b>
-		@Html.LabelFor(m => m.AirCompressor)
-	</b>
-	<p>
-		@Html.TextBoxFor(m => m.AirCompressor, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.AirCompressor)
+		@Html.TextBoxFor(m => m.Voltage, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.Voltage)
 	</p>
 
 	<b>
@@ -105,5 +97,11 @@
 		@Html.ValidationMessageFor(m => m.Weight)
 	</p>
 
-	<button type="submit" class="btn btn-success">Добавить</button>
+	<p>
+		<button type="submit" class="btn btn-success">Добавить</button>
+	</p>
+
+	<p>
+		@Html.ActionLink("Назад", "Index", "Admin", null, new { @class = "btn btn-default" })
+	</p>
 }

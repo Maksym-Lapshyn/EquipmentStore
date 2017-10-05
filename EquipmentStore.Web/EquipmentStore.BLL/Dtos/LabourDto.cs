@@ -10,6 +10,6 @@
 
 		public string LongDescription { get; set; }
 
-		public virtual LabourImageDto MainImage { get; set; }
+		public LabourImageDto MainImage { get; set; }
 	}
 }

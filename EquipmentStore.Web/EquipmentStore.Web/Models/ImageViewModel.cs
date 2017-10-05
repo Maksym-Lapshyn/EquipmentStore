@@ -9,9 +9,5 @@
 		public string MimeType { get; set; }
 
 		public byte[] Data { get; set; }
-
-		public MachineViewModel Machine { get; set; }
-
-		public LabourViewModel Labour { get; set; }
 	}
 }

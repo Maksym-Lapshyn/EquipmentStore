@@ -1,7 +1,72 @@
-﻿
+﻿@model EquipmentStore.Web.Models.LabourViewModel
+
 @{
-    ViewBag.Title = "Update";
+	ViewBag.Title = "Изменение услуги";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
+	string imageSource = null;
+
+	if (Model.ImageData != null)
+	{
+		var base64 = Convert.ToBase64String(Model.ImageData.Data);
+		imageSource = $"data:{Model.ImageData.MimeType};base64,{base64}";
+	}
 }
 
-<h2>Update</h2>
+@using (Html.BeginForm("Update", "Labour", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	@Html.HiddenFor(m => m.Id)
+	@Html.HiddenFor(m => m.ImageData.Id)
+	@Html.HiddenFor(m => m.ImageData.Data)
+	@Html.HiddenFor(m => m.ImageData.MimeType)
+	@Html.HiddenFor(m => m.ImageData.Name)
 
+	<b>
+		@Html.LabelFor(m => m.Name)
+	</b>
+	<p>
+		@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.Name)
+	</p>
+
+	<b>
+		@Html.LabelFor(m => m.ShortDescription)
+	</b>
+	<p>
+		@Html.TextAreaFor(m => m.ShortDescription, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.ShortDescription)
+	</p>
+
+	<b>
+		@Html.LabelFor(m => m.LongDescription)
+	</b>
+	<p>
+		@Html.TextAreaFor(m => m.LongDescription, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.LongDescription)
+	</p>
+
+	if (Model.ImageData != null)
+	{
+		<b>
+			@Html.LabelFor(m => m.ImageData)
+		</b>
+		<p>
+			<img src="@imageSource" class="img-responsive" />
+		</p>
+	}
+	<b>
+		@Html.LabelFor(m => m.ImageInput)
+	</b>
+	<p>
+		@Html.TextBoxFor(m => m.ImageInput, new { type = "file", style = "width: 100%" })
+		@Html.ValidationMessageFor(m => m.ImageInput)
+	</p>
+
+	<p>
+		<button type="submit" class="btn btn-success">Изменить</button>
+	</p>
+
+	<p>
+		@Html.ActionLink("Назад", "Index", "Admin", null, new { @class = "btn btn-default" })
+	</p>
+}

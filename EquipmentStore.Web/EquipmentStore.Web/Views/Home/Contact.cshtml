@@ -1,17 +1,87 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@using EquipmentStore.Web.Models.Enums
+@model EquipmentStore.Web.Models.FeedbackViewModel
+
+@{
+	ViewBag.Title = "Контакты";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="row">
+	<div class="col-lg-6">
+		<h2>Наши контакты:</h2>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+		<b>Адрес:</b>
+		<p>
+			62300, Харьковская область,<br />
+			Дергачевский район, г. Дергачи,<br />
+			ул. Леонова, 1, корпус А-2
+		</p>
+
+		<b>Телефон:</b>
+		<p>
+			+3 8 050 633-26-33,<br />
+			+3 8 050 935-33-84
+		</p>
+
+		<b>Email:</b>
+		<p>
+			y.novoselov17@gmail.com
+		</p>
+	</div>
+	<div class="col-lg-6">
+		<h2>Обратная связь</h2>
+
+		@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+		{
+			<b>
+				@Html.LabelFor(m => m.Name)
+			</b>
+			<p>
+				@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Name)
+			</p>
+
+			<b>@Html.LabelFor(m => m.FeedbackTopic)</b>
+			<p>
+				@Html.EnumDropDownListFor(m => m.FeedbackTopic, new { @class = "form-control" })
+			</p>
+
+			<b>
+				@Html.LabelFor(m => m.Email)
+			</b>
+			<p>
+				@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Email)
+			</p>
+
+			<b>
+				@Html.LabelFor(m => m.Message)
+			</b>
+			<p>
+				@Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Message)
+			</p>
+
+			<p><button type="submit" class="btn btn-primary">Отправить</button></p>
+		}
+	</div>
+</div>
+
+<h2>Наше местоположение:</h2>
+
+<div id="map" style="height:400px; width:100%;">
+</div>
+
+<script>
+	function initMap() {
+		var place = { lat: 50.102875, lng: 36.135065 };
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 13,
+			center: place
+		});
+		var marker = new google.maps.Marker({
+			position: place,
+			map: map
+		});
+	}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD1c95y4cUC8P3cggUUm7iIy0KjyQGWf4&callback=initMap"></script>
