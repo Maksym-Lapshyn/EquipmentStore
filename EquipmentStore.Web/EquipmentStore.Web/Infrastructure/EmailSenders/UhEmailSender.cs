@@ -4,22 +4,22 @@ namespace EquipmentStore.Web.Infrastructure.EmailSenders
 {
 	public class GmailEmailSender : IEmailSender
 	{
-		public const string UserName = "user@outlook.com";
-		public const string Password = "password";
+		public const string UserName = "feedback@novfilpack.com.ua";
+		public const string Password = "novfilpack";
 
 		public void SendEmail(string sender, string recipient, string subject, string body)
 		{
 			//Configuring webMail class to send emails  
 			//gmail smtp server  
-			WebMail.SmtpServer = "smtp.gmail.com";
+			WebMail.SmtpServer = "mail.novfilpack.com.ua";
 			//gmail port to send emails  
 			WebMail.SmtpPort = 587;
 			WebMail.SmtpUseDefaultCredentials = true;
 			//sending emails with secure protocol  
 			WebMail.EnableSsl = true;
 			//EmailId used to send emails from application  
-			WebMail.UserName = "lapshyn.maksym@gmail.com";
-			WebMail.Password = "egu3osyvidapy6";
+			WebMail.UserName = UserName;
+			WebMail.Password = Password;
 			//Sender email address.  
 			WebMail.From = sender;
 			//Send email  

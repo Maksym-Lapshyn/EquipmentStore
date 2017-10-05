@@ -5,68 +5,76 @@
 	ViewBag.Title = "Контакты";
 }
 
-<div class="row">
-	<div class="col-lg-6">
-		<h2>Наши контакты:</h2>
-
-		<b>Адрес:</b>
-		<p>
-			62300, Харьковская область,<br />
-			Дергачевский район, г. Дергачи,<br />
-			ул. Леонова, 1, корпус А-2
-		</p>
-
-		<b>Телефон:</b>
-		<p>
-			+3 8 050 633-26-33,<br />
-			+3 8 050 935-33-84
-		</p>
-
-		<b>Email:</b>
-		<p>
-			y.novoselov17@gmail.com
-		</p>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-lg-6">
+				<h2>Наши контакты:</h2>
+			</div>
+			<div class="col-lg-6">
+				<h2>Обратная связь</h2>
+			</div>
+		</div>
 	</div>
-	<div class="col-lg-6">
-		<h2>Обратная связь</h2>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-lg-6">
+				<b>Адрес:</b>
+				<p>
+					62300, Харьковская область,<br />
+					Дергачевский район, г. Дергачи,<br />
+					ул. Леонова, 1, корпус А-2
+				</p>
 
-		@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
-		{
-			<b>
-				@Html.LabelFor(m => m.Name)
-			</b>
-			<p>
-				@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Name)
-			</p>
+				<b>Телефон:</b>
+				<p>
+					+3 8 050 633-26-33,<br />
+					+3 8 050 935-33-84
+				</p>
 
-			<b>@Html.LabelFor(m => m.FeedbackTopic)</b>
-			<p>
-				@Html.EnumDropDownListFor(m => m.FeedbackTopic, new { @class = "form-control" })
-			</p>
+				<b>Email:</b>
+				<p>
+					y.novoselov17@gmail.com
+				</p>
+			</div>
+			<div class="col-lg-6">
+				@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+				{
+					<b>
+						@Html.LabelFor(m => m.Name)
+					</b>
+					<p>
+						@Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Ваше имя" })
+						@Html.ValidationMessageFor(m => m.Name)
+					</p>
 
-			<b>
-				@Html.LabelFor(m => m.Email)
-			</b>
-			<p>
-				@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Email)
-			</p>
+					<b>@Html.LabelFor(m => m.FeedbackTopic)</b>
+					<p>
+						@Html.EnumDropDownListFor(m => m.FeedbackTopic, new { @class = "form-control" })
+					</p>
 
-			<b>
-				@Html.LabelFor(m => m.Message)
-			</b>
-			<p>
-				@Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Message)
-			</p>
+					<b>
+						@Html.LabelFor(m => m.Email)
+					</b>
+					<p>
+						@Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Ваша электронная почта" })
+						@Html.ValidationMessageFor(m => m.Email)
+					</p>
 
-			<p><button type="submit" class="btn btn-primary">Отправить</button></p>
-		}
+					<b>
+						@Html.LabelFor(m => m.Message)
+					</b>
+					<p>
+						@Html.TextAreaFor(m => m.Message, new { @class = "form-control", placeholder = "Текст сообщения" })
+						@Html.ValidationMessageFor(m => m.Message)
+					</p>
+
+					<p><button type="submit" class="btn btn-primary">Отправить</button></p>
+				}
+			</div>
+		</div>
 	</div>
 </div>
-
-<h2>Наше местоположение:</h2>
 
 <div id="map" style="height:400px; width:100%;">
 </div>

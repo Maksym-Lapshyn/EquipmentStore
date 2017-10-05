@@ -8,8 +8,10 @@ namespace EquipmentStore.Web.Controllers
 {
 	public class HomeController : Controller
 	{
-		private const string ApplicationEmail = "lapshyn.maksym@gmail.com";
+		private const string ApplicationEmail = "feedback@novfilpack.com.ua";
+		private const string ReceiverEmail = "maksym.lapshyn@gmail.com";
 		private const string TempDataMessageKey = "Message";
+		private const string TempDataErrorKey = "Error";
 
 		private readonly IEmailSender _emailSender;
 		private readonly ILogger _logger;
@@ -51,13 +53,13 @@ namespace EquipmentStore.Web.Controllers
 
 			try
 			{
-				_emailSender.SendEmail(ApplicationEmail, model.Email, topic, message);
+				_emailSender.SendEmail(ApplicationEmail, ReceiverEmail, topic, message);
 			}
 			catch (Exception ex)
 			{
 				_logger.LogError(ex, "Error sending email");
 
-				TempData[TempDataMessageKey] = "Ошибка при отправлении письма";
+				TempData[TempDataErrorKey] = "Ошибка при отправлении письма";
 
 				return View(model);
 			}
@@ -71,9 +73,11 @@ namespace EquipmentStore.Web.Controllers
 
 		private string ComposeEmail(FeedbackViewModel model)
 		{
-			var message = $"<b>Сообщение от:</b> {model.Name}.<br />" +
+			var message = $"<b>Сообщение от: </b>{model.Name}.<br />" +
 						  "<br />" +
-						  $"<b>Текст сообщения:</b> {model.Message}.";
+						  $"<b>Почта пользователя: </b>{model.Email}.<br />" +
+						  "<br />" +
+						  $"<b>Текст сообщения: </b>{model.Message}.";
 
 			return message;
 		}

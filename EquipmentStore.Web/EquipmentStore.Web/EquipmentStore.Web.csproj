@@ -219,7 +219,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\EmailSenders\GmailEmailSender.cs" />
+    <Compile Include="Infrastructure\EmailSenders\UhEmailSender.cs" />
     <Compile Include="Infrastructure\EmailSenders\IEmailSender.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\WebAutoMapperProfile.cs" />

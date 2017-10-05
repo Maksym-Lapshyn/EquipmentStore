@@ -33,7 +33,7 @@
 				<td><img src="@imageSource" style="width: 320px; height: 240px;" alt="@machine.Name" /></td>
 				<td>
 					<p>
-						@Html.ActionLink("Изменить", "Update", "Machine", new { id = machine.Id }, new { @class = "btn btn-success" })
+						@Html.ActionLink("Изменить", "Update", "Machine", new { id = machine.Id }, new { @class = "btn btn-primary" })
 					</p>
 
 					<p>
@@ -44,12 +44,14 @@
 					</p>
 				</td>
 			</tr>
+
+			<hr />
 		}
 	</table>
 }
 
 <p>
-	@Html.ActionLink("Добавить оборудование", "Create", "Machine", null, new { @class = "btn btn-success" })
+	@Html.ActionLink("Добавить оборудование", "Create", "Machine", null, new { @class = "btn btn-primary" })
 </p>
 
 <h2>Услуги</h2>
@@ -80,7 +82,7 @@
 				<td><img src="@imageSource" style="width: 320px; height: 240px;" alt="@labour.Name" /></td>
 				<td>
 					<p>
-						@Html.ActionLink("Изменить", "Update", "Labour", new { id = labour.Id }, new { @class = "btn btn-success" })
+						@Html.ActionLink("Изменить", "Update", "Labour", new { id = labour.Id }, new { @class = "btn btn-primary" })
 					</p>
 
 					<p>
@@ -91,10 +93,12 @@
 					</p>
 				</td>
 			</tr>
+
+			<hr />
 		}
 	</table>
 }
 
 <p>
-	@Html.ActionLink("Добавить услугу", "Create", "Labour", null, new { @class = "btn btn-success" })
+	@Html.ActionLink("Добавить услугу", "Create", "Labour", null, new { @class = "btn btn-primary" })
 </p>

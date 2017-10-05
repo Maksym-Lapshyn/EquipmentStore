@@ -11,6 +11,7 @@ namespace EquipmentStore.Web.Controllers
 	public class LabourController : Controller
 	{
 		private const string TempDataMessageKey = "Message";
+		private const string TempDataErrorKey = "Error";
 
 		private readonly IService<LabourDto> _labourService;
 		private readonly IMapper _mapper;
@@ -55,6 +56,15 @@ namespace EquipmentStore.Web.Controllers
 		[Route("services/delete/{id}")]
 		public ActionResult Delete(int id)
 		{
+			var dto = _labourService.GetSingleOrDefault(id);
+
+			if (dto == null)
+			{
+				TempData[TempDataErrorKey] = "Услуга с таким id не сушествует";
+
+				return RedirectToAction("Index", "Admin");
+			}
+
 			_labourService.Delete(id);
 
 			TempData[TempDataMessageKey] = "Услуга была удалена";
@@ -85,7 +95,7 @@ namespace EquipmentStore.Web.Controllers
 				return View(model);
 			}
 
-			TempData[TempDataMessageKey] = "Услуга с таким id не сушествует";
+			TempData[TempDataErrorKey] = "Услуга с таким id не сушествует";
 
 			return RedirectToAction("Index", "Admin");
 		}
@@ -103,7 +113,7 @@ namespace EquipmentStore.Web.Controllers
 				return View(model);
 			}
 
-			TempData[TempDataMessageKey] = "Услуга с таким id не сушествует";
+			TempData[TempDataErrorKey] = "Услуга с таким id не сушествует";
 
 			return View();
 		}

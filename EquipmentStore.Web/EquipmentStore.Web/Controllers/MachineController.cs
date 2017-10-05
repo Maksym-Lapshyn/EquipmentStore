@@ -11,6 +11,7 @@ namespace EquipmentStore.Web.Controllers
 	public class MachineController : Controller
 	{
 		private const string TempDataMessageKey = "Message";
+		private const string TempDataErrorKey = "Error";
 
 		private readonly IService<MachineDto> _machineService;
 		private readonly IMapper _mapper;
@@ -55,6 +56,15 @@ namespace EquipmentStore.Web.Controllers
 		[Route("products/delete/{id}")]
 		public ActionResult Delete(int id)
 		{
+			var dto = _machineService.GetSingleOrDefault(id);
+
+			if (dto == null)
+			{
+				TempData[TempDataErrorKey] = "Оборудование с таким id не сушествует";
+
+				return RedirectToAction("Index", "Admin");
+			}
+
 			_machineService.Delete(id);
 
 			TempData[TempDataMessageKey] = "Оборудование было добавлено";
@@ -85,7 +95,7 @@ namespace EquipmentStore.Web.Controllers
 				return View(model);
 			}
 
-			TempData[TempDataMessageKey] = "Оборудование с таким id не сушествует";
+			TempData[TempDataErrorKey] = "Оборудование с таким id не сушествует";
 
 			return RedirectToAction("Index", "Admin");
 		}
@@ -103,7 +113,7 @@ namespace EquipmentStore.Web.Controllers
 				return View(model);
 			}
 
-			TempData[TempDataMessageKey] = "Оборудование с таким id не сушествует";
+			TempData[TempDataErrorKey] = "Оборудование с таким id не сушествует";
 
 			return RedirectToAction("Index", "Admin");
 		}
