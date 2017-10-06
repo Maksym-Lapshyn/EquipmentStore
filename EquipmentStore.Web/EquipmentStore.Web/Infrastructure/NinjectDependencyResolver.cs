@@ -38,7 +38,7 @@ namespace EquipmentStore.Web.Infrastructure
 			});
 
 			_kernel.Bind<IMapper>().ToConstant(Mapper.Instance);
-			_kernel.Bind<IEmailSender>().To<GmailEmailSender>();
+			_kernel.Bind<IEmailSender>().To<UhEmailSender>();
 		}
 	}
 }

@@ -12,13 +12,9 @@ namespace EquipmentStore.Web.Models
 		[DisplayName("Название")]
 		public string Name { get; set; }
 
-		[Required(ErrorMessage = "Укажите краткое описание")]
-		[DisplayName("Краткое описание")]
-		public string ShortDescription { get; set; }
-
-		[Required(ErrorMessage = "Укажите подробное описание")]
-		[DisplayName("Подробное описание")]
-		public string LongDescription { get; set; }
+		[Required(ErrorMessage = "Укажите описание")]
+		[DisplayName("Описание")]
+		public string Description { get; set; }
 
 		[DisplayName("Главное изображение")]
 		public ImageViewModel ImageData { get; set; }

@@ -10,8 +10,10 @@ namespace EquipmentStore.BLL.Infrastructure
 		{
 			CreateMap<Machine, MachineDto>().ReverseMap();
 			CreateMap<Labour, LabourDto>().ReverseMap();
+			CreateMap<Output, OutputDto>().ReverseMap();
 			CreateMap<LabourImage, LabourImageDto>().ReverseMap();
 			CreateMap<MachineImage, MachineImageDto>().ReverseMap();
+			CreateMap<OutputImage, OutputImageDto>().ReverseMap();
 		}
 	}
 }

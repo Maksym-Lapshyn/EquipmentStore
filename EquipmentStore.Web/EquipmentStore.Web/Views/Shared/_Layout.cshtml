@@ -3,66 +3,94 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@ViewBag.Title - My ASP.NET Application</title>
+	<meta name="description" content="Продажа, монтаж и сервисное обслуживание автоматического термоформовочного упаковочного оборудования, линий фасовки и упаковки продукции в полимерную тару с последующей этикеровкой, а также дозаторов различного принципа действия.">
+	<meta name="keywords" content="дозаторы, термоформовочное оборудование, упаковочное оборудование, ампулы, фасовка, упаковка, пластиковые контейнеры">
+	<title>@ViewBag.Title - Автоматическое термоформовочное упаковочное оборудование. Дозаторы и ампулы</title>
 	@Styles.Render("~/Content/css")
 	@Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
-<div class="content">
-	<div class="content-inside">
-		<div class="navbar navbar-inverse navbar-static-top">
+
+	<div class="content">
+		<div class="content-inside">
+			<div class="navbar navbar-default navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						@Html.ActionLink("НОВФИЛПАК", "Index", "Home", null, new { @class = "navbar-brand" })
+					</div>
+
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li>@Html.ActionLink("Главная", "Index", "Home")</li>
+							<li>@Html.ActionLink("Услуги", "ReadAll", "Labour")</li>
+							<li>@Html.ActionLink("Оборудование", "ReadAll", "Machine")</li>
+							<li>@Html.ActionLink("Готовые решения", "ReadAll", "Output")</li>
+							<li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
 			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					@Html.ActionLink("НОВФИЛПАК", "Index", "Home", null, new {@class = "navbar-brand"})
+				@if (TempData["Error"] != null)
+			{
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						@TempData["Error"]
+					</div>
+			}
+
+				@if (TempData["Message"] != null)
+			{
+					<div class="alert alert-success alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						@TempData["Message"]
+					</div>
+			}
+
+				@RenderBody()
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<p>
+						<span class="glyphicon glyphicon-flag"></span> Адрес:
+					</p>
+					<p>62300, Харьковская область, Дергачевский район</p>
+					<p>г. Дергачи, ул. Леонова, 1, корпус А-2</p>
 				</div>
 
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li>@Html.ActionLink("Главная", "Index", "Home")</li>
-						<li>@Html.ActionLink("Услуги", "ReadAll", "Labour")</li>
-						<li>@Html.ActionLink("Товары", "ReadAll", "Machine")</li>
-						<li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
-					</ul>
+				<div class="col-lg-4">
+					<p>
+						<span class="glyphicon glyphicon-phone-alt"></span> Контакты:
+					</p>
+					<p>+380506332633, +380509353384</p>
+					<p>y.novoselov17@gmail.com</p>
+				</div>
+				
+				<div class="col-lg-4">
+					<p>Все права защищены novfilpack.com.ua&copy; @DateTime.Now.Year</p>
+					<p>This website is created by maxon_adc</p>
+					<p>
+						Icons made by Freepik from <a href="http://www.flaticon.com/">www.flaticon.com</a>
+					</p>
 				</div>
 			</div>
 		</div>
+	</footer>
 
-		<div class="container">
-			@if (TempData["Error"] != null)
-			{
-				<div class="alert alert-danger alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					@TempData["Error"]
-				</div>
-			}
-			
-			@if (TempData["Message"] != null)
-			{
-				<div class="alert alert-success alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					@TempData["Message"]
-				</div>
-			}
-
-			@RenderBody()
-		</div>
-	</div>
-</div>
-
-<footer class="footer">
-	<hr/>
-	<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-</footer>
-
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
 
 </body>
 </html>

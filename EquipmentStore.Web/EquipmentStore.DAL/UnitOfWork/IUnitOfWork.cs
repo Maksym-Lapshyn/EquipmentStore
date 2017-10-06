@@ -9,9 +9,13 @@ namespace EquipmentStore.DAL.UnitOfWork
 
 		IRepository<Labour> LabourRepository { get; }
 
+		IRepository<Output> OutputRepository { get; }
+
 		IImageRepository<MachineImage> MachineImageRepository { get; }
 
 		IImageRepository<LabourImage> LabourImageRepository { get; }
+
+		IImageRepository<OutputImage> OutputImageRepository { get; }
 
 		void Save();
 	}

@@ -35,7 +35,7 @@ namespace EquipmentStore.DAL.Repositories
 
 		public IEnumerable<Machine> GetAll()
 		{
-			return _context.Machines;
+			return _context.Machines.ToList();
 		}
 
 		public Machine GetSingleOrDefault(int id)

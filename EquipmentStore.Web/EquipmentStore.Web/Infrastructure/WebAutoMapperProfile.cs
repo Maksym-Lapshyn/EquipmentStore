@@ -14,8 +14,12 @@ namespace EquipmentStore.Web.Infrastructure
 			CreateMap<LabourDto, LabourViewModel>()
 				.ForMember(viewModel => viewModel.ImageData, opt => opt.MapFrom(dto => dto.MainImage))
 				.ReverseMap();
+			CreateMap<OutputDto, OutputViewModel>()
+				.ForMember(viewModel => viewModel.ImageData, opt => opt.MapFrom(dto => dto.MainImage))
+				.ReverseMap();
 			CreateMap<MachineImageDto, ImageViewModel>().ReverseMap();
 			CreateMap<LabourImageDto, ImageViewModel>().ReverseMap();
+			CreateMap<OutputImageDto, ImageViewModel>().ReverseMap();
 		}
 	}
 }

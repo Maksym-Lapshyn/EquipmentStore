@@ -24,6 +24,7 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpGet]
+		[Authorize]
 		[Route("products/create")]
 		public ActionResult Create()
 		{
@@ -33,9 +34,15 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpPost]
+		[Authorize]
 		[Route("products/create")]
 		public ActionResult Create(MachineViewModel model)
 		{
+			if (model.ImageInput == null)
+			{
+				ModelState.AddModelError("ImageInput", "Укажите картинку");
+			}
+
 			if (!ModelState.IsValid)
 			{
 				return View(model);
@@ -53,6 +60,7 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpPost]
+		[Authorize]
 		[Route("products/delete/{id}")]
 		public ActionResult Delete(int id)
 		{
@@ -76,10 +84,10 @@ namespace EquipmentStore.Web.Controllers
 		[Route("products")]
 		public ActionResult ReadAll()
 		{
-			var models = _machineService.GetAll();
-			var dtos = _mapper.Map<IEnumerable<MachineDto>, List<MachineViewModel>>(models);
+			var dtos = _machineService.GetAll();
+			var models = _mapper.Map<IEnumerable<MachineDto>, List<MachineViewModel>>(dtos);
 
-			return View(dtos);
+			return View(models);
 		}
 
 		[HttpGet]
@@ -101,6 +109,7 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpGet]
+		[Authorize]
 		[Route("products/update/{id}")]
 		public ActionResult Update(int id)
 		{
@@ -119,9 +128,15 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpPost]
+		[Authorize]
 		[Route("products/update/{id}")]
 		public ActionResult Update(MachineViewModel model)
 		{
+			if (model.ImageInput == null && model.ImageData == null)
+			{
+				ModelState.AddModelError("ImageInput", "Укажите картинку");
+			}
+
 			if (!ModelState.IsValid)
 			{
 				return View(model);

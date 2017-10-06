@@ -35,7 +35,7 @@ namespace EquipmentStore.DAL.Repositories
 
 		public IEnumerable<Labour> GetAll()
 		{
-			return _context.Labours;
+			return _context.Labours.ToList();
 		}
 
 		public Labour GetSingleOrDefault(int id)

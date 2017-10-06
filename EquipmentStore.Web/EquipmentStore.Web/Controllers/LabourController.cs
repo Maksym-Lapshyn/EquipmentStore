@@ -24,6 +24,7 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpGet]
+		[Authorize]
 		[Route("services/create")]
 		public ActionResult Create()
 		{
@@ -33,9 +34,15 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpPost]
+		[Authorize]
 		[Route("services/create")]
 		public ActionResult Create(LabourViewModel model)
 		{
+			if (model.ImageInput == null)
+			{
+				ModelState.AddModelError("ImageInput", "Укажите картинку");
+			}
+
 			if (!ModelState.IsValid)
 			{
 				return View(model);
@@ -53,6 +60,7 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpPost]
+		[Authorize]
 		[Route("services/delete/{id}")]
 		public ActionResult Delete(int id)
 		{
@@ -76,15 +84,16 @@ namespace EquipmentStore.Web.Controllers
 		[Route("services")]
 		public ActionResult ReadAll()
 		{
-			var models = _labourService.GetAll();
-			var dtos = _mapper.Map<IEnumerable<LabourDto>, List<LabourViewModel>>(models);
+			var dtos = _labourService.GetAll();
+			var models = _mapper.Map<IEnumerable<LabourDto>, List<LabourViewModel>>(dtos);
 
-			return View(dtos);
+			return View(models);
 		}
 
 		[HttpGet]
-		[Route("services/{id}")]
-		public ActionResult Read(int id)
+		[Authorize]
+		[Route("services/update/{id}")]
+		public ActionResult Update(int id)
 		{
 			var dto = _labourService.GetSingleOrDefault(id);
 
@@ -100,28 +109,16 @@ namespace EquipmentStore.Web.Controllers
 			return RedirectToAction("Index", "Admin");
 		}
 
-		[HttpGet]
-		[Route("services/update/{id}")]
-		public ActionResult Update(int id)
-		{
-			var dto = _labourService.GetSingleOrDefault(id);
-
-			if (dto != null)
-			{
-				var model = _mapper.Map<LabourDto, LabourViewModel>(dto);
-
-				return View(model);
-			}
-
-			TempData[TempDataErrorKey] = "Услуга с таким id не сушествует";
-
-			return View();
-		}
-
 		[HttpPost]
+		[Authorize]
 		[Route("services/update/{id}")]
 		public ActionResult Update(LabourViewModel model)
 		{
+			if (model.ImageInput == null && model.ImageData == null)
+			{
+				ModelState.AddModelError("ImageInput", "Укажите картинку");
+			}
+
 			if (!ModelState.IsValid)
 			{
 				return View(model);

@@ -9,17 +9,16 @@ namespace EquipmentStore.DAL.DatabaseContext
 		{
 		}
 
-		/*static EquipmentStoreContext()
-		{
-			Database.SetInitializer(new DefaultInitializer());
-		}*/
-
 		public DbSet<Machine> Machines { get; set; }
 
 		public DbSet<Labour> Labours { get; set; }
 
+		public DbSet<Output> Outputs { get; set; }
+
 		public DbSet<MachineImage> MachineImages { get; set; }
 
 		public DbSet<LabourImage> LabourImages { get; set; }
+
+		public DbSet<OutputImage> OutputImages { get; set; }
 	}
 }

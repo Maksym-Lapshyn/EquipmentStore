@@ -2,7 +2,7 @@
 
 namespace EquipmentStore.Web.Infrastructure.EmailSenders
 {
-	public class GmailEmailSender : IEmailSender
+	public class UhEmailSender : IEmailSender
 	{
 		public const string UserName = "feedback@novfilpack.com.ua";
 		public const string Password = "novfilpack";

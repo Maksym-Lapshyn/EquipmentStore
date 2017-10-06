@@ -56,6 +56,8 @@
     <Compile Include="Entities\LabourImage.cs" />
     <Compile Include="Entities\Machine.cs" />
     <Compile Include="Entities\MachineImage.cs" />
+    <Compile Include="Entities\Output.cs" />
+    <Compile Include="Entities\OutputImage.cs" />
     <Compile Include="Loggers\ILogger.cs" />
     <Compile Include="Loggers\NLogLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

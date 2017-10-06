@@ -33,7 +33,7 @@
 				<td><img src="@imageSource" style="width: 320px; height: 240px;" alt="@machine.Name" /></td>
 				<td>
 					<p>
-						@Html.ActionLink("Изменить", "Update", "Machine", new { id = machine.Id }, new { @class = "btn btn-primary" })
+						@Html.ActionLink("Изменить", "Update", "Machine", new { id = machine.Id }, new { @class = "btn btn-default" })
 					</p>
 
 					<p>
@@ -44,15 +44,15 @@
 					</p>
 				</td>
 			</tr>
-
-			<hr />
 		}
 	</table>
 }
 
 <p>
-	@Html.ActionLink("Добавить оборудование", "Create", "Machine", null, new { @class = "btn btn-primary" })
+	@Html.ActionLink("Добавить оборудование", "Create", "Machine", null, new { @class = "btn btn-default" })
 </p>
+
+<hr/>
 
 <h2>Услуги</h2>
 
@@ -82,7 +82,7 @@
 				<td><img src="@imageSource" style="width: 320px; height: 240px;" alt="@labour.Name" /></td>
 				<td>
 					<p>
-						@Html.ActionLink("Изменить", "Update", "Labour", new { id = labour.Id }, new { @class = "btn btn-primary" })
+						@Html.ActionLink("Изменить", "Update", "Labour", new { id = labour.Id }, new { @class = "btn btn-default" })
 					</p>
 
 					<p>
@@ -93,12 +93,59 @@
 					</p>
 				</td>
 			</tr>
-
-			<hr />
 		}
 	</table>
 }
 
 <p>
-	@Html.ActionLink("Добавить услугу", "Create", "Labour", null, new { @class = "btn btn-primary" })
+	@Html.ActionLink("Добавить услугу", "Create", "Labour", null, new { @class = "btn btn-default" })
+</p>
+
+<hr/>
+
+<h2>Готовые решения</h2>
+
+@if (Model.Labours.Count != 0)
+{
+	<table class="table table-striped table-bordered">
+		<tr>
+			<th style="width:10%;">ID</th>
+			<th style="width:20%;">Название</th>
+			<th style="width:30%;">Описание</th>
+			<th style="width:40%;">Действия</th>
+		</tr>
+
+		@foreach (var output in Model.Outputs)
+		{
+			string imageSource = null;
+
+			if (output.ImageData != null)
+			{
+				var base64 = Convert.ToBase64String(output.ImageData.Data);
+				imageSource = $"data:{output.ImageData.MimeType};base64,{base64}";
+			}
+
+			<tr>
+				<td>@output.Id</td>
+				<td>@output.Name</td>
+				<td><img src="@imageSource" style="width: 320px; height: 240px;" alt="@output.Name" /></td>
+				<td>
+					<p>
+						@Html.ActionLink("Изменить", "Update", "Output", new { id = output.Id }, new { @class = "btn btn-default" })
+					</p>
+
+					<p>
+						@using (Html.BeginForm("Delete", "Output", new { id = output.Id }))
+						{
+							<input type="submit" class="btn btn-danger" value="Удалить" />
+						}
+					</p>
+				</td>
+			</tr>
+		}
+	</table>
+}
+
+<p>
+	@Html.ActionLink("Добавить готовое решение", "Create", "Output", null, new { @class = "btn btn-default" })
 </p>

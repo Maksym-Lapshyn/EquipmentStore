@@ -10,8 +10,7 @@ namespace EquipmentStore.Common.NinjectModules
 		{
 			Bind<IService<LabourDto>>().To<LabourService>();
 			Bind<IService<MachineDto>>().To<MachineService>();
-			Bind<IImageService<MachineImageDto>>().To<MachineImageService>();
-			Bind<IImageService<LabourImageDto>>().To<LabourImageService>();
+			Bind<IService<OutputDto>>().To<OutputService>();
 		}
 	}
 }
