@@ -9,7 +9,7 @@ namespace EquipmentStore.Web.Controllers
 	public class HomeController : Controller
 	{
 		private const string ApplicationEmail = "feedback@novfilpack.com.ua";
-		private const string ReceiverEmail = "maksym.lapshyn@gmail.com";
+		private const string ReceiverEmail = "y.novoselov17@gmail.com";
 		private const string TempDataMessageKey = "Message";
 		private const string TempDataErrorKey = "Error";
 

@@ -11,3 +11,16 @@ D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\Enti
 D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\EntityFramework.SqlServer.dll
 D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\EntityFramework.xml
 D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\EntityFramework.SqlServer.xml
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\EquipmentStore.Core.dll.config
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\EquipmentStore.Core.dll
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\EquipmentStore.Core.pdb
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\EntityFramework.dll
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\EntityFramework.SqlServer.dll
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\NLog.dll
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\EntityFramework.xml
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\EntityFramework.SqlServer.xml
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\bin\Debug\NLog.xml
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\obj\Debug\EquipmentStore.Core.csprojResolveAssemblyReference.cache
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\obj\Debug\EquipmentStore.Core.csproj.CoreCompileInputs.cache
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\obj\Debug\EquipmentStore.Core.dll
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Core\obj\Debug\EquipmentStore.Core.pdb

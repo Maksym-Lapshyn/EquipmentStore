@@ -5,8 +5,8 @@ namespace EquipmentStore.Web.Models
 {
 	public class ExternalLoginConfirmationViewModel
 	{
-		[Required]
-		[Display(Name = "Email")]
+		[Required(ErrorMessage = "Введите адрес электронной почты")]
+		[Display(Name = "Адрес электронной почты")]
 		public string Email { get; set; }
 	}
 
@@ -48,15 +48,14 @@ namespace EquipmentStore.Web.Models
 
 	public class LoginViewModel
 	{
-		[Required]
-		[Display(Name = "Email")]
-		[EmailAddress]
-		public string Email { get; set; }
+        [Required(ErrorMessage = "Введите логин")]
+        [Display(Name = "Логин")]
+		public string Login { get; set; }
 
-		[Required]
 		[DataType(DataType.Password)]
-		[Display(Name = "Password")]
-		public string Password { get; set; }
+        [Required(ErrorMessage = "Введите пароль")]
+        [Display(Name = "Пароль")]
+        public string Password { get; set; }
 
 		[Display(Name = "Запомнить меня?")]
 		public bool RememberMe { get; set; }

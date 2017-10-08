@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace EquipmentStore.Web.Infrastructure
 {
-	public class IdentityInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+	public class IdentityInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
 	{
 		protected override void Seed(ApplicationDbContext context)
 		{
@@ -20,8 +20,8 @@ namespace EquipmentStore.Web.Infrastructure
 			roleManager.Create(adminRole);
 
 			// создаем пользователей
-			var adminUser = new ApplicationUser {Email = "y.novoselov17@gmail.com", UserName = "y.novoselov17@gmail.com"};
-			var password = "novfilpak";
+			var adminUser = new ApplicationUser {Email = "admin", UserName = "admin"};
+			var password = "novoselov";
 			var result = userManager.Create(adminUser, password);
 
 			// если создание пользователя прошло успешно
