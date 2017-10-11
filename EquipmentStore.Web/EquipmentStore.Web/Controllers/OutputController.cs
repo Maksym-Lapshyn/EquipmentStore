@@ -25,7 +25,7 @@ namespace EquipmentStore.Web.Controllers
 
 		[HttpGet]
 		[Authorize]
-		[Route("solutions/create")]
+		[Route("manufacturing/create")]
 		public ActionResult Create()
 		{
 			var model = new OutputViewModel();
@@ -35,7 +35,7 @@ namespace EquipmentStore.Web.Controllers
 
 		[HttpPost]
 		[Authorize]
-		[Route("solutions/create")]
+		[Route("manufacturing/create")]
 		public ActionResult Create(OutputViewModel model)
 		{
 			if (model.ImageInput == null)
@@ -61,7 +61,7 @@ namespace EquipmentStore.Web.Controllers
 
 		[HttpPost]
 		[Authorize]
-		[Route("solutions/delete/{id}")]
+		[Route("manufacturing/delete/{id}")]
 		public ActionResult Delete(int id)
 		{
 			var dto = _outputService.GetSingleOrDefault(id);
@@ -81,7 +81,7 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpGet]
-		[Route("solutions")]
+		[Route("manufacturing")]
 		public ActionResult ReadAll()
 		{
 			var dtos = _outputService.GetAll();
@@ -92,7 +92,7 @@ namespace EquipmentStore.Web.Controllers
 
 		[HttpGet]
 		[Authorize]
-		[Route("solutions/update/{id}")]
+		[Route("manufacturing/update/{id}")]
 		public ActionResult Update(int id)
 		{
 			var dto = _outputService.GetSingleOrDefault(id);
@@ -111,7 +111,7 @@ namespace EquipmentStore.Web.Controllers
 
 		[HttpPost]
 		[Authorize]
-		[Route("solutions/update/{id}")]
+		[Route("manufacturing/update/{id}")]
 		public ActionResult Update(OutputViewModel model)
 		{
 			if (model.ImageInput == null && model.ImageData == null)
