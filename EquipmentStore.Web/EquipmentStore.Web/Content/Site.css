@@ -45,6 +45,10 @@ html, body {
 	margin-top: -50px;
 }
 
-.carousel-caption {
-	background: rgba(0, 0, 0, 0.5);
+.panel-default .panel-body, .panel-footer p {
+	font-size: 18px;
+}
+
+.panel-default .panel-footer .table td {
+	font-size: 16px;
 }

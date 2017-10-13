@@ -44,3 +44,7 @@ html, body {
 	min-height: 50px;
 	margin-top: -50px;
 }
+
+.carousel-caption {
+	background: rgba(0, 0, 0, 0.5);
+}
