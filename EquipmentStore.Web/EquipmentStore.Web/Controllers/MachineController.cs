@@ -13,10 +13,10 @@ namespace EquipmentStore.Web.Controllers
 		private const string TempDataMessageKey = "Message";
 		private const string TempDataErrorKey = "Error";
 
-		private readonly IService<MachineDto> _machineService;
+		private readonly IMachineService _machineService;
 		private readonly IMapper _mapper;
 
-		public MachineController(IService<MachineDto> machineService,
+		public MachineController(IMachineService machineService,
 			IMapper mapper)
 		{
 			_machineService = machineService;
@@ -81,10 +81,10 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpGet]
-		[Route("products")]
-		public ActionResult ReadAll()
+		[Route("products/category/{categoryName}")]
+		public ActionResult ReadCategory(string categoryName)
 		{
-			var dtos = _machineService.GetAll();
+			var dtos = _machineService.GetAll(categoryName);
 			var models = _mapper.Map<IEnumerable<MachineDto>, List<MachineViewModel>>(dtos);
 
 			return View(models);

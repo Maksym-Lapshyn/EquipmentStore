@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EquipmentStore.Core.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace EquipmentStore.Core.Entities
 {
-	public class Machine
+    public class Machine
 	{
 		public int Id { get; set; }
 
@@ -25,6 +26,8 @@ namespace EquipmentStore.Core.Entities
 		public string Size { get; set; }
 
 		public int Weight { get; set; }
+
+        public EquipmentCategory Category { get; set; }
 
 		[Required]
 		public virtual MachineImage MainImage { get; set; }

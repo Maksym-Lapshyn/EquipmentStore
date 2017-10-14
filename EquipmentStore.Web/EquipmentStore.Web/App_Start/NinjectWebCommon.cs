@@ -43,7 +43,7 @@ namespace EquipmentStore.Web.App_Start
 		{
 			var modules = new INinjectModule[]
 			{
-				new DalModule("EquipmentStore"),
+				new DalModule(),
 				new BllModule(),
 				new CoreModule()
 			};

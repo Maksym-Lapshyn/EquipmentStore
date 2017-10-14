@@ -5,10 +5,6 @@ namespace EquipmentStore.DAL.DatabaseContext
 {
 	public class EquipmentStoreContext : DbContext
 	{
-		public EquipmentStoreContext(string connectionString) : base(connectionString)
-		{
-		}
-
 		public DbSet<Machine> Machines { get; set; }
 
 		public DbSet<Labour> Labours { get; set; }

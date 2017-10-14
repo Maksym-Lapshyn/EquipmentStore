@@ -1,6 +1,8 @@
-﻿namespace EquipmentStore.BLL.Dtos
+﻿using EquipmentStore.Core.Enums;
+
+namespace EquipmentStore.BLL.Dtos
 {
-	public class MachineDto
+    public class MachineDto
 	{
 		public int Id { get; set; }
 
@@ -24,6 +26,8 @@
 
 		public int Weight { get; set; }
 
-		public MachineImageDto MainImage { get; set; }
+        public EquipmentCategory Category { get; set; }
+
+        public MachineImageDto MainImage { get; set; }
 	}
 }

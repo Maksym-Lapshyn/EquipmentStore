@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using EquipmentStore.Core.Enums;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
 
@@ -53,5 +54,9 @@ namespace EquipmentStore.Web.Models
 		[Required(ErrorMessage = "Укажите вес")]
 		[DisplayName("Вес")]
 		public int Weight { get; set; }
-	}
+
+        [Required(ErrorMessage = "Укажите категорию")]
+        [DisplayName("Категория")]
+        public EquipmentCategory Category { get; set; }
+    }
 }

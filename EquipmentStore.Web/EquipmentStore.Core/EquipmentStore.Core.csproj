@@ -58,6 +58,7 @@
     <Compile Include="Entities\MachineImage.cs" />
     <Compile Include="Entities\Output.cs" />
     <Compile Include="Entities\OutputImage.cs" />
+    <Compile Include="Enums\EquipmentCategory.cs" />
     <Compile Include="Loggers\ILogger.cs" />
     <Compile Include="Loggers\NLogLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

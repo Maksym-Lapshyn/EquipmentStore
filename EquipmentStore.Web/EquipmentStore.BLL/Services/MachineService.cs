@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace EquipmentStore.BLL.Services
 {
-	public class MachineService : IService<MachineDto>
+	public class MachineService : IMachineService
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IMapper _mapper;
@@ -34,7 +34,15 @@ namespace EquipmentStore.BLL.Services
 			return dtos;
 		}
 
-		public void Add(MachineDto dto)
+        public IEnumerable<MachineDto> GetAll(string categoryName)
+        {
+            var entities = _unitOfWork.MachineRepository.GetAll(categoryName);
+            var dtos = _mapper.Map<IEnumerable<Machine>, List<MachineDto>>(entities);
+
+            return dtos;
+        }
+
+        public void Add(MachineDto dto)
 		{
 			var entity = _mapper.Map<MachineDto, Machine>(dto);
 
@@ -57,5 +65,5 @@ namespace EquipmentStore.BLL.Services
 			_unitOfWork.MachineImageRepository.DeleteRange(i => i.Machine.Id == id);
 			_unitOfWork.Save();
 		}
-	}
+    }
 }

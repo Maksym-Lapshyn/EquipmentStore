@@ -9,7 +9,7 @@ namespace EquipmentStore.Common.NinjectModules
 		public override void Load()
 		{
 			Bind<IService<LabourDto>>().To<LabourService>();
-			Bind<IService<MachineDto>>().To<MachineService>();
+			Bind<IMachineService>().To<MachineService>();
 			Bind<IService<OutputDto>>().To<OutputService>();
 		}
 	}

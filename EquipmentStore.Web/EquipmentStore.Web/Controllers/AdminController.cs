@@ -9,12 +9,12 @@ namespace EquipmentStore.Web.Controllers
 {
 	public class AdminController : Controller
 	{
-		private readonly IService<MachineDto> _machineService;
+		private readonly IMachineService _machineService;
 		private readonly IService<LabourDto> _labourService;
 		private readonly IService<OutputDto> _outputService;
 		private readonly IMapper _mapper;
 
-		public AdminController(IService<MachineDto> machineService,
+		public AdminController(IMachineService machineService,
 			IService<LabourDto> labourService,
 			IService<OutputDto> outputService,
 			IMapper mapper)

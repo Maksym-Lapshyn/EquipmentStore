@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace EquipmentStore.DAL.Repositories
 {
-	public class MachineRepository : IRepository<Machine>
+	public class MachineRepository : IMachineRepository
 	{
 		private readonly EquipmentStoreContext _context;
 
@@ -38,7 +38,12 @@ namespace EquipmentStore.DAL.Repositories
 			return _context.Machines.ToList();
 		}
 
-		public Machine GetSingleOrDefault(int id)
+        public IEnumerable<Machine> GetAll(string categoryName)
+        {
+            return _context.Machines.Where(m => m.Category.ToString().ToLower() == categoryName.ToLower()).ToList();
+        }
+
+        public Machine GetSingleOrDefault(int id)
 		{
 			var product = _context.Machines.SingleOrDefault(m => m.Id == id);
 

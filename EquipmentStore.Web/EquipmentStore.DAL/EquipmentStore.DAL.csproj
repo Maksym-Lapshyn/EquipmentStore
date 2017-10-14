@@ -48,8 +48,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContext\EquipmentStoreContext.cs" />
+    <Compile Include="Migrations\201710070949125_InitialCreate.cs" />
+    <Compile Include="Migrations\201710070949125_InitialCreate.Designer.cs">
+      <DependentUpon>201710070949125_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710140959574_AddedEquipmentCategories.cs" />
+    <Compile Include="Migrations\201710140959574_AddedEquipmentCategories.Designer.cs">
+      <DependentUpon>201710140959574_AddedEquipmentCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IImageRepository.cs" />
+    <Compile Include="Repositories\IMachineRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\LabourImageRepository.cs" />
     <Compile Include="Repositories\LabourRepository.cs" />
@@ -69,6 +79,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710070949125_InitialCreate.resx">
+      <DependentUpon>201710070949125_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710140959574_AddedEquipmentCategories.resx">
+      <DependentUpon>201710140959574_AddedEquipmentCategories.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

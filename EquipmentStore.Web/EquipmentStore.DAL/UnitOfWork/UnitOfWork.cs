@@ -5,10 +5,10 @@ using System;
 
 namespace EquipmentStore.DAL.UnitOfWork
 {
-	public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
 	{
 		private readonly EquipmentStoreContext _context;
-		private readonly Lazy<IRepository<Machine>> _machineRepository;
+		private readonly Lazy<IMachineRepository> _machineRepository;
 		private readonly Lazy<IRepository<Labour>> _labourRepository;
 		private readonly Lazy<IRepository<Output>> _outputRepository;
 		private readonly Lazy<IImageRepository<MachineImage>> _machineImageRepository;
@@ -18,7 +18,7 @@ namespace EquipmentStore.DAL.UnitOfWork
 		public UnitOfWork(EquipmentStoreContext context)
 		{
 			_context = context;
-			_machineRepository = new Lazy<IRepository<Machine>>(() => new MachineRepository(_context));
+			_machineRepository = new Lazy<IMachineRepository>(() => new MachineRepository(_context));
 			_labourRepository = new Lazy<IRepository<Labour>>(() => new LabourRepository(_context));
 			_outputRepository = new Lazy<IRepository<Output>>(() => new OutputRepository(_context));
 			_machineImageRepository = new Lazy<IImageRepository<MachineImage>>(() => new MachineImageRepository(_context));
@@ -26,7 +26,7 @@ namespace EquipmentStore.DAL.UnitOfWork
 			_outputImageRepository = new Lazy<IImageRepository<OutputImage>>(() => new OutputImageRepository(_context));
 		}
 
-		public IRepository<Machine> MachineRepository => _machineRepository.Value;
+		public IMachineRepository MachineRepository => _machineRepository.Value;
 
 		public IRepository<Labour> LabourRepository => _labourRepository.Value;
 

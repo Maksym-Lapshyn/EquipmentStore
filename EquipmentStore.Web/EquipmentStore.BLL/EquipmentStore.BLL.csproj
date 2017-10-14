@@ -51,6 +51,7 @@
     <Compile Include="Dtos\OutputImageDto.cs" />
     <Compile Include="Infrastructure\BllAutoMapperProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IMachineService.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\LabourService.cs" />
     <Compile Include="Services\MachineService.cs" />

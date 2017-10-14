@@ -228,6 +228,11 @@
     <Compile Include="Infrastructure\EmailSenders\IEmailSender.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\WebAutoMapperProfile.cs" />
+    <Compile Include="Migrations\201710071013388_InitialCreate.cs" />
+    <Compile Include="Migrations\201710071013388_InitialCreate.Designer.cs">
+      <DependentUpon>201710071013388_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CompositeViewModel.cs" />
     <Compile Include="Models\Enums\FeedbackTopic.cs" />
@@ -311,7 +316,7 @@
     <Content Include="Views\Labour\Update.cshtml" />
     <Content Include="Views\Machine\Create.cshtml" />
     <Content Include="Views\Machine\Read.cshtml" />
-    <Content Include="Views\Machine\ReadAll.cshtml" />
+    <Content Include="Views\Machine\ReadCategory.cshtml" />
     <Content Include="Views\Machine\Update.cshtml" />
     <Content Include="Views\Output\Create.cshtml" />
     <Content Include="Views\Output\ReadAll.cshtml" />
@@ -346,6 +351,11 @@
       <Project>{fb3ad1fd-9677-4c46-bfb7-4af7e69ae4b3}</Project>
       <Name>EquipmentStore.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710071013388_InitialCreate.resx">
+      <DependentUpon>201710071013388_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

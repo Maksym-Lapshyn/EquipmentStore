@@ -5,7 +5,7 @@ namespace EquipmentStore.DAL.UnitOfWork
 {
 	public interface IUnitOfWork
 	{
-		IRepository<Machine> MachineRepository { get; }
+		IMachineRepository MachineRepository { get; }
 
 		IRepository<Labour> LabourRepository { get; }
 
