@@ -60,3 +60,10 @@ Date = 2017-10-14 13:14:36.9729; IP = ::1; URL = http://localhost/products/updat
 Date = 2017-10-14 13:14:50.5099; IP = ::1; URL = http://localhost/; Controller = Home;
 Date = 2017-10-14 13:14:55.1195; IP = ::1; URL = http://localhost/products/category/CartoningMachines; Controller = Machine;
 Date = 2017-10-14 13:14:59.2723; IP = ::1; URL = http://localhost/products/1; Controller = Machine;
+Date = 2017-10-14 13:21:36.1946; IP = ::1; URL = http://localhost/; Controller = Home;
+Date = 2017-10-14 13:21:48.8653; IP = ::1; URL = http://localhost/products/category/PeristalticPumps; Controller = Machine;
+Date = 2017-10-14 13:21:59.5418; IP = ::1; URL = http://localhost/products/category/EquipmentForProductionOfTabletsAndFillingCapsules; Controller = Machine;
+Date = 2017-10-14 13:22:02.1305; IP = ::1; URL = http://localhost/products/category/CartoningMachines; Controller = Machine;
+Date = 2017-10-14 13:22:05.1853; IP = ::1; URL = http://localhost/products/1; Controller = Machine;
+Date = 2017-10-14 13:22:32.8805; IP = ::1; URL = http://localhost/products/category/WithHorizontalBlisterFormsLocation; Controller = Machine;
+Date = 2017-10-14 13:22:34.3265; IP = ::1; URL = http://localhost/; Controller = Home;
