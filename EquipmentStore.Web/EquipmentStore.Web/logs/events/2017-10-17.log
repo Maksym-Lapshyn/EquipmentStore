@@ -15,3 +15,9 @@ Date = 2017-10-17 15:31:26.6392; IP = ::1; URL = http://localhost/products/updat
 Date = 2017-10-17 15:31:54.1148; IP = ::1; URL = http://localhost/services; Controller = Labour;
 Date = 2017-10-17 15:32:01.7516; IP = ::1; URL = http://localhost/products/category/WithHorizontalBlisterFormsLocation; Controller = Machine;
 Date = 2017-10-17 15:32:06.4995; IP = ::1; URL = http://localhost/products/2; Controller = Machine;
+Date = 2017-10-17 16:26:49.0872; IP = ::1; URL = http://localhost/; Controller = Home;
+Date = 2017-10-17 16:26:59.4045; IP = ::1; URL = http://localhost/manufacturing; Controller = Output;
+Date = 2017-10-17 16:27:06.7960; IP = ::1; URL = http://localhost/services; Controller = Labour;
+Date = 2017-10-17 16:29:12.7814; IP = ::1; URL = http://localhost/manufacturing; Controller = Output;
+Date = 2017-10-17 16:33:15.9582; IP = ::1; URL = http://localhost/; Controller = Home;
+Date = 2017-10-17 16:33:24.0009; IP = ::1; URL = http://localhost/manufacturing; Controller = Output;
