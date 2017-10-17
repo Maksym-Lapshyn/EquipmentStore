@@ -56,6 +56,10 @@
     <Compile Include="Migrations\201710140959574_AddedEquipmentCategories.Designer.cs">
       <DependentUpon>201710140959574_AddedEquipmentCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710171223558_removed extra info from machine class.cs" />
+    <Compile Include="Migrations\201710171223558_removed extra info from machine class.Designer.cs">
+      <DependentUpon>201710171223558_removed extra info from machine class.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IImageRepository.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710140959574_AddedEquipmentCategories.resx">
       <DependentUpon>201710140959574_AddedEquipmentCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710171223558_removed extra info from machine class.resx">
+      <DependentUpon>201710171223558_removed extra info from machine class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

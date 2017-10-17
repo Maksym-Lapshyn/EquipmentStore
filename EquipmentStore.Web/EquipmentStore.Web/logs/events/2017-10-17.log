@@ -1,0 +1,17 @@
+Date = 2017-10-17 15:27:02.8781; IP = ::1; URL = http://localhost/; Controller = Home;
+Date = 2017-10-17 15:27:12.1883; IP = ::1; URL = http://localhost/Account/Login; Controller = Account;
+Date = 2017-10-17 15:27:26.2055; IP = ::1; URL = http://localhost/account/login; Controller = Account;
+Date = 2017-10-17 15:27:35.0702; IP = ::1; URL = http://localhost/account/login; Controller = Account;
+Date = 2017-10-17 15:27:40.8819; IP = ::1; URL = http://localhost/account/login; Controller = Account;
+Date = 2017-10-17 15:27:45.2392; IP = ::1; URL = http://localhost/Account/Login; Controller = Account;
+Date = 2017-10-17 15:27:53.3552; IP = ::1; URL = http://localhost/account/login; Controller = Account;
+Date = 2017-10-17 15:29:56.7791; IP = ::1; URL = http://localhost/; Controller = Home;
+Date = 2017-10-17 15:30:05.0154; IP = ::1; URL = http://localhost/Account/Login; Controller = Account;
+Date = 2017-10-17 15:30:18.0725; IP = ::1; URL = http://localhost/account/login; Controller = Account;
+Date = 2017-10-17 15:30:58.1850; IP = ::1; URL = http://localhost/account/login; Controller = Account;
+Date = 2017-10-17 15:30:58.2366; IP = ::1; URL = http://localhost/; Controller = Home;
+Date = 2017-10-17 15:31:16.0241; IP = ::1; URL = http://localhost/admin; Controller = Admin;
+Date = 2017-10-17 15:31:26.6392; IP = ::1; URL = http://localhost/products/update/10; Controller = Machine;
+Date = 2017-10-17 15:31:54.1148; IP = ::1; URL = http://localhost/services; Controller = Labour;
+Date = 2017-10-17 15:32:01.7516; IP = ::1; URL = http://localhost/products/category/WithHorizontalBlisterFormsLocation; Controller = Machine;
+Date = 2017-10-17 15:32:06.4995; IP = ::1; URL = http://localhost/products/2; Controller = Machine;

@@ -286,3 +286,5 @@ D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\bin\NLog.Web.dl
 D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\bin\NLog.Web.xml
 E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\obj\Debug\EquipmentStore.Web.Migrations.InitialCreate.resources
 E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\obj\Debug\EquipmentStore.Web.csproj.GenerateResource.Cache
+D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\obj\Debug\EquipmentStore.Web.Migrations.InitialCreate.resources
+D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\obj\Debug\EquipmentStore.Web.csproj.GenerateResource.Cache

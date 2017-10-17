@@ -284,3 +284,5 @@ D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\obj\Release\Equ
 D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\obj\Release\EquipmentStore.Web.csproj.CoreCompileInputs.cache
 D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\obj\Release\EquipmentStore.Web.dll
 D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\obj\Release\EquipmentStore.Web.pdb
+D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\obj\Release\EquipmentStore.Web.Migrations.InitialCreate.resources
+D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.Web\obj\Release\EquipmentStore.Web.csproj.GenerateResource.Cache
