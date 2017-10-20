@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using EquipmentStore.Core.Enums
+
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -26,11 +28,177 @@
 
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-						    <li>@Html.ActionLink("Главная", "Index", "Home")</li>
-						    <li>@Html.ActionLink("Оборудование", "ReadAll", "Machine")</li>
-							<li>@Html.ActionLink("Услуги", "ReadAll", "Labour")</li>
-							<li>@Html.ActionLink("Производство", "ReadAll", "Output")</li>
-							<li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+						    <li>@Html.ActionLink("Главная", "Index", "Home", null, new {style = "font-size: 20px;" })</li>
+                            <li class="dropdown">
+                                <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+                                    <span style="font-size: 20px;">Оборудование <span class="caret"></span></span>
+                                </a>
+                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">
+                                            Автоматическое термоформовочное <br />
+                                            упаковочное оборудование
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.WithHorizontalBlisterFormsLocation.ToString() })>
+                                                    С горизонтальным расположением <br />
+                                                    блистерных форм
+                                                </a>
+                                            </li>
+
+                                            <li class="divider"></li>
+
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.WithVerticalBlisterFormsLocation.ToString() })>
+                                                    С вертикальным расположением <br />
+                                                    блистерных форм
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="divider"></li>
+
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">
+                                            Перистальтические насосы<br />
+                                            и дозаторы
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.PeristalticPumps.ToString() })>
+                                                    Перистальтические <br />
+                                                    насосы
+                                                </a>
+                                            </li>
+
+                                            <li class="divider"></li>
+
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.PeristalticDispensers.ToString() })>
+                                                    Перистальтические <br />
+                                                    дозаторы
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="divider"></li>
+
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">Этикетировочное оборудование</a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.AutomaticLabelingEquipment.ToString() })>
+                                                    Автоматическое этикетировочное <br />
+                                                    оборудование
+                                                </a>
+                                            </li>
+
+                                            <li class="divider"></li>
+
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.SemiAutomaticLabelingEquipment.ToString() })>
+                                                    Полуавтоматическое этикетировочное <br />
+                                                    оборудование
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="divider"></li>
+
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">Машины розлива и укупорки</a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.LinearFillingMachines.ToString() })>
+                                                    Линейные машины <br />
+                                                    розлива
+                                                </a>
+                                            </li>
+
+                                            <li class="divider"></li>
+
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.SemiAutomaticFillingMachines.ToString() })>
+                                                    Полуавтоматы розлива
+                                                </a>
+                                            </li>
+
+                                            <li class="divider"></li>
+
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.MonoblocksForBottlingAndCapping.ToString() })>
+                                                    Моноблоки розлива <br />
+                                                    и укупорки
+                                                </a>
+                                            </li>
+
+                                            <li class="divider"></li>
+
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.CappingMachines.ToString() })>
+                                                    Укупорочные машины
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="divider"></li>
+
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">Тубонаполнительное оборудование</a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.TubeFillingEquipmentForPlasticTubes.ToString() })>
+                                                    Тубонаполнительное оборудование <br />
+                                                    для пластиковых туб
+                                                </a>
+                                            </li>
+
+                                            <li class="divider"></li>
+
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.TubeFillingEquipmentForAluminumTubes.ToString() })>
+                                                    Тубонаполнительное оборудование <br />
+                                                    для алюминевых туб
+                                                </a>
+                                            </li>
+
+                                            <li class="divider"></li>
+
+                                            <li>
+                                                <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.SemiAutomaticTubeFillingEquipment.ToString() })>
+                                                    Полуавтоматическое тубонаполнительное<br />
+                                                    оборудование
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="divider"></li>
+
+                                    <li>
+                                        <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.EquipmentForProductionOfTabletsAndFillingCapsules.ToString() })>
+                                            Оборудование для производства<br />
+                                            таблеток и наполнения капсул
+                                        </a>
+                                    </li>
+
+                                    <li class="divider"></li>
+
+                                    <li>
+                                        <a href=@Url.Action("ReadCategory", "Machine", new { categoryName = EquipmentCategory.CartoningMachines.ToString() })>
+                                            Картонажные машины
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+							<li>@Html.ActionLink("Услуги", "ReadAll", "Labour", null, new { style = "font-size: 20px;" })</li>
+							<li>@Html.ActionLink("Производство", "ReadAll", "Output", null, new { style = "font-size: 20px;" })</li>
+							<li>@Html.ActionLink("Контакты", "Contact", "Home", null, new { style = "font-size: 20px;" })</li>
 						</ul>
 					</div>
 				</div>

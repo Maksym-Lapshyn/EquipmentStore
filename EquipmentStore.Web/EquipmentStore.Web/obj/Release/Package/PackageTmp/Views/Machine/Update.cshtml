@@ -119,6 +119,14 @@
 				@Html.TextBoxFor(m => m.Weight, new { @class = "form-control", type = "nubmer", step = "50", min = "0" })
 				@Html.ValidationMessageFor(m => m.Weight)
 			</p>
+
+            <b>
+                @Html.LabelFor(m => m.Category)
+            </b>
+            <p>
+                @Html.EnumDropDownListFor(x => x.Category, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Category)
+            </p>
 		</div>
 
 		<div class="panel-footer">

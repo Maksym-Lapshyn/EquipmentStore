@@ -30,3 +30,6 @@ D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.DAL\obj\Release\Equ
 D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.DAL\obj\Release\EquipmentStore.DAL.csproj.CoreCompileInputs.cache
 D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.DAL\obj\Release\EquipmentStore.DAL.dll
 D:\projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.DAL\obj\Release\EquipmentStore.DAL.pdb
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.DAL\obj\Release\EquipmentStore.DAL.Migrations.InitialCreate.resources
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.DAL\obj\Release\EquipmentStore.DAL.Migrations.AddedEquipmentCategories.resources
+E:\Projects\EquipmentStore\EquipmentStore.Web\EquipmentStore.DAL\obj\Release\EquipmentStore.DAL.csproj.GenerateResource.Cache
