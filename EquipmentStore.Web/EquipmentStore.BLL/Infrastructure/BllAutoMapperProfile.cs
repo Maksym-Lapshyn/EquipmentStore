@@ -8,11 +8,11 @@ namespace EquipmentStore.BLL.Infrastructure
 	{
 		public BllAutomapperProfile()
 		{
-			CreateMap<Machine, MachineDto>().ReverseMap();
-			CreateMap<Labour, LabourDto>().ReverseMap();
+			CreateMap<Product, MachineDto>().ReverseMap();
+			CreateMap<Pump, LabourDto>().ReverseMap();
 			CreateMap<Output, OutputDto>().ReverseMap();
-			CreateMap<LabourImage, LabourImageDto>().ReverseMap();
-			CreateMap<MachineImage, MachineImageDto>().ReverseMap();
+			CreateMap<PumpImage, LabourImageDto>().ReverseMap();
+			CreateMap<ProductImage, MachineImageDto>().ReverseMap();
 			CreateMap<OutputImage, OutputImageDto>().ReverseMap();
 		}
 	}

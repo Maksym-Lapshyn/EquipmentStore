@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace EquipmentStore.DAL.Repositories
 {
-	public class LabourImageRepository : IImageRepository<LabourImage>
+	public class LabourImageRepository : IImageRepository<PumpImage>
 	{
 		private readonly EquipmentStoreContext _context;
 
@@ -15,7 +15,7 @@ namespace EquipmentStore.DAL.Repositories
 			_context = context;
 		}
 
-		public void Add(LabourImage entity)
+		public void Add(PumpImage entity)
 		{
 			_context.LabourImages.Add(entity);
 		}
@@ -32,7 +32,7 @@ namespace EquipmentStore.DAL.Repositories
 			_context.LabourImages.Remove(image);
 		}
 
-		public void DeleteRange(Expression<Func<LabourImage, bool>> expression)
+		public void DeleteRange(Expression<Func<PumpImage, bool>> expression)
 		{
 			var entities = _context.LabourImages.Where(expression);
 

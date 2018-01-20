@@ -21,7 +21,7 @@ namespace EquipmentStore.BLL.Services
 		public MachineDto GetSingleOrDefault(int id)
 		{
 			var entity = _unitOfWork.MachineRepository.GetSingleOrDefault(id);
-			var dto = _mapper.Map<Machine, MachineDto>(entity);
+			var dto = _mapper.Map<Product, MachineDto>(entity);
 
 			return dto;
 		}
@@ -29,14 +29,14 @@ namespace EquipmentStore.BLL.Services
 		public IEnumerable<MachineDto> GetAll()
 		{
 			var entities = _unitOfWork.MachineRepository.GetAll();
-			var dtos = _mapper.Map<IEnumerable<Machine>, List<MachineDto>>(entities);
+			var dtos = _mapper.Map<IEnumerable<Product>, List<MachineDto>>(entities);
 
 			return dtos;
 		}
 
 		public void Add(MachineDto dto)
 		{
-			var entity = _mapper.Map<MachineDto, Machine>(dto);
+			var entity = _mapper.Map<MachineDto, Product>(dto);
 
 			_unitOfWork.MachineRepository.Add(entity);
 			_unitOfWork.Save();

@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EquipmentStore.Core.Entities
 {
-    public class OutputImage : Image
-	{
-        [ForeignKey("Output")]
-        public int OutputId { get; set; }
+    public class ProductImage : Image
+    {
+        [ForeignKey("Product")]
+        public int ProductId {get;set;}
 
         [Required]
-		public virtual Output Output { get; set; }
+		public virtual Product Product { get; set; }
 	}
 }

@@ -1,4 +1,6 @@
-﻿namespace EquipmentStore.Core.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace EquipmentStore.Core.Entities
 {
 	public abstract class Image
 	{

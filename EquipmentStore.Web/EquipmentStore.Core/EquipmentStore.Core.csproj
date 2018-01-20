@@ -52,10 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Image.cs" />
-    <Compile Include="Entities\Labour.cs" />
-    <Compile Include="Entities\LabourImage.cs" />
-    <Compile Include="Entities\Machine.cs" />
-    <Compile Include="Entities\MachineImage.cs" />
+    <Compile Include="Entities\ProductCategory.cs" />
+    <Compile Include="Entities\Pump.cs" />
+    <Compile Include="Entities\PumpCategory.cs" />
+    <Compile Include="Entities\PumpImage.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductImage.cs" />
     <Compile Include="Entities\Output.cs" />
     <Compile Include="Entities\OutputImage.cs" />
     <Compile Include="Loggers\ILogger.cs" />

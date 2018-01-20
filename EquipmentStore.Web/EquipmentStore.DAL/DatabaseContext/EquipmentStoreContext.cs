@@ -9,16 +9,16 @@ namespace EquipmentStore.DAL.DatabaseContext
 		{
 		}
 
-		public DbSet<Machine> Machines { get; set; }
+		public DbSet<Product> Machines { get; set; }
 
-		public DbSet<Labour> Labours { get; set; }
+		public DbSet<Pump> Labours { get; set; }
 
 		public DbSet<Output> Outputs { get; set; }
 
-		public DbSet<MachineImage> MachineImages { get; set; }
+		public DbSet<ProductImage> MachineImages { get; set; }
 
-		public DbSet<LabourImage> LabourImages { get; set; }
+		public DbSet<PumpImage> LabourImages { get; set; }
 
 		public DbSet<OutputImage> OutputImages { get; set; }
-	}
+    }
 }

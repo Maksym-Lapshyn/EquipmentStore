@@ -22,7 +22,7 @@ namespace EquipmentStore.BLL.Services
 		public LabourDto GetSingleOrDefault(int id)
 		{
 			var entity = _unitOfWork.LabourRepository.GetSingleOrDefault(id);
-			var dto = _mapper.Map<Labour, LabourDto>(entity);
+			var dto = _mapper.Map<Pump, LabourDto>(entity);
 
 			return dto;
 		}
@@ -30,14 +30,14 @@ namespace EquipmentStore.BLL.Services
 		public IEnumerable<LabourDto> GetAll()
 		{
 			var entities = _unitOfWork.LabourRepository.GetAll();
-			var dtos = _mapper.Map<IEnumerable<Labour>, List<LabourDto>>(entities);
+			var dtos = _mapper.Map<IEnumerable<Pump>, List<LabourDto>>(entities);
 
 			return dtos;
 		}
 
 		public void Add(LabourDto dto)
 		{
-			var entity = _mapper.Map<LabourDto, Labour>(dto);
+			var entity = _mapper.Map<LabourDto, Pump>(dto);
 
 			_unitOfWork.LabourRepository.Add(entity);
 			_unitOfWork.Save();

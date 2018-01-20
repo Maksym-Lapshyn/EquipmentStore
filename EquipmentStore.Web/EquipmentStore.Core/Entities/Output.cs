@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EquipmentStore.Core.Entities
 {
-	public class Output
+    public class Output
 	{
 		public int Id { get; set; }
 
@@ -10,7 +10,9 @@ namespace EquipmentStore.Core.Entities
 
 		public string Description { get; set; }
 
-		[Required]
+        [ForeignKey("MainIMage")]
+        public int MainImageId { get; set; }
+
 		public virtual OutputImage MainImage { get; set; }
 	}
 }

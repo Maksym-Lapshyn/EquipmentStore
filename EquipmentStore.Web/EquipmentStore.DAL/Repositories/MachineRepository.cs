@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace EquipmentStore.DAL.Repositories
 {
-	public class MachineRepository : IRepository<Machine>
+	public class MachineRepository : IRepository<Product>
 	{
 		private readonly EquipmentStoreContext _context;
 
@@ -16,7 +16,7 @@ namespace EquipmentStore.DAL.Repositories
 			_context = context;
 		}
 
-		public void Add(Machine entity)
+		public void Add(Product entity)
 		{
 			_context.Machines.Add(entity);
 		}
@@ -33,19 +33,19 @@ namespace EquipmentStore.DAL.Repositories
 			_context.Machines.Remove(machine);
 		}
 
-		public IEnumerable<Machine> GetAll()
+		public IEnumerable<Product> GetAll()
 		{
 			return _context.Machines.ToList();
 		}
 
-		public Machine GetSingleOrDefault(int id)
+		public Product GetSingleOrDefault(int id)
 		{
 			var product = _context.Machines.SingleOrDefault(m => m.Id == id);
 
 			return product;
 		}
 
-		public void Update(Machine entity)
+		public void Update(Product entity)
 		{
 			_context.Entry(entity).State = EntityState.Modified;
 		}
