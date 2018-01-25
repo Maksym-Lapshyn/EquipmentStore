@@ -43,17 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\LabourDto.cs" />
-    <Compile Include="Dtos\LabourImageDto.cs" />
-    <Compile Include="Dtos\MachineDto.cs" />
-    <Compile Include="Dtos\MachineImageDto.cs" />
+    <Compile Include="Dtos\PumpDto.cs" />
+    <Compile Include="Dtos\PumpImageDto.cs" />
+    <Compile Include="Dtos\ProductDto.cs" />
+    <Compile Include="Dtos\ProductImageDto.cs" />
     <Compile Include="Dtos\OutputDto.cs" />
     <Compile Include="Dtos\OutputImageDto.cs" />
     <Compile Include="Infrastructure\BllAutoMapperProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IService.cs" />
-    <Compile Include="Services\LabourService.cs" />
-    <Compile Include="Services\MachineService.cs" />
+    <Compile Include="Services\ProductCategoryService.cs" />
+    <Compile Include="Services\ProductSubCategoryService.cs" />
+    <Compile Include="Services\PumpCategoryService.cs" />
+    <Compile Include="Services\PumpService.cs" />
+    <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\OutputService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@ using System.Web;
 
 namespace EquipmentStore.Web.Models
 {
-	public class LabourViewModel
+	public class PumpViewModel
 	{
 		public int Id { get; set; }
 

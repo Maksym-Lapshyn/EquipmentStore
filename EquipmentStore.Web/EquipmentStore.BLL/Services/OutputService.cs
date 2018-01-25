@@ -1,13 +1,11 @@
 ﻿using AutoMapper;
-using EquipmentStore.BLL.Dtos;
-using EquipmentStore.DAL.UnitOfWork;
-using System;
-using System.Collections.Generic;
 using EquipmentStore.Core.Entities;
+using EquipmentStore.DAL.UnitOfWork;
+using System.Collections.Generic;
 
 namespace EquipmentStore.BLL.Services
 {
-	public class OutputService : IService<OutputDto>
+    public class OutputService : IService<Output>
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IMapper _mapper;
@@ -19,43 +17,39 @@ namespace EquipmentStore.BLL.Services
 			_mapper = mapper;
 		}
 
-		public OutputDto GetSingleOrDefault(int id)
+		public Output GetSingleOrDefault(int id)
 		{
-			var entity = _unitOfWork.OutputRepository.GetSingleOrDefault(id);
-			var dto = _mapper.Map<Output, OutputDto>(entity);
+			var output = _unitOfWork.OutputRepository.GetSingleOrDefault(id);
 
-			return dto;
+			return output;
 		}
 
-		public IEnumerable<OutputDto> GetAll()
+		public IEnumerable<Output> GetAll()
 		{
-			var entities = _unitOfWork.OutputRepository.GetAll();
-			var dtos = _mapper.Map<IEnumerable<Output>, List<OutputDto>>(entities);
+			var outputs = _unitOfWork.OutputRepository.GetAll();
 
-			return dtos;
+			return outputs;
 		}
 
-		public void Add(OutputDto dto)
+		public void Add(Output output)
 		{
-			var entity = _mapper.Map<OutputDto, Output>(dto);
-
-			_unitOfWork.OutputRepository.Add(entity);
+			_unitOfWork.OutputRepository.Add(output);
 			_unitOfWork.Save();
 		}
 
-		public void Update(OutputDto dto)
+		public void Update(Output output)
 		{
-			var entity = _unitOfWork.OutputRepository.GetSingleOrDefault(dto.Id);
-			entity = _mapper.Map(dto, entity);
+			var oldOutput = _unitOfWork.OutputRepository.GetSingleOrDefault(output.Id);
+			oldOutput = _mapper.Map(output, oldOutput);
 
-			_unitOfWork.OutputRepository.Update(entity);
+			_unitOfWork.OutputRepository.Update(oldOutput);
 			_unitOfWork.Save();
 		}
 
 		public void Delete(int id)
 		{
 			_unitOfWork.OutputRepository.Delete(id);
-			_unitOfWork.OutputImageRepository.DeleteRange(i => i.Output.Id == id);
+			//_unitOfWork.OutputImageRepository.DeleteRange(i => i.Output.Id == id);
 			_unitOfWork.Save();
 		}
 	}

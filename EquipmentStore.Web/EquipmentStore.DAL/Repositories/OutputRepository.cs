@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace EquipmentStore.DAL.Repositories
 {
-	public class OutputRepository : IRepository<Output>
+    public class OutputRepository : IRepository<Output>
 	{
 		private readonly EquipmentStoreContext _context;
 

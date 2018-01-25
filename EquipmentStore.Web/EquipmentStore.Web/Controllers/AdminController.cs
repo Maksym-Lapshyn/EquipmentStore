@@ -9,13 +9,13 @@ namespace EquipmentStore.Web.Controllers
 {
 	public class AdminController : Controller
 	{
-		private readonly IService<MachineDto> _machineService;
-		private readonly IService<LabourDto> _labourService;
+		private readonly IService<ProductDto> _machineService;
+		private readonly IService<PumpDto> _labourService;
 		private readonly IService<OutputDto> _outputService;
 		private readonly IMapper _mapper;
 
-		public AdminController(IService<MachineDto> machineService,
-			IService<LabourDto> labourService,
+		public AdminController(IService<ProductDto> machineService,
+			IService<PumpDto> labourService,
 			IService<OutputDto> outputService,
 			IMapper mapper)
 		{
@@ -36,8 +36,8 @@ namespace EquipmentStore.Web.Controllers
 
 			var model = new CompositeViewModel
 			{
-				Labours = _mapper.Map<IEnumerable<LabourDto>, List<LabourViewModel>>(laboursDtos),
-				Machines = _mapper.Map<IEnumerable<MachineDto>, List<MachineViewModel>>(machinesDtos),
+				Labours = _mapper.Map<IEnumerable<PumpDto>, List<PumpViewModel>>(laboursDtos),
+				Machines = _mapper.Map<IEnumerable<ProductDto>, List<ProductViewModel>>(machinesDtos),
 				Outputs = _mapper.Map<IEnumerable<OutputDto>, List<OutputViewModel>>(outputsDtos)
 			};
 

@@ -13,10 +13,10 @@ namespace EquipmentStore.Web.Controllers
 		private const string TempDataMessageKey = "Message";
 		private const string TempDataErrorKey = "Error";
 
-		private readonly IService<LabourDto> _labourService;
+		private readonly IService<PumpDto> _labourService;
 		private readonly IMapper _mapper;
 
-		public LabourController(IService<LabourDto> labourService,
+		public LabourController(IService<PumpDto> labourService,
 			IMapper mapper)
 		{
 			_labourService = labourService;
@@ -28,7 +28,7 @@ namespace EquipmentStore.Web.Controllers
 		[Route("services/create")]
 		public ActionResult Create()
 		{
-			var model = new LabourViewModel();
+			var model = new PumpViewModel();
 
 			return View(model);
 		}
@@ -36,7 +36,7 @@ namespace EquipmentStore.Web.Controllers
 		[HttpPost]
 		[Authorize]
 		[Route("services/create")]
-		public ActionResult Create(LabourViewModel model)
+		public ActionResult Create(PumpViewModel model)
 		{
 			if (model.ImageInput == null)
 			{
@@ -50,7 +50,7 @@ namespace EquipmentStore.Web.Controllers
 
 			UpdateImage(model);
 
-			var dto = _mapper.Map<LabourViewModel, LabourDto>(model);
+			var dto = _mapper.Map<PumpViewModel, PumpDto>(model);
 
 			_labourService.Add(dto);
 
@@ -85,7 +85,7 @@ namespace EquipmentStore.Web.Controllers
 		public ActionResult ReadAll()
 		{
 			var dtos = _labourService.GetAll();
-			var models = _mapper.Map<IEnumerable<LabourDto>, List<LabourViewModel>>(dtos);
+			var models = _mapper.Map<IEnumerable<PumpDto>, List<PumpViewModel>>(dtos);
 
 			return View(models);
 		}
@@ -99,7 +99,7 @@ namespace EquipmentStore.Web.Controllers
 
 			if (dto != null)
 			{
-				var model = _mapper.Map<LabourDto, LabourViewModel>(dto);
+				var model = _mapper.Map<PumpDto, PumpViewModel>(dto);
 
 				return View(model);
 			}
@@ -112,7 +112,7 @@ namespace EquipmentStore.Web.Controllers
 		[HttpPost]
 		[Authorize]
 		[Route("services/update/{id}")]
-		public ActionResult Update(LabourViewModel model)
+		public ActionResult Update(PumpViewModel model)
 		{
 			if (model.ImageInput == null && model.ImageData == null)
 			{
@@ -126,7 +126,7 @@ namespace EquipmentStore.Web.Controllers
 
 			UpdateImage(model);
 
-			var dto = _mapper.Map<LabourViewModel, LabourDto>(model);
+			var dto = _mapper.Map<PumpViewModel, PumpDto>(model);
 
 			_labourService.Update(dto);
 
@@ -135,7 +135,7 @@ namespace EquipmentStore.Web.Controllers
 			return RedirectToAction("Index", "Admin");
 		}
 
-		private void UpdateImage(LabourViewModel model)
+		private void UpdateImage(PumpViewModel model)
 		{
 			if (model.ImageInput == null)
 			{

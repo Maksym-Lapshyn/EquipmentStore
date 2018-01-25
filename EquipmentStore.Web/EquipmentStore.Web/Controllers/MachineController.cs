@@ -13,10 +13,10 @@ namespace EquipmentStore.Web.Controllers
 		private const string TempDataMessageKey = "Message";
 		private const string TempDataErrorKey = "Error";
 
-		private readonly IService<MachineDto> _machineService;
+		private readonly IService<ProductDto> _machineService;
 		private readonly IMapper _mapper;
 
-		public MachineController(IService<MachineDto> machineService,
+		public MachineController(IService<ProductDto> machineService,
 			IMapper mapper)
 		{
 			_machineService = machineService;
@@ -28,7 +28,7 @@ namespace EquipmentStore.Web.Controllers
 		[Route("products/create")]
 		public ActionResult Create()
 		{
-			var model = new MachineViewModel();
+			var model = new ProductViewModel();
 
 			return View(model);
 		}
@@ -36,7 +36,7 @@ namespace EquipmentStore.Web.Controllers
 		[HttpPost]
 		[Authorize]
 		[Route("products/create")]
-		public ActionResult Create(MachineViewModel model)
+		public ActionResult Create(ProductViewModel model)
 		{
 			if (model.ImageInput == null)
 			{
@@ -50,7 +50,7 @@ namespace EquipmentStore.Web.Controllers
 
 			UpdateImage(model);
 
-			var dto = _mapper.Map<MachineViewModel, MachineDto>(model);
+			var dto = _mapper.Map<ProductViewModel, ProductDto>(model);
 
 			_machineService.Add(dto);
 
@@ -85,7 +85,7 @@ namespace EquipmentStore.Web.Controllers
 		public ActionResult ReadAll()
 		{
 			var dtos = _machineService.GetAll();
-			var models = _mapper.Map<IEnumerable<MachineDto>, List<MachineViewModel>>(dtos);
+			var models = _mapper.Map<IEnumerable<ProductDto>, List<ProductViewModel>>(dtos);
 
 			return View(models);
 		}
@@ -98,7 +98,7 @@ namespace EquipmentStore.Web.Controllers
 
 			if (dto != null)
 			{
-				var model = _mapper.Map<MachineDto, MachineViewModel>(dto);
+				var model = _mapper.Map<ProductDto, ProductViewModel>(dto);
 
 				return View(model);
 			}
@@ -117,7 +117,7 @@ namespace EquipmentStore.Web.Controllers
 
 			if (dto != null)
 			{
-				var model = _mapper.Map<MachineDto, MachineViewModel>(dto);
+				var model = _mapper.Map<ProductDto, ProductViewModel>(dto);
 
 				return View(model);
 			}
@@ -130,7 +130,7 @@ namespace EquipmentStore.Web.Controllers
 		[HttpPost]
 		[Authorize]
 		[Route("products/update/{id}")]
-		public ActionResult Update(MachineViewModel model)
+		public ActionResult Update(ProductViewModel model)
 		{
 			if (model.ImageInput == null && model.ImageData == null)
 			{
@@ -144,7 +144,7 @@ namespace EquipmentStore.Web.Controllers
 
 			UpdateImage(model);
 			
-			var dto = _mapper.Map<MachineViewModel, MachineDto>(model);
+			var dto = _mapper.Map<ProductViewModel, ProductDto>(model);
 
 			_machineService.Update(dto);
 
@@ -153,7 +153,7 @@ namespace EquipmentStore.Web.Controllers
 			return RedirectToAction("Index", "Admin");
 		}
 
-		private void UpdateImage(MachineViewModel model)
+		private void UpdateImage(ProductViewModel model)
 		{
 			if (model.ImageInput == null)
 			{

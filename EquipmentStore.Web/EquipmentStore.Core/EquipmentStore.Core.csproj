@@ -51,8 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\ProductCategory.cs" />
+    <Compile Include="Entities\ProductSubCategory.cs" />
     <Compile Include="Entities\Pump.cs" />
     <Compile Include="Entities\PumpCategory.cs" />
     <Compile Include="Entities\PumpImage.cs" />

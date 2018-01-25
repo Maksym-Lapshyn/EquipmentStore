@@ -2,15 +2,13 @@
 
 namespace EquipmentStore.Core.Entities
 {
-    public class Output
+    public class Output : BaseEntity
 	{
-		public int Id { get; set; }
-
 		public string Name { get; set; }
 
 		public string Description { get; set; }
 
-        [ForeignKey("MainIMage")]
+        [ForeignKey("MainImage")]
         public int MainImageId { get; set; }
 
 		public virtual OutputImage MainImage { get; set; }

@@ -8,17 +8,17 @@ namespace EquipmentStore.Web.Infrastructure
 	{
 		public WebAutoMapperProfile()
 		{
-			CreateMap<MachineDto, MachineViewModel>()
+			CreateMap<ProductDto, ProductViewModel>()
 				.ForMember(viewModel => viewModel.ImageData, opt => opt.MapFrom(dto => dto.MainImage))
 				.ReverseMap();
-			CreateMap<LabourDto, LabourViewModel>()
+			CreateMap<PumpDto, PumpViewModel>()
 				.ForMember(viewModel => viewModel.ImageData, opt => opt.MapFrom(dto => dto.MainImage))
 				.ReverseMap();
 			CreateMap<OutputDto, OutputViewModel>()
 				.ForMember(viewModel => viewModel.ImageData, opt => opt.MapFrom(dto => dto.MainImage))
 				.ReverseMap();
-			CreateMap<MachineImageDto, ImageViewModel>().ReverseMap();
-			CreateMap<LabourImageDto, ImageViewModel>().ReverseMap();
+			CreateMap<ProductImageDto, ImageViewModel>().ReverseMap();
+			CreateMap<PumpImageDto, ImageViewModel>().ReverseMap();
 			CreateMap<OutputImageDto, ImageViewModel>().ReverseMap();
 		}
 	}

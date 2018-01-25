@@ -2,7 +2,7 @@
 
 namespace EquipmentStore.DAL.Repositories
 {
-	public interface IRepository<T>
+    public interface IRepository<T>
 	{
 		T GetSingleOrDefault(int id);
 
@@ -13,5 +13,7 @@ namespace EquipmentStore.DAL.Repositories
 		void Update(T entity);
 
 		void Delete(int id);
+
+        bool Exists(int id);
 	}
 }

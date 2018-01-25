@@ -3,20 +3,26 @@ using EquipmentStore.DAL.Repositories;
 
 namespace EquipmentStore.DAL.UnitOfWork
 {
-	public interface IUnitOfWork
+    public interface IUnitOfWork
 	{
-		IRepository<Product> MachineRepository { get; }
+		IRepository<Product> ProductRepository { get; }
 
-		IRepository<Pump> LabourRepository { get; }
+		IRepository<Pump> PumpRepository { get; }
 
 		IRepository<Output> OutputRepository { get; }
 
-		IImageRepository<ProductImage> MachineImageRepository { get; }
+		IImageRepository<ProductImage> ProductImageRepository { get; }
 
-		IImageRepository<PumpImage> LabourImageRepository { get; }
+		IImageRepository<PumpImage> PumpImageRepository { get; }
 
 		IImageRepository<OutputImage> OutputImageRepository { get; }
 
-		void Save();
+        IRepository<ProductCategory> ProductCategoryRepository { get; }
+
+        IRepository<PumpCategory> PumpCategoryRepository { get; }
+
+        IRepository<ProductSubCategory> ProductSubCategoryRepository { get; }
+
+        void Save();
 	}
 }

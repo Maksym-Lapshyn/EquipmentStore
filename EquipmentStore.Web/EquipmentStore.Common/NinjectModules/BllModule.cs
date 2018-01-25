@@ -1,16 +1,19 @@
-﻿using EquipmentStore.BLL.Dtos;
-using EquipmentStore.BLL.Services;
+﻿using EquipmentStore.BLL.Services;
+using EquipmentStore.Core.Entities;
 using Ninject.Modules;
 
 namespace EquipmentStore.Common.NinjectModules
 {
-	public class BllModule : NinjectModule
+    public class BllModule : NinjectModule
 	{
 		public override void Load()
 		{
-			Bind<IService<LabourDto>>().To<LabourService>();
-			Bind<IService<MachineDto>>().To<MachineService>();
-			Bind<IService<OutputDto>>().To<OutputService>();
-		}
+			Bind<IService<Pump>>().To<PumpService>();
+			Bind<IService<Product>>().To<ProductService>();
+			Bind<IService<Output>>().To<OutputService>();
+            Bind<IService<ProductCategory>>().To<ProductCategoryService>();
+            Bind<IService<PumpCategory>>().To<PumpCategoryService>();
+            Bind<IService<ProductCategory>>().To<ProductCategoryService>();
+        }
 	}
 }

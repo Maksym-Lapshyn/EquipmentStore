@@ -7,40 +7,40 @@ using System.Linq;
 
 namespace EquipmentStore.DAL.Repositories
 {
-	public class LabourRepository : IRepository<Pump>
+    public class PumpRepository : IRepository<Pump>
 	{
 		private readonly EquipmentStoreContext _context;
 
-		public LabourRepository(EquipmentStoreContext context)
+		public PumpRepository(EquipmentStoreContext context)
 		{
 			_context = context;
 		}
 
 		public void Add(Pump entity)
 		{
-			_context.Labours.Add(entity);
+			_context.Pumps.Add(entity);
 		}
 
 		public void Delete(int id)
 		{
-			var labour = _context.Labours.SingleOrDefault(l => l.Id == id);
+			var labour = _context.Pumps.SingleOrDefault(l => l.Id == id);
 
 			if (labour == null)
 			{
-				throw new ArgumentException("Labour with such id does not exist");
+				throw new ArgumentException("Pump with such id does not exist");
 			}
 
-			_context.Labours.Remove(labour);
+			_context.Pumps.Remove(labour);
 		}
 
 		public IEnumerable<Pump> GetAll()
 		{
-			return _context.Labours.ToList();
+			return _context.Pumps.ToList();
 		}
 
 		public Pump GetSingleOrDefault(int id)
 		{
-			var labour = _context.Labours.SingleOrDefault(l => l.Id == id);
+			var labour = _context.Pumps.SingleOrDefault(l => l.Id == id);
 
 			return labour;
 		}

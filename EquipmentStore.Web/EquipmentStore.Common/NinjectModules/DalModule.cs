@@ -5,7 +5,7 @@ using Ninject.Web.Common;
 
 namespace EquipmentStore.Common.NinjectModules
 {
-	public class DalModule : NinjectModule
+    public class DalModule : NinjectModule
 	{
 		private readonly string _connectionString;
 

@@ -4,10 +4,10 @@ namespace EquipmentStore.Web.Models.Enums
 {
 	public enum FeedbackTopic
 	{
-		[Display(Name = "Оборудование")]
-		Product,
+        [Display(Name = "Перистальтические насосы")]
+        Pump,
 
-		[Display(Name = "Услуги")]
-		Service
+        [Display(Name = "Оборудование")]
+		Product
 	}
 }

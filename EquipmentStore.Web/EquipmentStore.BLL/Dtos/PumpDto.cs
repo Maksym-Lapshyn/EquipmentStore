@@ -1,6 +1,6 @@
 ﻿namespace EquipmentStore.BLL.Dtos
 {
-	public class LabourDto
+	public class PumpDto
 	{
 		public int Id { get; set; }
 
@@ -8,6 +8,6 @@
 
 		public string Description { get; set; }
 
-		public LabourImageDto MainImage { get; set; }
+		public PumpImageDto MainImage { get; set; }
 	}
 }

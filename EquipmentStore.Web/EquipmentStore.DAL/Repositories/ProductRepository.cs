@@ -7,40 +7,45 @@ using System.Linq;
 
 namespace EquipmentStore.DAL.Repositories
 {
-	public class MachineRepository : IRepository<Product>
+	public class ProductRepository : IRepository<Product>
 	{
 		private readonly EquipmentStoreContext _context;
 
-		public MachineRepository(EquipmentStoreContext context)
+		public ProductRepository(EquipmentStoreContext context)
 		{
 			_context = context;
 		}
 
 		public void Add(Product entity)
 		{
-			_context.Machines.Add(entity);
+			_context.Products.Add(entity);
 		}
 
 		public void Delete(int id)
 		{
-			var machine = _context.Machines.SingleOrDefault(p => p.Id == id);
+			var machine = _context.Products.SingleOrDefault(p => p.Id == id);
 
 			if (machine == null)
 			{
-				throw new ArgumentException("Machine with such id does not exist");
+				throw new ArgumentException("Product with such id does not exist");
 			}
 
-			_context.Machines.Remove(machine);
+			_context.Products.Remove(machine);
 		}
 
-		public IEnumerable<Product> GetAll()
+        public bool Exists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Product> GetAll()
 		{
-			return _context.Machines.ToList();
+			return _context.Products.ToList();
 		}
 
 		public Product GetSingleOrDefault(int id)
 		{
-			var product = _context.Machines.SingleOrDefault(m => m.Id == id);
+			var product = _context.Products.SingleOrDefault(m => m.Id == id);
 
 			return product;
 		}

@@ -2,12 +2,10 @@
 
 namespace EquipmentStore.Core.Entities
 {
-    public class ProductCategory
+    public class ProductCategory : BaseEntity
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
-        public virtual ICollection<Product> Machines { get; set; }
+        public virtual ICollection<ProductSubCategory> SubCategories { get; set; }
     }
 }

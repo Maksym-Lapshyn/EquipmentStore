@@ -1,11 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace EquipmentStore.Core.Entities
+﻿namespace EquipmentStore.Core.Entities
 {
-	public abstract class Image
+    public abstract class Image : BaseEntity
 	{
-		public int Id { get; set; }
-
 		public string Name { get; set; }
 
 		public string MimeType { get; set; }
