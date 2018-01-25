@@ -51,5 +51,10 @@ namespace EquipmentStore.BLL.Services
             _unitOfWork.ProductSubCategoryRepository.Delete(id);
             _unitOfWork.Save();
         }
+
+        public bool CheckIfExists(int id)
+        {
+            return _unitOfWork.ProductSubCategoryRepository.Exists(id);
+        }
     }
 }

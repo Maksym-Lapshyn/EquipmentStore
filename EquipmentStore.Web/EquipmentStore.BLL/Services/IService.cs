@@ -13,5 +13,7 @@ namespace EquipmentStore.BLL.Services
 		void Update(T dto);
 
 		void Delete(int id);
+
+        bool CheckIfExists(int id);
 	}
 }

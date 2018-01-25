@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EquipmentStore.BLL.Dtos;
 using EquipmentStore.BLL.Services;
+using EquipmentStore.Core.Entities;
 using EquipmentStore.Web.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -25,7 +26,7 @@ namespace EquipmentStore.Web.Controllers
 
 		[HttpGet]
 		[Authorize]
-		[Route("manufacturing/create")]
+		[Route("admin/solutions/create")]
 		public ActionResult Create()
 		{
 			var model = new OutputViewModel();
@@ -35,7 +36,7 @@ namespace EquipmentStore.Web.Controllers
 
 		[HttpPost]
 		[Authorize]
-		[Route("manufacturing/create")]
+		[Route("admin/solutions/create")]
 		public ActionResult Create(OutputViewModel model)
 		{
 			if (model.ImageInput == null)
@@ -50,23 +51,23 @@ namespace EquipmentStore.Web.Controllers
 
 			UpdateImage(model);
 
-			var dto = _mapper.Map<OutputViewModel, OutputDto>(model);
+			var entity = _mapper.Map<OutputViewModel, Output>(model);
 
-			_outputService.Add(dto);
+			_outputService.Add(entity);
 
 			TempData[TempDataMessageKey] = "Новое готовое решение было добавлено";
 
 			return RedirectToAction("Index", "Admin");
 		}
 
-		[HttpPost]
+		[HttpDelete]
 		[Authorize]
-		[Route("manufacturing/delete/{id}")]
+		[Route("admin/solutions/delete/{id}")]
 		public ActionResult Delete(int id)
 		{
-			var dto = _outputService.GetSingleOrDefault(id);
+			var entityExists = _outputService.CheckIfExists(id);
 
-			if (dto == null)
+			if (!entityExists)
 			{
 				TempData[TempDataErrorKey] = "Готовое решение с таким id не сушествует";
 
@@ -81,25 +82,35 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpGet]
-		[Route("manufacturing")]
+		[Route("admin/solutions")]
 		public ActionResult ReadAll()
 		{
-			var dtos = _outputService.GetAll();
-			var models = _mapper.Map<IEnumerable<OutputDto>, List<OutputViewModel>>(dtos);
+			var entities = _outputService.GetAll();
+			var models = _mapper.Map<IEnumerable<Output>, List<OutputViewModel>>(entities);
 
 			return View(models);
 		}
 
-		[HttpGet]
+        [HttpGet]
+        [Route("solutions")]
+        public ActionResult UserReadAll()
+        {
+            var entities = _outputService.GetAll();
+            var models = _mapper.Map<IEnumerable<Output>, List<OutputViewModel>>(entities);
+
+            return View(models);
+        }
+
+        [HttpGet]
 		[Authorize]
-		[Route("manufacturing/update/{id}")]
+		[Route("admin/solutions/{id}")]
 		public ActionResult Update(int id)
 		{
-			var dto = _outputService.GetSingleOrDefault(id);
+			var entity = _outputService.GetSingleOrDefault(id);
 
-			if (dto != null)
+			if (entity != null)
 			{
-				var model = _mapper.Map<OutputDto, OutputViewModel>(dto);
+				var model = _mapper.Map<Output, OutputViewModel>(entity);
 
 				return View(model);
 			}
@@ -109,12 +120,12 @@ namespace EquipmentStore.Web.Controllers
 			return RedirectToAction("Index", "Admin");
 		}
 
-		[HttpPost]
+		[HttpPut]
 		[Authorize]
-		[Route("manufacturing/update/{id}")]
+		[Route("admin/solutions")]
 		public ActionResult Update(OutputViewModel model)
 		{
-			if (model.ImageInput == null && model.ImageData == null)
+			if (model.ImageInput == null && model.MainImage == null)
 			{
 				ModelState.AddModelError("ImageInput", "Укажите картинку");
 			}
@@ -126,9 +137,9 @@ namespace EquipmentStore.Web.Controllers
 
 			UpdateImage(model);
 
-			var dto = _mapper.Map<OutputViewModel, OutputDto>(model);
+			var entity = _mapper.Map<OutputViewModel, Output>(model);
 
-			_outputService.Update(dto);
+			_outputService.Update(entity);
 
 			TempData[TempDataMessageKey] = "Готовое решение было обновлено";
 
@@ -142,7 +153,7 @@ namespace EquipmentStore.Web.Controllers
 				return;
 			}
 
-			var id = model.ImageData?.Id ?? default(int);
+			var id = model.MainImage?.Id ?? default(int);
 
 			var image = new ImageViewModel
 			{
@@ -156,7 +167,7 @@ namespace EquipmentStore.Web.Controllers
 				image.Data = br.ReadBytes(model.ImageInput.ContentLength);
 			}
 
-			model.ImageData = image;
+			model.MainImage = image;
 			model.ImageInput = null;
 		}
 	}

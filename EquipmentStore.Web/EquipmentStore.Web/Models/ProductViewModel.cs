@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace EquipmentStore.Web.Models
 {
@@ -20,6 +21,14 @@ namespace EquipmentStore.Web.Models
 		public string LongDescription { get; set; }
 
         public int SubCategoryId { get; set; }
+
+        public int MainImageId { get; set; }
+
+        [DisplayName("Главное изображение")]
+        public ImageViewModel MainImage { get; set; }
+
+        [DisplayName("Главное изображение")]
+        public HttpPostedFileBase ImageInput { get; set; }
 
         public ProductCategoryViewModel SubCategory { get; set; }
 	}

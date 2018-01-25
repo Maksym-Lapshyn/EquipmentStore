@@ -214,8 +214,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LabourController.cs" />
-    <Compile Include="Controllers\MachineController.cs" />
+    <Compile Include="Controllers\PumpController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OutputController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />

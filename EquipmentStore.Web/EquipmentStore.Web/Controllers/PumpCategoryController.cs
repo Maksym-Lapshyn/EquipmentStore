@@ -56,9 +56,9 @@ namespace EquipmentStore.Web.Controllers
         [Route("admin/pumpcategories/delete/{id}")]
         public ActionResult Delete(int id)
         {
-            var entity = _pumpCategoryService.GetSingleOrDefault(id);
+            var entityExists = _pumpCategoryService.CheckIfExists(id);
 
-            if (entity == null)
+            if (!entityExists)
             {
                 TempData[TempDataErrorKey] = "Категория с таким id не сушествует";
 
@@ -124,6 +124,15 @@ namespace EquipmentStore.Web.Controllers
         [Route("admin/pumpcategories/update")]
         public ActionResult Update(PumpCategoryViewModel model)
         {
+            var entityExists = _pumpCategoryService.CheckIfExists(model.Id);
+
+            if (!entityExists)
+            {
+                TempData[TempDataErrorKey] = "Категория с таким id не сушествует";
+
+                return RedirectToAction("Index", "Admin");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);

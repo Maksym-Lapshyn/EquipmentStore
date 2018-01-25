@@ -52,5 +52,10 @@ namespace EquipmentStore.BLL.Services
 			//_unitOfWork.OutputImageRepository.DeleteRange(i => i.Output.Id == id);
 			_unitOfWork.Save();
 		}
-	}
+
+        public bool CheckIfExists(int id)
+        {
+            return _unitOfWork.OutputRepository.Exists(id);
+        }
+    }
 }

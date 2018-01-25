@@ -12,10 +12,10 @@ namespace EquipmentStore.Web.Infrastructure
 				.ForMember(viewModel => viewModel.ImageData, opt => opt.MapFrom(dto => dto.MainImage))
 				.ReverseMap();
 			CreateMap<PumpDto, PumpViewModel>()
-				.ForMember(viewModel => viewModel.ImageData, opt => opt.MapFrom(dto => dto.MainImage))
+				.ForMember(viewModel => viewModel.MainImage, opt => opt.MapFrom(dto => dto.MainImage))
 				.ReverseMap();
 			CreateMap<OutputDto, OutputViewModel>()
-				.ForMember(viewModel => viewModel.ImageData, opt => opt.MapFrom(dto => dto.MainImage))
+				.ForMember(viewModel => viewModel.MainImage, opt => opt.MapFrom(dto => dto.MainImage))
 				.ReverseMap();
 			CreateMap<ProductImageDto, ImageViewModel>().ReverseMap();
 			CreateMap<PumpImageDto, ImageViewModel>().ReverseMap();

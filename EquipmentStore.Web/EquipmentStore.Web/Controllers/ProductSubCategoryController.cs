@@ -13,12 +13,15 @@ namespace EquipmentStore.Web.Controllers
         private const string TempDataErrorKey = "Error";
 
         private readonly IService<ProductSubCategory> _productSubCategoryService;
+        private readonly IService<ProductCategory> _productCategoryService;
         private readonly IMapper _mapper;
 
         public ProductSubCategoryController(IService<ProductSubCategory> productSubCategoryService,
+            IService<ProductCategory> productCategoryService,
             IMapper mapper)
         {
             _productSubCategoryService = productSubCategoryService;
+            _productCategoryService = productCategoryService;
             _mapper = mapper;
         }
 
@@ -56,9 +59,9 @@ namespace EquipmentStore.Web.Controllers
         [Route("admin/{productcategoryid}/productsubcategories/create/{id}")]
         public ActionResult Delete(int id)
         {
-            var entity = _productSubCategoryService.GetSingleOrDefault(id);
+            var entityExists = _productSubCategoryService.CheckIfExists(id);
 
-            if (entity == null)
+            if (!entityExists)
             {
                 TempData[TempDataErrorKey] = "Подкатегория с таким id не сушествует";
 
@@ -77,6 +80,23 @@ namespace EquipmentStore.Web.Controllers
         public ActionResult ReadAll()
         {
             var entities = _productSubCategoryService.GetAll();
+            var models = _mapper.Map<IEnumerable<ProductSubCategory>, List<ProductSubCategoryViewModel>>(entities);
+
+            return View(models);
+        }
+
+        [HttpGet]
+        [Route("admin/{productcategoryid}/productsubcategories")]
+        public ActionResult ReadAllByCategory(int productCategoryId)
+        {
+            var category = _productCategoryService.GetSingleOrDefault(productCategoryId);
+
+            if (category == null)
+            {
+                return HttpNotFound("Категория с таким id не сушествует");
+            }
+
+            var entities = category.SubCategories;
             var models = _mapper.Map<IEnumerable<ProductSubCategory>, List<ProductSubCategoryViewModel>>(entities);
 
             return View(models);
@@ -124,6 +144,15 @@ namespace EquipmentStore.Web.Controllers
         [Route("admin/{productcategoryid}/productsubcategories/update")]
         public ActionResult Update(ProductSubCategoryViewModel model)
         {
+            var entityExists = _productSubCategoryService.CheckIfExists(model.Id);
+
+            if (!entityExists)
+            {
+                TempData[TempDataErrorKey] = "Подкатегория с таким id не сушествует";
+
+                return RedirectToAction("Index", "Admin");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);
