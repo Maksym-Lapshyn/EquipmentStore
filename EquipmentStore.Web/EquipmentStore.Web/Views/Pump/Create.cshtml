@@ -1,0 +1,88 @@
+﻿@model EquipmentStore.Web.Models.PumpViewModel
+
+@{
+	ViewBag.Title = "Добавление нового насоса";
+}
+
+<div class="panel panel-default">
+	@using (Html.BeginForm("Create", "Pump", FormMethod.Post, new { enctype = "multipart/form-data" }))
+	{
+    <div class="panel-body">
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.PumpCategoryId)
+
+        <b>
+            @Html.LabelFor(m => m.Name)
+        </b>
+        <p>
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </p>
+
+        <b>
+            @Html.LabelFor(m => m.ShortDescription)
+        </b>
+        <p>
+            @Html.TextAreaFor(m => m.ShortDescription, 2, 1, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ShortDescription)
+        </p>
+
+        <b>
+            @Html.LabelFor(m => m.Characteristics)
+        </b>
+        <p>
+            @Html.TextAreaFor(m => m.Characteristics, 7, 1, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Characteristics)
+        </p>
+
+        <b>
+            @Html.LabelFor(m => m.Heads)
+        </b>
+        <p>
+            @Html.TextBoxFor(m => m.Heads, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Heads)
+        </p>
+
+        <b>
+            @Html.LabelFor(m => m.Tubes)
+        </b>
+        <p>
+            @Html.TextBoxFor(m => m.Tubes, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Tubes)
+        </p>
+
+        <b>
+            @Html.LabelFor(m => m.Costs)
+        </b>
+        <p>
+            @Html.TextBoxFor(m => m.Costs, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Costs)
+        </p>
+
+        <b>
+            @Html.LabelFor(m => m.Weight)
+        </b>
+        <p>
+            @Html.TextBoxFor(m => m.Weight, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Weight)
+        </p>
+
+        <b>
+            @Html.LabelFor(m => m.ImageInput)
+        </b>
+        <p>
+            @Html.TextBoxFor(m => m.ImageInput, new { type = "file", style = "width: 100%" })
+            @Html.ValidationMessageFor(m => m.ImageInput)
+        </p>
+    </div>
+		<div class="panel-footer">
+
+			<p>
+				<button type="submit" class="btn btn-default">Добавить</button>
+			</p>
+			<p>
+				@Html.ActionLink("Назад", "Index", "Admin", null, new { @class = "btn btn-default" })
+			</p>
+		</div>
+	}
+</div>

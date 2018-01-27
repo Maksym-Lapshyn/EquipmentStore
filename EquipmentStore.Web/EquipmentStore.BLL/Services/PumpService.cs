@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EquipmentStore.Core.Entities;
 using EquipmentStore.DAL.UnitOfWork;
+using System;
 using System.Collections.Generic;
 
 namespace EquipmentStore.BLL.Services
@@ -33,14 +34,20 @@ namespace EquipmentStore.BLL.Services
 
 		public void Add(Pump pump)
 		{
-			_unitOfWork.PumpRepository.Add(pump);
-			_unitOfWork.Save();
+            var pumpCategory = _unitOfWork.PumpCategoryRepository.GetSingleOrDefault(pump.PumpCategoryId);
+            pump.PumpCategory = pumpCategory ?? throw new InvalidOperationException("There is no such category in the database");
+
+            _unitOfWork.PumpRepository.Add(pump);
+            _unitOfWork.Save();
 		}
 
         public void Update(Pump pump)
         {
             var oldPump = _unitOfWork.PumpRepository.GetSingleOrDefault(pump.Id);
             oldPump = _mapper.Map(pump, oldPump);
+
+            var pumpCategory = _unitOfWork.PumpCategoryRepository.GetSingleOrDefault(pump.PumpCategoryId);
+            oldPump.PumpCategory = pumpCategory ?? throw new InvalidOperationException("There is no such category in the database");
 
             _unitOfWork.PumpRepository.Update(oldPump);
 

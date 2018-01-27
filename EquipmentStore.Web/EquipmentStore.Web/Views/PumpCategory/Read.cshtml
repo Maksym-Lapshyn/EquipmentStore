@@ -1,18 +1,18 @@
-﻿@model List<EquipmentStore.Web.Models.OutputViewModel>
+﻿@model EquipmentStore.Web.Models.PumpCategoryViewModel
 
 @{
-    ViewBag.Title = "Производство";
+    ViewBag.Title = "Услуги";
 }
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3>Производство</h3>
+        <h3>Категория насосов - @Model.Name</h3>
     </div>
 
     <div class="panel-body">
-        @if (Model.Count == 0)
+        @if (Model.Pumps.Count == 0)
         {
-            <p>Каталог производства пуст</p>
+            <p>Каталог насосов для выбранной категории пуст</p>
         }
         else
         {
@@ -24,27 +24,27 @@
                     <th style="width:40%;">Действия</th>
                 </tr>
 
-                @foreach (var output in Model)
+                @foreach (var pump in Model.Pumps)
                 {
                     string imageSource = null;
 
-                    if (output.OutputImage != null)
+                    if (pump.PumpImage != null)
                     {
-                        var base64 = Convert.ToBase64String(output.OutputImage.Data);
-                        imageSource = $"data:{output.OutputImage.MimeType};base64,{base64}";
+                        var base64 = Convert.ToBase64String(pump.PumpImage.Data);
+                        imageSource = $"data:{pump.PumpImage.MimeType};base64,{base64}";
                     }
 
                     <tr>
-                        <td>@output.Id</td>
-                        <td>@output.Name</td>
-                        <td><img src="@imageSource" style="width: 320px; height: 240px;" alt="@output.Name" /></td>
+                        <td>@pump.Id</td>
+                        <td>@pump.Name</td>
+                        <td><img src="@imageSource" style="width: 320px; height: 240px;" alt="@pump.Name" /></td>
                         <td>
                             <p>
-                                @Html.ActionLink("Изменить", "Update", "Output", new { id = output.Id }, new { @class = "btn btn-default" })
+                                @Html.ActionLink("Изменить", "Update", "Pump", new { id = pump.Id }, new { @class = "btn btn-default" })
                             </p>
 
                             <p>
-                                @using (Html.BeginForm("Delete", "Output", new { id = output.Id }))
+                                @using (Html.BeginForm("Delete", "Pump", new { id = pump.Id }))
                                 {
                                     <input type="submit" class="btn btn-danger" value="Удалить" />
                                 }
@@ -58,7 +58,7 @@
 
     <div class="panel-footer">
         <p>
-            @Html.ActionLink("Добавить новое производство", "Create", "Output", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Добавить новый насос", "Create", "Pump", new { categoryId = Model.Id }, new { @class = "btn btn-default" })
         </p>
 
         <p>

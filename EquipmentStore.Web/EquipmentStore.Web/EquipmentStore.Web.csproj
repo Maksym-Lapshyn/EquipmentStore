@@ -311,9 +311,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\fa.cshtml" />
-    <Content Include="Views\Labour\Create.cshtml" />
-    <Content Include="Views\Labour\ReadAll.cshtml" />
-    <Content Include="Views\Labour\Update.cshtml" />
+    <Content Include="Views\Pump\Create.cshtml" />
+    <Content Include="Views\Pump\ReadAll.cshtml" />
+    <Content Include="Views\Pump\Update.cshtml" />
     <Content Include="Views\Machine\Create.cshtml" />
     <Content Include="Views\Machine\Read.cshtml" />
     <Content Include="Views\Machine\ReadAll.cshtml" />
@@ -326,6 +326,8 @@
     <Content Include="Views\PumpCategory\Create.cshtml" />
     <Content Include="Views\PumpCategory\ReadAll.cshtml" />
     <Content Include="Views\PumpCategory\Update.cshtml" />
+    <Content Include="Views\Pump\ReadAll - Копировать.cshtml" />
+    <Content Include="Views\PumpCategory\Read.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

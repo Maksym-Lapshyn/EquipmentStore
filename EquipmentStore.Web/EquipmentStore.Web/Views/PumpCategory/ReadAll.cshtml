@@ -19,8 +19,8 @@
             <table class="table table-striped table-bordered">
                 <tr>
                     <th style="width:10%;">ID</th>
-                    <th style="width:30%;">Название</th>
-                    <th style="width:60%;">Действия</th>
+                    <th style="width:50%;">Название</th>
+                    <th style="width:40%;">Действия</th>
                 </tr>
 
                 @foreach (var pumpCategory in Model)
@@ -30,14 +30,18 @@
                         <td>@pumpCategory.Name</td>
                         <td>
                             <p>
+                                @Html.ActionLink("Перейти к категории", "Read", "PumpCategory", new { id = pumpCategory.Id }, new { @class = "btn btn-default" })
+                            </p>
+
+                            <p>
                                 @Html.ActionLink("Изменить", "Update", "PumpCategory", new { id = pumpCategory.Id }, new { @class = "btn btn-default" })
                             </p>
 
                             <p>
                                 @using (Html.BeginForm("Delete", "PumpCategory", new { id = pumpCategory.Id }))
-                                {
-                                    <input type="submit" class="btn btn-danger" value="Удалить" />
-                                }
+        {
+                        <input type="submit" class="btn btn-danger" value="Удалить" />
+}
                             </p>
                         </td>
                     </tr>

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace EquipmentStore.DAL.Repositories
 {
@@ -13,6 +15,8 @@ namespace EquipmentStore.DAL.Repositories
 		void Update(T entity);
 
 		void Delete(int id);
+
+        void DeleteRange(Expression<Func<T, bool>> expression);
 
         bool Exists(int id);
 	}

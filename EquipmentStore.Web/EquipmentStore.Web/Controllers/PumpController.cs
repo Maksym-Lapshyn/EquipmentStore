@@ -29,9 +29,12 @@ namespace EquipmentStore.Web.Controllers
 		[HttpGet]
 		[Authorize]
 		[Route("admin/pumps/create")]
-		public ActionResult Create()
+		public ActionResult Create(int categoryId)
 		{
-			var model = new PumpViewModel();
+            var model = new PumpViewModel
+            {
+                PumpCategoryId = categoryId
+            };
 
 			return View(model);
 		}
@@ -64,7 +67,7 @@ namespace EquipmentStore.Web.Controllers
 
 		[HttpPost]
 		[Authorize]
-		[Route("admin/pumps/delete/{id}")]
+		[Route("admin/pumps/delete")]
 		public ActionResult Delete(int id)
 		{
 			var entityExists = _pumpService.CheckIfExists(id);
@@ -84,7 +87,8 @@ namespace EquipmentStore.Web.Controllers
 		}
 
 		[HttpGet]
-		[Route("admin/pumps")]
+        [Authorize]
+        [Route("admin/pumps")]
 		public ActionResult ReadAll()
 		{
 			var entities = _pumpService.GetAll();
@@ -94,14 +98,14 @@ namespace EquipmentStore.Web.Controllers
 		}
 
         [HttpGet]
-        [Route("pumpcategories/{pumpcategoryid}/pumps")]
-        public ActionResult ReadAllByCategory(int pumpCategoryId)
+        [Route("pumps")]
+        public ActionResult UserReadAll(int categoryId)
         {
-            var pumpCategory = _pumpCategoryService.GetSingleOrDefault(pumpCategoryId);
+            var pumpCategory = _pumpCategoryService.GetSingleOrDefault(categoryId);
 
             if (pumpCategory == null)
             {
-                return HttpNotFound("Насос с таким id не существует");
+                return HttpNotFound("Категория с таким id не существует");
             }
 
             var entities = pumpCategory.Pumps;
@@ -111,8 +115,24 @@ namespace EquipmentStore.Web.Controllers
         }
 
         [HttpGet]
+        [Route("pumps/read")]
+        public ActionResult UserReadOne(int id)
+        {
+            var entity = _pumpService.GetSingleOrDefault(id);
+
+            if (entity == null)
+            {
+                return HttpNotFound("Насос с таким id не существует");
+            }
+
+            var model = _mapper.Map<Pump, PumpViewModel>(entity);
+
+            return View(model);
+        }
+
+        [HttpGet]
 		[Authorize]
-		[Route("admin/pumps/update/{id}")]
+		[Route("admin/pumps/update")]
 		public ActionResult Update(int id)
 		{
 			var entity = _pumpService.GetSingleOrDefault(id);

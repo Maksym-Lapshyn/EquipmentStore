@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace EquipmentStore.DAL.Repositories
 {
@@ -33,6 +34,13 @@ namespace EquipmentStore.DAL.Repositories
             }
 
             _dbSet.Remove(entity);
+        }
+
+        public void DeleteRange(Expression<Func<T, bool>> expression)
+        {
+            var entities = _dbSet.Where(expression);
+
+            _dbSet.RemoveRange(entities);
         }
 
         public bool Exists(int id)
