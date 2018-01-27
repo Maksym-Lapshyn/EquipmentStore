@@ -1,0 +1,34 @@
+﻿@model List<EquipmentStore.Web.Models.OutputViewModel>
+
+@{
+	ViewBag.Title = "Производство";
+}
+
+<div class="row">
+	@foreach (var output in Model)
+	{
+		string imageSource = null;
+
+		if (output.OutputImage != null)
+		{
+			var base64 = Convert.ToBase64String(output.OutputImage.Data);
+			imageSource = $"data:{output.OutputImage.MimeType};base64,{base64}";
+		}
+
+		<div class="col-lg-4 text-center">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h5>@output.Name</h5>
+				</div>
+
+				<div class="panel-body">
+					<img src="@imageSource" class="img-responsive" alt="@output.Name" />
+				</div>
+
+				<div class="panel-footer">
+					<p>@output.Description</p>
+				</div>
+			</div>
+		</div>
+	}
+</div>

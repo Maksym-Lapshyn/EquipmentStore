@@ -43,13 +43,19 @@ namespace EquipmentStore.BLL.Services
 			oldOutput = _mapper.Map(output, oldOutput);
 
 			_unitOfWork.OutputRepository.Update(oldOutput);
+
+            var oldImage = _unitOfWork.OutputImageRepository.GetSingleOrDefault(output.Id);
+            oldImage = _mapper.Map(output.OutputImage, oldImage);
+
+            _unitOfWork.OutputImageRepository.Update(oldImage);
+
 			_unitOfWork.Save();
 		}
 
 		public void Delete(int id)
 		{
 			_unitOfWork.OutputRepository.Delete(id);
-			//_unitOfWork.OutputImageRepository.DeleteRange(i => i.Output.Id == id);
+            _unitOfWork.OutputImageRepository.Delete(id);
 			_unitOfWork.Save();
 		}
 

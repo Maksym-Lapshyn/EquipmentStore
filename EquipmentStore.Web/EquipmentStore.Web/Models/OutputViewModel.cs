@@ -16,10 +16,8 @@ namespace EquipmentStore.Web.Models
 		[DisplayName("Описание")]
 		public string Description { get; set; }
 
-        public int MainImageId { get; set; }
-
 		[DisplayName("Главное изображение")]
-		public ImageViewModel MainImage { get; set; }
+		public ImageViewModel OutputImage { get; set; }
 
 		[DisplayName("Главное изображение")]
 		public HttpPostedFileBase ImageInput { get; set; }

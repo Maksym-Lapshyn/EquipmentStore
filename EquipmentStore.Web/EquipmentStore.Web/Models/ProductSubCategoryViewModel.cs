@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace EquipmentStore.Web.Models
 {
@@ -10,9 +12,9 @@ namespace EquipmentStore.Web.Models
         [DisplayName("Название подкатегории")]
         public string Name { get; set; }
 
-        public int CategoryId { get; set; }
+        public int ProductCategoryId { get; set; }
 
-        public ProductCategoryViewModel Category { get; set; }
+        public ProductCategoryViewModel ProductCategory { get; set; }
 
         public List<ProductViewModel> Products { get; set; }
     }

@@ -12,6 +12,6 @@ namespace EquipmentStore.Web.Models
         [DisplayName("Название категории")]
         public string Name { get; set; }
 
-        public List<ProductSubCategoryViewModel> SubCategories { get; set; }
+        public List<ProductSubCategoryViewModel> ProductSubCategories { get; set; }
     }
 }

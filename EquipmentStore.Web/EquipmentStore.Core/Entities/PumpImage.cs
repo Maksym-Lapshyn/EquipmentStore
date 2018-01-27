@@ -5,8 +5,8 @@ namespace EquipmentStore.Core.Entities
 {
     public class PumpImage : Image
 	{
-        [ForeignKey("Pump")]
-        public int PumpId { get; set; }
+        [Key, ForeignKey("Pump")]
+        public int Id { get; set; }
 
         [Required]
 		public virtual Pump Pump { get; set; }

@@ -5,8 +5,8 @@ namespace EquipmentStore.Core.Entities
 {
     public class OutputImage : Image
 	{
-        [ForeignKey("Output")]
-        public int OutputId { get; set; }
+        [Key, ForeignKey("Output")]
+        public int Id { get; set; }
 
         [Required]
 		public virtual Output Output { get; set; }

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using EquipmentStore.BLL.Dtos;
 using EquipmentStore.Core.Entities;
 using EquipmentStore.DAL.UnitOfWork;
 using System.Collections.Generic;
@@ -38,20 +37,27 @@ namespace EquipmentStore.BLL.Services
 			_unitOfWork.Save();
 		}
 
-		public void Update(Pump pump)
-		{
-			var oldPump = _unitOfWork.PumpRepository.GetSingleOrDefault(pump.Id);
-			oldPump = _mapper.Map(pump, oldPump);
+        public void Update(Pump pump)
+        {
+            var oldPump = _unitOfWork.PumpRepository.GetSingleOrDefault(pump.Id);
+            oldPump = _mapper.Map(pump, oldPump);
 
-			_unitOfWork.PumpRepository.Update(oldPump);
-			_unitOfWork.Save();
-		}
+            _unitOfWork.PumpRepository.Update(oldPump);
 
-		public void Delete(int id)
-		{
-			_unitOfWork.PumpRepository.Delete(id);
-			_unitOfWork.Save();
-		}
+            var oldImage = _unitOfWork.PumpImageRepository.GetSingleOrDefault(pump.Id);
+            oldImage = _mapper.Map(pump.PumpImage, oldImage);
+
+            _unitOfWork.PumpImageRepository.Update(oldImage);
+
+            _unitOfWork.Save();
+        }
+
+        public void Delete(int id)
+        {
+            _unitOfWork.PumpRepository.Delete(id);
+            _unitOfWork.PumpImageRepository.Delete(id);
+            _unitOfWork.Save();
+        }
 
         public bool CheckIfExists(int id)
         {

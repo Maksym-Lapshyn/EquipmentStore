@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace EquipmentStore.Core.Entities
+﻿namespace EquipmentStore.Core.Entities
 {
     public class Output : BaseEntity
 	{
@@ -8,9 +6,6 @@ namespace EquipmentStore.Core.Entities
 
 		public string Description { get; set; }
 
-        [ForeignKey("MainImage")]
-        public int MainImageId { get; set; }
-
-		public virtual OutputImage MainImage { get; set; }
+		public virtual OutputImage OutputImage { get; set; }
 	}
 }

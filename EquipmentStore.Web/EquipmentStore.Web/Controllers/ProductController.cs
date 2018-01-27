@@ -63,7 +63,7 @@ namespace EquipmentStore.Web.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Authorize]
         [Route("admin/products/delete/{id}")]
         public ActionResult Delete(int id)
@@ -105,7 +105,7 @@ namespace EquipmentStore.Web.Controllers
                 return HttpNotFound("Категория с таким id не существует");
             }
 
-            var subCategory = category.SubCategories.FirstOrDefault(s => s.Id == productSubCategoryId);
+            var subCategory = category.ProductSubCategories.FirstOrDefault(s => s.Id == productSubCategoryId);
 
             if (subCategory == null)
             {
@@ -155,7 +155,7 @@ namespace EquipmentStore.Web.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
-        [HttpPut]
+        [HttpPost]
         [Authorize]
         [Route("admin/products/update")]
         public ActionResult Update(ProductViewModel model)
@@ -169,7 +169,7 @@ namespace EquipmentStore.Web.Controllers
                 return RedirectToAction("Index", "Admin");
             }
 
-            if (model.ImageInput == null && model.MainImage == null)
+            if (model.ImageInput == null && model.ProductImage == null)
             {
                 ModelState.AddModelError("ImageInput", "Укажите картинку");
             }
@@ -197,11 +197,9 @@ namespace EquipmentStore.Web.Controllers
                 return;
             }
 
-            var id = model.MainImage?.Id ?? default(int);
-
             var image = new ImageViewModel
             {
-                Id = id,
+                Id = model.Id,
                 Name = model.ImageInput.FileName,
                 MimeType = model.ImageInput.ContentType
             };
@@ -211,7 +209,7 @@ namespace EquipmentStore.Web.Controllers
                 image.Data = br.ReadBytes(model.ImageInput.ContentLength);
             }
 
-            model.MainImage = image;
+            model.ProductImage = image;
             model.ImageInput = null;
         }
     }

@@ -1,12 +1,13 @@
 ﻿using EquipmentStore.Core.Entities;
 using EquipmentStore.DAL.DatabaseContext;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace EquipmentStore.DAL.Repositories
 {
-	public class PumpImageRepository : IImageRepository<PumpImage>
+    public class PumpImageRepository : IImageRepository<PumpImage>
 	{
 		private readonly EquipmentStoreContext _context;
 
@@ -38,5 +39,17 @@ namespace EquipmentStore.DAL.Repositories
 
 			_context.PumpImages.RemoveRange(entities);
 		}
-	}
+
+        public PumpImage GetSingleOrDefault(int id)
+        {
+            var entity = _context.PumpImages.SingleOrDefault(pi => pi.Id == id);
+
+            return entity;
+        }
+
+        public void Update(PumpImage entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+        }
+    }
 }

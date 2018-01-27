@@ -51,7 +51,7 @@ namespace EquipmentStore.Web.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Authorize]
         [Route("admin/productcategories/delete/{id}")]
         public ActionResult Delete(int id)
@@ -119,7 +119,7 @@ namespace EquipmentStore.Web.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
-        [HttpPut]
+        [HttpPost]
         [Authorize]
         [Route("admin/productcategories/update")]
         public ActionResult Update(ProductCategoryViewModel model)

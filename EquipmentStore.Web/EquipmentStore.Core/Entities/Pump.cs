@@ -7,17 +7,24 @@ namespace EquipmentStore.Core.Entities
 	{
 		public string Name { get; set; }
 
-		public string Description { get; set; }
+        public string ShortDescription { get; set; }
 
-        [ForeignKey("MainImage")]
-        public int MainImageId { get; set; }
+        public string Characteristics { get; set; }
 
-        [ForeignKey("Category")]
-        public int CategoryId { get; set; }
+        public string Heads { get; set; }
 
-		public virtual PumpImage MainImage { get; set; }
+        public string Tubes { get; set; }
+
+        public string Costs { get; set; }
+
+        public double Weight { get; set; }
+
+        [ForeignKey("PumpCategory")]
+        public int PumpCategoryId { get; set; }
+
+        public virtual PumpImage PumpImage { get; set; }
 
         [Required]
-        public virtual PumpCategory Category { get; set; }
+        public virtual PumpCategory PumpCategory { get; set; }
 	}
 }

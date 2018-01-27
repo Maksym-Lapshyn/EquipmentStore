@@ -8,11 +8,11 @@ namespace EquipmentStore.Core.Entities
     {
         public string Name { get; set; }
 
-        [ForeignKey("Category")]
-        public int CategoryId { get; set; }
+        [ForeignKey("ProductCategory")]
+        public int ProductCategoryId { get; set; }
 
         [Required]
-        public virtual ProductCategory Category { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
     }

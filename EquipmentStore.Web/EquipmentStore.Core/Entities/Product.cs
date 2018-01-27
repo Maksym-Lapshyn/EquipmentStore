@@ -11,15 +11,12 @@ namespace EquipmentStore.Core.Entities
 
 		public string LongDescription { get; set; }
 
-        [ForeignKey("MainImage")]
-        public int MainImageId { get; set; }
+        [ForeignKey("ProductSubCategory")]
+        public int ProductSubCategoryId { get; set; }
 
-        [ForeignKey("SubCategory")]
-        public int SubCategoryId { get; set; }
-
-		public virtual ProductImage MainImage { get; set; }
+        public virtual ProductImage ProductImage { get; set; }
 
         [Required]
-        public virtual ProductSubCategory SubCategory { get; set; }
+        public virtual ProductSubCategory ProductSubCategory { get; set; }
 	}
 }

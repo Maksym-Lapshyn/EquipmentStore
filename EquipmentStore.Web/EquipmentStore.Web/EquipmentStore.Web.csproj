@@ -232,7 +232,6 @@
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\WebAutoMapperProfile.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CompositeViewModel.cs" />
     <Compile Include="Models\Enums\FeedbackTopic.cs" />
     <Compile Include="Models\FeedbackViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -311,7 +310,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\fa.cshtml" />
     <Content Include="Views\Labour\Create.cshtml" />
     <Content Include="Views\Labour\ReadAll.cshtml" />
     <Content Include="Views\Labour\Update.cshtml" />
@@ -322,12 +321,16 @@
     <Content Include="Views\Output\Create.cshtml" />
     <Content Include="Views\Output\ReadAll.cshtml" />
     <Content Include="Views\Output\Update.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Output\UserReadAll.cshtml" />
+    <Content Include="Views\PumpCategory\Create.cshtml" />
+    <Content Include="Views\PumpCategory\ReadAll.cshtml" />
+    <Content Include="Views\PumpCategory\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\ProductCategory\" />
     <Folder Include="Views\ProductSubCategory\" />
-    <Folder Include="Views\PumpCategory\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

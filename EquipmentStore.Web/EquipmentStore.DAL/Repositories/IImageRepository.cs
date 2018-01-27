@@ -9,6 +9,10 @@ namespace EquipmentStore.DAL.Repositories
 
 		void Delete(int id);
 
+        T GetSingleOrDefault(int id);
+
+        void Update(T entity);
+
 		void DeleteRange(Expression<Func<T, bool>> expression);
 	}
 }

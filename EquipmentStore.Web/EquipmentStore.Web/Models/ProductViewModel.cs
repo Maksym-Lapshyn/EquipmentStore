@@ -20,16 +20,14 @@ namespace EquipmentStore.Web.Models
 		[DisplayName("Подробное описание")]
 		public string LongDescription { get; set; }
 
-        public int SubCategoryId { get; set; }
-
-        public int MainImageId { get; set; }
+        public int ProductSubCategoryId { get; set; }
 
         [DisplayName("Главное изображение")]
-        public ImageViewModel MainImage { get; set; }
+        public ImageViewModel ProductImage { get; set; }
 
         [DisplayName("Главное изображение")]
         public HttpPostedFileBase ImageInput { get; set; }
 
-        public ProductCategoryViewModel SubCategory { get; set; }
+        public ProductSubCategoryViewModel ProductSubCategory { get; set; }
 	}
 }

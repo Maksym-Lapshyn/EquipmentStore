@@ -62,7 +62,7 @@ namespace EquipmentStore.Web.Controllers
 			return RedirectToAction("Index", "Admin");
 		}
 
-		[HttpDelete]
+		[HttpPost]
 		[Authorize]
 		[Route("admin/pumps/delete/{id}")]
 		public ActionResult Delete(int id)
@@ -143,7 +143,7 @@ namespace EquipmentStore.Web.Controllers
                 return RedirectToAction("Index", "Admin");
             }
 
-            if (model.ImageInput == null && model.MainImage == null)
+            if (model.ImageInput == null && model.PumpImage == null)
 			{
 				ModelState.AddModelError("ImageInput", "Укажите картинку");
 			}
@@ -171,11 +171,9 @@ namespace EquipmentStore.Web.Controllers
 				return;
 			}
 
-			var id = model.MainImage?.Id ?? default(int);
-
 			var image = new ImageViewModel
 			{
-				Id = id,
+				Id = model.Id,
 				Name = model.ImageInput.FileName,
 				MimeType = model.ImageInput.ContentType
 			};
@@ -185,7 +183,7 @@ namespace EquipmentStore.Web.Controllers
 				image.Data = br.ReadBytes(model.ImageInput.ContentLength);
 			}
 
-			model.MainImage = image;
+			model.PumpImage = image;
 			model.ImageInput = null;
 		}
 	}

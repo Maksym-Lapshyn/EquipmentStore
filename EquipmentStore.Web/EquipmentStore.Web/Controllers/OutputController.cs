@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using EquipmentStore.BLL.Dtos;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
 using EquipmentStore.Web.Models;
@@ -9,7 +8,7 @@ using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
 {
-	public class OutputController : Controller
+    public class OutputController : Controller
 	{
 		private readonly OutputService _outputService;
 		private readonly IMapper _mapper;
@@ -26,7 +25,7 @@ namespace EquipmentStore.Web.Controllers
 
 		[HttpGet]
 		[Authorize]
-		[Route("admin/solutions/create")]
+		[Route("admin/outputs/create")]
 		public ActionResult Create()
 		{
 			var model = new OutputViewModel();
@@ -36,7 +35,7 @@ namespace EquipmentStore.Web.Controllers
 
 		[HttpPost]
 		[Authorize]
-		[Route("admin/solutions/create")]
+		[Route("admin/outputs/create")]
 		public ActionResult Create(OutputViewModel model)
 		{
 			if (model.ImageInput == null)
@@ -55,34 +54,35 @@ namespace EquipmentStore.Web.Controllers
 
 			_outputService.Add(entity);
 
-			TempData[TempDataMessageKey] = "Новое готовое решение было добавлено";
+			TempData[TempDataMessageKey] = "Новое производство было добавлено";
 
 			return RedirectToAction("Index", "Admin");
 		}
 
-		[HttpDelete]
+		[HttpPost]
 		[Authorize]
-		[Route("admin/solutions/delete/{id}")]
+		[Route("admin/outputs/delete")]
 		public ActionResult Delete(int id)
 		{
 			var entityExists = _outputService.CheckIfExists(id);
 
 			if (!entityExists)
 			{
-				TempData[TempDataErrorKey] = "Готовое решение с таким id не сушествует";
+				TempData[TempDataErrorKey] = "Производство с таким id не сушествует";
 
 				return RedirectToAction("Index", "Admin");
 			}
 
 			_outputService.Delete(id);
 
-			TempData[TempDataMessageKey] = "Готовое решение было удалено";
+			TempData[TempDataMessageKey] = "Производство было удалено";
 
 			return RedirectToAction("Index", "Admin");
 		}
 
 		[HttpGet]
-		[Route("admin/solutions")]
+        [Authorize]
+        [Route("admin/outputs")]
 		public ActionResult ReadAll()
 		{
 			var entities = _outputService.GetAll();
@@ -92,7 +92,7 @@ namespace EquipmentStore.Web.Controllers
 		}
 
         [HttpGet]
-        [Route("solutions")]
+        [Route("outputs")]
         public ActionResult UserReadAll()
         {
             var entities = _outputService.GetAll();
@@ -103,7 +103,7 @@ namespace EquipmentStore.Web.Controllers
 
         [HttpGet]
 		[Authorize]
-		[Route("admin/solutions/{id}")]
+		[Route("admin/outputs/update")]
 		public ActionResult Update(int id)
 		{
 			var entity = _outputService.GetSingleOrDefault(id);
@@ -115,17 +115,22 @@ namespace EquipmentStore.Web.Controllers
 				return View(model);
 			}
 
-			TempData[TempDataErrorKey] = "Готовое решение с таким id не сушествует";
+			TempData[TempDataErrorKey] = "Производство с таким id не сушествует";
 
 			return RedirectToAction("Index", "Admin");
 		}
 
-		[HttpPut]
+		[HttpPost]
 		[Authorize]
-		[Route("admin/solutions")]
+		[Route("admin/outputs/update")]
 		public ActionResult Update(OutputViewModel model)
 		{
-			if (model.ImageInput == null && model.MainImage == null)
+            if(!_outputService.CheckIfExists(model.Id))
+            {
+                return new HttpNotFoundResult("Производство с таким id не сушествует");
+            }
+
+			if (model.ImageInput == null && model.OutputImage == null)
 			{
 				ModelState.AddModelError("ImageInput", "Укажите картинку");
 			}
@@ -141,7 +146,7 @@ namespace EquipmentStore.Web.Controllers
 
 			_outputService.Update(entity);
 
-			TempData[TempDataMessageKey] = "Готовое решение было обновлено";
+			TempData[TempDataMessageKey] = "Производство было обновлено";
 
 			return RedirectToAction("Index", "Admin");
 		}
@@ -153,11 +158,9 @@ namespace EquipmentStore.Web.Controllers
 				return;
 			}
 
-			var id = model.MainImage?.Id ?? default(int);
-
 			var image = new ImageViewModel
 			{
-				Id = id,
+				Id = model.Id,
 				Name = model.ImageInput.FileName,
 				MimeType = model.ImageInput.ContentType
 			};
@@ -167,7 +170,7 @@ namespace EquipmentStore.Web.Controllers
 				image.Data = br.ReadBytes(model.ImageInput.ContentLength);
 			}
 
-			model.MainImage = image;
+			model.OutputImage = image;
 			model.ImageInput = null;
 		}
 	}

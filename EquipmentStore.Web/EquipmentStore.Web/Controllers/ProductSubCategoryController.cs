@@ -54,7 +54,7 @@ namespace EquipmentStore.Web.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Authorize]
         [Route("admin/{productcategoryid}/productsubcategories/create/{id}")]
         public ActionResult Delete(int id)
@@ -96,7 +96,7 @@ namespace EquipmentStore.Web.Controllers
                 return HttpNotFound("Категория с таким id не сушествует");
             }
 
-            var entities = category.SubCategories;
+            var entities = category.ProductSubCategories;
             var models = _mapper.Map<IEnumerable<ProductSubCategory>, List<ProductSubCategoryViewModel>>(entities);
 
             return View(models);
@@ -139,7 +139,7 @@ namespace EquipmentStore.Web.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
-        [HttpPut]
+        [HttpPost]
         [Authorize]
         [Route("admin/{productcategoryid}/productsubcategories/update")]
         public ActionResult Update(ProductSubCategoryViewModel model)

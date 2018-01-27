@@ -11,7 +11,11 @@ namespace EquipmentStore.BLL.Infrastructure
             CreateMap<Pump, Pump>();
             CreateMap<Output, Output>();
             CreateMap<ProductCategory, ProductCategory>();
+            CreateMap<ProductSubCategory, ProductSubCategory>();
             CreateMap<PumpCategory, PumpCategory>();
-		}
+            CreateMap<OutputImage, OutputImage>();
+            CreateMap<PumpImage, PumpImage>();
+            CreateMap<ProductImage, ProductImage>();
+        }
 	}
 }

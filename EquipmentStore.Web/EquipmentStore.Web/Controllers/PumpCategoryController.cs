@@ -51,9 +51,9 @@ namespace EquipmentStore.Web.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Authorize]
-        [Route("admin/pumpcategories/delete/{id}")]
+        [Route("admin/pumpcategories/delete")]
         public ActionResult Delete(int id)
         {
             var entityExists = _pumpCategoryService.CheckIfExists(id);
@@ -73,6 +73,7 @@ namespace EquipmentStore.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("admin/pumpcategories")]
         public ActionResult ReadAll()
         {
@@ -83,7 +84,8 @@ namespace EquipmentStore.Web.Controllers
         }
 
         [HttpGet]
-        [Route("admin/pumpcategories/{id}")]
+        [Authorize]
+        [Route("admin/pumpcategories/read")]
         public ActionResult Read(int id)
         {
             var entity = _pumpCategoryService.GetSingleOrDefault(id);
@@ -102,7 +104,7 @@ namespace EquipmentStore.Web.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("admin/pumpcategories/update/{id}")]
+        [Route("admin/pumpcategories/update")]
         public ActionResult Update(int id)
         {
             var entity = _pumpCategoryService.GetSingleOrDefault(id);
@@ -119,7 +121,7 @@ namespace EquipmentStore.Web.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
-        [HttpPut]
+        [HttpPost]
         [Authorize]
         [Route("admin/pumpcategories/update")]
         public ActionResult Update(PumpCategoryViewModel model)

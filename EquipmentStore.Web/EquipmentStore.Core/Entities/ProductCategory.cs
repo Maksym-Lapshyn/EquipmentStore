@@ -6,6 +6,6 @@ namespace EquipmentStore.Core.Entities
     {
         public string Name { get; set; }
 
-        public virtual ICollection<ProductSubCategory> SubCategories { get; set; }
+        public virtual ICollection<ProductSubCategory> ProductSubCategories { get; set; }
     }
 }

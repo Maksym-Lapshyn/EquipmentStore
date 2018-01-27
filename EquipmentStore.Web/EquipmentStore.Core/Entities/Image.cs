@@ -1,6 +1,6 @@
 ﻿namespace EquipmentStore.Core.Entities
 {
-    public abstract class Image : BaseEntity
+    public abstract class Image
 	{
 		public string Name { get; set; }
 

@@ -1,6 +1,7 @@
 ﻿using EquipmentStore.Core.Entities;
 using EquipmentStore.DAL.DatabaseContext;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -38,5 +39,17 @@ namespace EquipmentStore.DAL.Repositories
 
 			_context.OutputImages.RemoveRange(images);
 		}
-	}
+
+        public OutputImage GetSingleOrDefault(int id)
+        {
+            var entity = _context.OutputImages.SingleOrDefault(oi => oi.Id == id);
+
+            return entity;
+        }
+
+        public void Update(OutputImage entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+        }
+    }
 }
