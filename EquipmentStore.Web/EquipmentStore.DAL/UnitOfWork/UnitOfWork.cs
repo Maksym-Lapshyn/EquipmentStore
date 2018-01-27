@@ -8,8 +8,8 @@ namespace EquipmentStore.DAL.UnitOfWork
     public class UnitOfWork : IUnitOfWork
 	{
 		private readonly EquipmentStoreContext _context;
-		private readonly Lazy<IRepository<Product>> _productRepository;
-		private readonly Lazy<IRepository<Pump>> _pumpRepository;
+		private readonly Lazy<IExtendingRepository<Product>> _productRepository;
+		private readonly Lazy<IExtendingRepository<Pump>> _pumpRepository;
 		private readonly Lazy<IRepository<Output>> _outputRepository;
 		private readonly Lazy<IImageRepository<ProductImage>> _productImageRepository;
 		private readonly Lazy<IImageRepository<PumpImage>> _pumpImageRepository;
@@ -21,8 +21,8 @@ namespace EquipmentStore.DAL.UnitOfWork
         public UnitOfWork(EquipmentStoreContext context)
 		{
 			_context = context;
-			_productRepository = new Lazy<IRepository<Product>>(() => new Repository<Product>(_context));
-			_pumpRepository = new Lazy<IRepository<Pump>>(() => new Repository<Pump>(_context));
+			_productRepository = new Lazy<IExtendingRepository<Product>>(() => new ProductRepository(_context));
+			_pumpRepository = new Lazy<IExtendingRepository<Pump>>(() => new PumpRepository(_context));
 			_outputRepository = new Lazy<IRepository<Output>>(() => new Repository<Output>(_context));
 			_productImageRepository = new Lazy<IImageRepository<ProductImage>>(() => new ProductImageRepository(_context));
 			_pumpImageRepository = new Lazy<IImageRepository<PumpImage>>(() => new PumpImageRepository(_context));
@@ -32,9 +32,9 @@ namespace EquipmentStore.DAL.UnitOfWork
             _productSubCategoryRepository = new Lazy<IRepository<ProductSubCategory>>(() => new Repository<ProductSubCategory>(_context));
         }
 
-		public IRepository<Product> ProductRepository => _productRepository.Value;
+		public IExtendingRepository<Product> ProductRepository => _productRepository.Value;
 
-		public IRepository<Pump> PumpRepository => _pumpRepository.Value;
+		public IExtendingRepository<Pump> PumpRepository => _pumpRepository.Value;
 
 		public IRepository<Output> OutputRepository => _outputRepository.Value;
 

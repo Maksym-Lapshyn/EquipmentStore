@@ -10,13 +10,13 @@ namespace EquipmentStore.DAL.Repositories
 
 		IEnumerable<T> GetAll();
 
-		void Add(T entity);
+        IEnumerable<T> Get(Expression<Func<T, bool>> expression);
+
+        void Add(T entity);
 
 		void Update(T entity);
 
 		void Delete(int id);
-
-        void DeleteRange(Expression<Func<T, bool>> expression);
 
         bool Exists(int id);
 	}

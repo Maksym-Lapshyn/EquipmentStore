@@ -5,9 +5,9 @@ namespace EquipmentStore.DAL.UnitOfWork
 {
     public interface IUnitOfWork
 	{
-		IRepository<Product> ProductRepository { get; }
+		IExtendingRepository<Product> ProductRepository { get; }
 
-		IRepository<Pump> PumpRepository { get; }
+        IExtendingRepository<Pump> PumpRepository { get; }
 
 		IRepository<Output> OutputRepository { get; }
 

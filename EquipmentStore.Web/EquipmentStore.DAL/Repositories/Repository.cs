@@ -36,16 +36,14 @@ namespace EquipmentStore.DAL.Repositories
             _dbSet.Remove(entity);
         }
 
-        public void DeleteRange(Expression<Func<T, bool>> expression)
-        {
-            var entities = _dbSet.Where(expression);
-
-            _dbSet.RemoveRange(entities);
-        }
-
         public bool Exists(int id)
         {
             return _dbSet.Any(e => e.Id == id);
+        }
+
+        public IEnumerable<T> Get(Expression<Func<T, bool>> expression)
+        {
+            return _dbSet.Where(expression);
         }
 
         public IEnumerable<T> GetAll()

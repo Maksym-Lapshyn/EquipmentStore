@@ -2,6 +2,7 @@
 using EquipmentStore.Core.Entities;
 using EquipmentStore.DAL.UnitOfWork;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EquipmentStore.BLL.Services
 {
@@ -42,12 +43,17 @@ namespace EquipmentStore.BLL.Services
             var oldPumpCategory = _unitOfWork.PumpCategoryRepository.GetSingleOrDefault(pumpCategory.Id);
             oldPumpCategory = _mapper.Map(pumpCategory, oldPumpCategory);
 
+            var pumps = _unitOfWork.PumpRepository.Get(p => p.PumpCategoryId == pumpCategory.Id).ToList();
+            oldPumpCategory.Pumps = pumps;
+
             _unitOfWork.PumpCategoryRepository.Update(oldPumpCategory);
             _unitOfWork.Save();
         }
 
         public void Delete(int id)
         {
+            _unitOfWork.PumpRepository.DeleteRange(p => p.PumpCategoryId == id);
+            _unitOfWork.PumpImageRepository.DeleteRange(pi => pi.Pump.PumpCategoryId == id);
             _unitOfWork.PumpCategoryRepository.Delete(id);
             _unitOfWork.Save();
         }

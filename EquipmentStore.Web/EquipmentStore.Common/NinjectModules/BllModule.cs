@@ -11,7 +11,7 @@ namespace EquipmentStore.Common.NinjectModules
 			Bind<IService<Pump>>().To<PumpService>();
 			Bind<IService<Product>>().To<ProductService>();
 			Bind<IService<Output>>().To<OutputService>();
-            Bind<IService<ProductCategory>>().To<ProductCategoryService>();
+            Bind<IService<ProductSubCategory>>().To<ProductSubCategoryService>();
             Bind<IService<PumpCategory>>().To<PumpCategoryService>();
             Bind<IService<ProductCategory>>().To<ProductCategoryService>();
         }

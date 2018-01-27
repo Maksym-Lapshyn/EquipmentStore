@@ -116,7 +116,7 @@ namespace EquipmentStore.Web.Controllers
 
         [HttpGet]
         [Route("pumps/read")]
-        public ActionResult UserReadOne(int id)
+        public ActionResult UserRead(int id)
         {
             var entity = _pumpService.GetSingleOrDefault(id);
 

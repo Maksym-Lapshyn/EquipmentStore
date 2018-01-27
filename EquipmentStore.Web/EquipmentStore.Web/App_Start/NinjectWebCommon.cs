@@ -3,17 +3,18 @@
 
 namespace EquipmentStore.Web.App_Start
 {
-	using EquipmentStore.Common.NinjectModules;
-	using EquipmentStore.Web.Infrastructure;
-	using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-	using Ninject;
-	using Ninject.Modules;
-	using Ninject.Web.Common;
-	using System;
-	using System.Web;
-	using System.Web.Mvc;
+    using EquipmentStore.Common.NinjectModules;
+    using EquipmentStore.Web.Infrastructure;
+    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+    using Ninject;
+    using Ninject.Modules;
+    using Ninject.Web.Common;
+    using Ninject.Web.Common.WebHost;
+    using System;
+    using System.Web;
+    using System.Web.Mvc;
 
-	public static class NinjectWebCommon 
+    public static class NinjectWebCommon 
 	{
 		private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 

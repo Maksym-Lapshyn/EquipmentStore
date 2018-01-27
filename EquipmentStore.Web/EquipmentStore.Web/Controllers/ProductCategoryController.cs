@@ -53,7 +53,7 @@ namespace EquipmentStore.Web.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route("admin/productcategories/delete/{id}")]
+        [Route("admin/productcategories/delete")]
         public ActionResult Delete(int id)
         {
             var entityExists = _productCategoryService.CheckIfExists(id);
@@ -83,7 +83,7 @@ namespace EquipmentStore.Web.Controllers
         }
 
         [HttpGet]
-        [Route("admin/productcategories/{id}")]
+        [Route("admin/productcategories/read")]
         public ActionResult Read(int id)
         {
             var entity = _productCategoryService.GetSingleOrDefault(id);
@@ -102,7 +102,7 @@ namespace EquipmentStore.Web.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("admin/productcategories/update/{id}")]
+        [Route("admin/productcategories/update")]
         public ActionResult Update(int id)
         {
             var entity = _productCategoryService.GetSingleOrDefault(id);
