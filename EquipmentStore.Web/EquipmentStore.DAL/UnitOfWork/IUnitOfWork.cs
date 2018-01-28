@@ -21,7 +21,7 @@ namespace EquipmentStore.DAL.UnitOfWork
 
         IRepository<PumpCategory> PumpCategoryRepository { get; }
 
-        IRepository<ProductSubCategory> ProductSubCategoryRepository { get; }
+        IExtendingRepository<ProductSubCategory> ProductSubCategoryRepository { get; }
 
         void Save();
 	}

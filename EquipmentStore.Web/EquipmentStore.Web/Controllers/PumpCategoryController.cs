@@ -103,6 +103,22 @@ namespace EquipmentStore.Web.Controllers
         }
 
         [HttpGet]
+        [Route("pumpcategories/read")]
+        public ActionResult UserRead(int categoryId)
+        {
+            var entity = _pumpCategoryService.GetSingleOrDefault(categoryId);
+
+            if (entity == null)
+            {
+                return HttpNotFound("Категория с таким id не существует");
+            }
+
+            var model = _mapper.Map<PumpCategory, PumpCategoryViewModel>(entity);
+
+            return View(model);
+        }
+
+        [HttpGet]
         [Authorize]
         [Route("admin/pumpcategories/update")]
         public ActionResult Update(int id)

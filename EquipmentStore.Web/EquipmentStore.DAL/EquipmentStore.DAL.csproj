@@ -55,6 +55,7 @@
     <Compile Include="Repositories\OutputImageRepository.cs" />
     <Compile Include="Repositories\ProductImageRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\ProductSubCategoryRepository.cs" />
     <Compile Include="Repositories\PumpImageRepository.cs" />
     <Compile Include="Repositories\PumpRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />

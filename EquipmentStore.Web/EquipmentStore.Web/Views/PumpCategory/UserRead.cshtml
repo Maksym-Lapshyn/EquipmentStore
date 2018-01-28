@@ -1,11 +1,11 @@
-﻿@model List<EquipmentStore.Web.Models.PumpViewModel>
+﻿@model EquipmentStore.Web.Models.PumpCategoryViewModel
 
 @{
-    ViewBag.Title = Model.First()?.PumpCategory.Name ?? "Насосы";
+    ViewBag.Title = Model.Name;
 }
 
 <div class="row">
-    @foreach (var pump in Model)
+    @foreach (var pump in Model.Pumps)
     {
         string imageSource = null;
 

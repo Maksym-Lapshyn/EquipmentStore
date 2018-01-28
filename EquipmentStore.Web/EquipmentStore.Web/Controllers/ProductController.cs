@@ -2,9 +2,7 @@
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
 using EquipmentStore.Web.Models;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
@@ -15,31 +13,34 @@ namespace EquipmentStore.Web.Controllers
         private const string TempDataErrorKey = "Error";
 
         private readonly IService<Product> _productService;
-        private readonly IService<ProductCategory> _productCategoryService;
+        private readonly IService<ProductSubCategory> _productSubCategoryService;
         private readonly IMapper _mapper;
 
         public ProductController(IService<Product> productService,
-            IService<ProductCategory> productCategoryService,
+            IService<ProductSubCategory> productSubCategoryService,
             IMapper mapper)
         {
             _productService = productService;
-            _productCategoryService = productCategoryService;
+            _productSubCategoryService = productSubCategoryService;
             _mapper = mapper;
         }
 
         [HttpGet]
         [Authorize]
         [Route("admin/products/create")]
-        public ActionResult Create()
+        public ActionResult Create(int subcategoryId)
         {
-            var model = new ProductViewModel();
+            var model = new ProductViewModel
+            {
+                ProductSubCategoryId = subcategoryId
+            };
 
             return View(model);
         }
 
         [HttpPost]
         [Authorize]
-        [Route("admin/products")]
+        [Route("admin/products/create")]
         public ActionResult Create(ProductViewModel model)
         {
             if (model.ImageInput == null)
@@ -65,7 +66,7 @@ namespace EquipmentStore.Web.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route("admin/products/delete/{id}")]
+        [Route("admin/products/delete")]
         public ActionResult Delete(int id)
         {
             var entityExists = _productService.CheckIfExists(id);
@@ -85,60 +86,24 @@ namespace EquipmentStore.Web.Controllers
         }
 
         [HttpGet]
-        [Route("admin/products")]
-        public ActionResult ReadAll()
-        {
-            var entities = _productService.GetAll();
-            var models = _mapper.Map<IEnumerable<Product>, List<ProductViewModel>>(entities);
-
-            return View(models);
-        }
-
-        [HttpGet]
-        [Route("productcategories/{productcategoryid}/productsubcategories/{productsubcategoriesid}/products")]
-        public ActionResult ReadAllBySubCategory(int productCategoryId, int productSubCategoryId)
-        {
-            var category = _productCategoryService.GetSingleOrDefault(productCategoryId);
-
-            if (category == null)
-            {
-                return HttpNotFound("Категория с таким id не существует");
-            }
-
-            var subCategory = category.ProductSubCategories.FirstOrDefault(s => s.Id == productSubCategoryId);
-
-            if (subCategory == null)
-            {
-                return HttpNotFound("Подкатегория с таким id не существует");
-            }
-
-            var entities = subCategory.Products;
-            var models = _mapper.Map<IEnumerable<Product>, List<ProductViewModel>>(entities);
-
-            return View(models);
-        }
-
-        [HttpGet]
-        [Route("products/{id}")]
-        public ActionResult Read(int id)
+        [Route("products/read")]
+        public ActionResult UserRead(int id)
         {
             var entity = _productService.GetSingleOrDefault(id);
 
-            if (entity != null)
+            if (entity == null)
             {
-                var model = _mapper.Map<Product, ProductViewModel>(entity);
-
-                return View(model);
+                return HttpNotFound("Оборудование с таким id не существует");
             }
 
-            TempData[TempDataErrorKey] = "Оборудование с таким id не сушествует";
+            var model = _mapper.Map<Product, ProductViewModel>(entity);
 
-            return RedirectToAction("Index", "Admin");
+            return View(model);
         }
 
         [HttpGet]
         [Authorize]
-        [Route("admin/products/update/{id}")]
+        [Route("admin/products/update")]
         public ActionResult Update(int id)
         {
             var entity = _productService.GetSingleOrDefault(id);

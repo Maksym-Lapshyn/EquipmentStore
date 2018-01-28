@@ -86,34 +86,6 @@ namespace EquipmentStore.Web.Controllers
 			return RedirectToAction("Index", "Admin");
 		}
 
-		[HttpGet]
-        [Authorize]
-        [Route("admin/pumps")]
-		public ActionResult ReadAll()
-		{
-			var entities = _pumpService.GetAll();
-			var models = _mapper.Map<IEnumerable<Pump>, List<PumpViewModel>>(entities);
-
-			return View(models);
-		}
-
-        [HttpGet]
-        [Route("pumps")]
-        public ActionResult UserReadAll(int categoryId)
-        {
-            var pumpCategory = _pumpCategoryService.GetSingleOrDefault(categoryId);
-
-            if (pumpCategory == null)
-            {
-                return HttpNotFound("Категория с таким id не существует");
-            }
-
-            var entities = pumpCategory.Pumps;
-            var models = _mapper.Map<IEnumerable<Pump>, List<PumpViewModel>>(entities);
-
-            return View(models);
-        }
-
         [HttpGet]
         [Route("pumps/read")]
         public ActionResult UserRead(int id)

@@ -16,7 +16,7 @@ namespace EquipmentStore.DAL.UnitOfWork
 		private readonly Lazy<IImageRepository<OutputImage>> _outputImageRepository;
         private readonly Lazy<IRepository<ProductCategory>> _productCategoryRepository;
         private readonly Lazy<IRepository<PumpCategory>> _pumpCategoryRepository;
-        private readonly Lazy<IRepository<ProductSubCategory>> _productSubCategoryRepository;
+        private readonly Lazy<IExtendingRepository<ProductSubCategory>> _productSubCategoryRepository;
 
         public UnitOfWork(EquipmentStoreContext context)
 		{
@@ -29,7 +29,7 @@ namespace EquipmentStore.DAL.UnitOfWork
 			_outputImageRepository = new Lazy<IImageRepository<OutputImage>>(() => new OutputImageRepository(_context));
             _productCategoryRepository = new Lazy<IRepository<ProductCategory>>(() => new Repository<ProductCategory>(_context));
             _pumpCategoryRepository = new Lazy<IRepository<PumpCategory>>(() => new Repository<PumpCategory>(_context));
-            _productSubCategoryRepository = new Lazy<IRepository<ProductSubCategory>>(() => new Repository<ProductSubCategory>(_context));
+            _productSubCategoryRepository = new Lazy<IExtendingRepository<ProductSubCategory>>(() => new ProductSubCategoryRepository(_context));
         }
 
 		public IExtendingRepository<Product> ProductRepository => _productRepository.Value;
@@ -48,7 +48,7 @@ namespace EquipmentStore.DAL.UnitOfWork
 
         public IRepository<PumpCategory> PumpCategoryRepository => _pumpCategoryRepository.Value;
 
-        public IRepository<ProductSubCategory> ProductSubCategoryRepository => _productSubCategoryRepository.Value;
+        public IExtendingRepository<ProductSubCategory> ProductSubCategoryRepository => _productSubCategoryRepository.Value;
 
         public void Save()
 		{

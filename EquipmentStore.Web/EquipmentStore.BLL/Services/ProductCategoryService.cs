@@ -2,6 +2,7 @@
 using EquipmentStore.Core.Entities;
 using EquipmentStore.DAL.UnitOfWork;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EquipmentStore.BLL.Services
 {
@@ -42,12 +43,18 @@ namespace EquipmentStore.BLL.Services
             var oldProductCategory = _unitOfWork.ProductCategoryRepository.GetSingleOrDefault(productCategory.Id);
             oldProductCategory = _mapper.Map(productCategory, oldProductCategory);
 
+            var productSubCategories = _unitOfWork.ProductSubCategoryRepository.Get(psc => psc.ProductCategoryId == productCategory.Id).ToList();
+            oldProductCategory.ProductSubCategories = productSubCategories;
+
             _unitOfWork.ProductCategoryRepository.Update(oldProductCategory);
             _unitOfWork.Save();
         }
 
         public void Delete(int id)
         {
+            _unitOfWork.ProductImageRepository.DeleteRange(pi => pi.Product.ProductSubCategory.ProductCategoryId == id);
+            _unitOfWork.ProductRepository.DeleteRange(p => p.ProductSubCategory.ProductCategoryId == id);
+            _unitOfWork.ProductSubCategoryRepository.DeleteRange(psc => psc.ProductCategoryId == id);
             _unitOfWork.ProductCategoryRepository.Delete(id);
             _unitOfWork.Save();
         }

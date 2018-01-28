@@ -357,11 +357,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\fa.cshtml" />
     <Content Include="Views\Pump\Create.cshtml" />
-    <Content Include="Views\Pump\ReadAll.cshtml" />
     <Content Include="Views\Pump\Update.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
-    <Content Include="Views\Product\Read.cshtml" />
-    <Content Include="Views\Product\ReadAll.cshtml" />
+    <Content Include="Views\Product\UserRead.cshtml" />
+    <Content Include="Views\Product\useless.cshtml" />
     <Content Include="Views\Product\Update.cshtml" />
     <Content Include="Views\Output\Create.cshtml" />
     <Content Include="Views\Output\ReadAll.cshtml" />
@@ -371,8 +370,8 @@
     <Content Include="Views\PumpCategory\Create.cshtml" />
     <Content Include="Views\PumpCategory\ReadAll.cshtml" />
     <Content Include="Views\PumpCategory\Update.cshtml" />
-    <Content Include="Views\Pump\ReadAll - Копировать.cshtml" />
-    <Content Include="Views\PumpCategory\Read.cshtml" />
+    <Content Include="Views\Pump\useless.cshtml" />
+    <Content Include="Views\ProductSubCategory\Read.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -384,16 +383,19 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Pump\UserReadAll.cshtml" />
+    <Content Include="Views\PumpCategory\UserRead.cshtml" />
     <Content Include="Views\Pump\UserRead.cshtml" />
     <Content Include="Views\ProductCategory\Create.cshtml" />
     <Content Include="Views\ProductCategory\Read.cshtml" />
     <Content Include="Views\ProductCategory\ReadAll.cshtml" />
     <Content Include="Views\ProductCategory\Update.cshtml" />
+    <Content Include="Views\ProductSubCategory\Create.cshtml" />
+    <Content Include="Views\ProductSubCategory\useless.cshtml" />
+    <Content Include="Views\ProductSubCategory\Update.cshtml" />
+    <Content Include="Views\PumpCategory\Read.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ProductSubCategory\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

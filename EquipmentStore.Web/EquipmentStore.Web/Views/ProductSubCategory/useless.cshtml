@@ -1,18 +1,18 @@
-﻿@model List<EquipmentStore.Web.Models.PumpViewModel>
+﻿@model List<EquipmentStore.Web.Models.ProductCategoryViewModel>
 
 @{
-    ViewBag.Title = "Услуги";
+    ViewBag.Title = "Категории оборудования";
 }
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3>Насосы</h3>
+        <h3>Категории для оборудования</h3>
     </div>
 
     <div class="panel-body">
         @if (Model.Count == 0)
         {
-            <p>Каталог насосов для выбранной категории пуст</p>
+            <p>Каталог категорий для оборудования пуст</p>
         }
         else
         {
@@ -23,18 +23,22 @@
                     <th style="width:40%;">Действия</th>
                 </tr>
 
-                @foreach (var pump in Model)
+                @foreach (var productCategory in Model)
                 {
                     <tr>
-                        <td>@pump.Id</td>
-                        <td>@pump.Name</td>
+                        <td>@productCategory.Id</td>
+                        <td>@productCategory.Name</td>
                         <td>
                             <p>
-                                @Html.ActionLink("Изменить", "Update", "Pump", new { id = pump.Id }, new { @class = "btn btn-default" })
+                                @Html.ActionLink("Перейти к категории", "Read", "ProductCategory", new { id = productCategory.Id }, new { @class = "btn btn-default" })
                             </p>
 
                             <p>
-                                @using (Html.BeginForm("Delete", "Pump", new { id = pump.Id }))
+                                @Html.ActionLink("Изменить", "Update", "ProductCategory", new { id = productCategory.Id }, new { @class = "btn btn-default" })
+                            </p>
+
+                            <p>
+                                @using (Html.BeginForm("Delete", "ProductCategory", new { id = productCategory.Id }))
                                 {
                                     <input type="submit" class="btn btn-danger" value="Удалить" />
                                 }
@@ -48,7 +52,7 @@
 
     <div class="panel-footer">
         <p>
-            @Html.ActionLink("Добавить новый насос", "Create", "Pump", new { categoryId = Mo}, new { @class = "btn btn-default" })
+            @Html.ActionLink("Добавить новую категорию", "Create", "ProductCategory", null, new { @class = "btn btn-default" })
         </p>
 
         <p>

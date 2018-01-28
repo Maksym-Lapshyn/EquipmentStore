@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EquipmentStore.Core.Entities;
 using EquipmentStore.DAL.UnitOfWork;
+using System;
 using System.Collections.Generic;
 
 namespace EquipmentStore.BLL.Services
@@ -33,6 +34,9 @@ namespace EquipmentStore.BLL.Services
 
 		public void Add(Product product)
 		{
+            var subCategory = _unitOfWork.ProductSubCategoryRepository.GetSingleOrDefault(product.ProductSubCategoryId);
+            product.ProductSubCategory = subCategory ?? throw new InvalidOperationException("Subcategory with such id does not exist");
+
 			_unitOfWork.ProductRepository.Add(product);
 			_unitOfWork.Save();
 		}
@@ -41,6 +45,9 @@ namespace EquipmentStore.BLL.Services
 		{
             var oldProduct = _unitOfWork.ProductRepository.GetSingleOrDefault(product.Id);
             oldProduct = _mapper.Map(product, oldProduct);
+
+            var subCategory = _unitOfWork.ProductSubCategoryRepository.GetSingleOrDefault(product.ProductSubCategoryId);
+            oldProduct.ProductSubCategory = subCategory ?? throw new InvalidOperationException("Subcategory with such id does not exist");
 
             _unitOfWork.ProductRepository.Update(oldProduct);
 

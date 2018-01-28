@@ -73,6 +73,7 @@ namespace EquipmentStore.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("admin/productcategories")]
         public ActionResult ReadAll()
         {
@@ -83,6 +84,7 @@ namespace EquipmentStore.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("admin/productcategories/read")]
         public ActionResult Read(int id)
         {

@@ -27,17 +27,20 @@ namespace EquipmentStore.Web.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("admin/{productcategoryid}/productsubcategories/create")]
-        public ActionResult Create()
+        [Route("admin/productsubcategories/create")]
+        public ActionResult Create(int categoryId)
         {
-            var model = new ProductSubCategoryViewModel();
+            var model = new ProductSubCategoryViewModel
+            {
+                ProductCategoryId = categoryId
+            };
 
             return View(model);
         }
 
         [HttpPost]
         [Authorize]
-        [Route("admin/{productcategoryid}/productsubcategories/create")]
+        [Route("admin/productsubcategories/create")]
         public ActionResult Create(ProductSubCategoryViewModel model)
         {
             if (!ModelState.IsValid)
@@ -56,7 +59,7 @@ namespace EquipmentStore.Web.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route("admin/{productcategoryid}/productsubcategories/create/{id}")]
+        [Route("admin/productsubcategories/delete")]
         public ActionResult Delete(int id)
         {
             var entityExists = _productSubCategoryService.CheckIfExists(id);
@@ -76,34 +79,8 @@ namespace EquipmentStore.Web.Controllers
         }
 
         [HttpGet]
-        [Route("admin/{productcategoryid}/productsubcategories")]
-        public ActionResult ReadAll()
-        {
-            var entities = _productSubCategoryService.GetAll();
-            var models = _mapper.Map<IEnumerable<ProductSubCategory>, List<ProductSubCategoryViewModel>>(entities);
-
-            return View(models);
-        }
-
-        [HttpGet]
-        [Route("admin/{productcategoryid}/productsubcategories")]
-        public ActionResult ReadAllByCategory(int productCategoryId)
-        {
-            var category = _productCategoryService.GetSingleOrDefault(productCategoryId);
-
-            if (category == null)
-            {
-                return HttpNotFound("Категория с таким id не сушествует");
-            }
-
-            var entities = category.ProductSubCategories;
-            var models = _mapper.Map<IEnumerable<ProductSubCategory>, List<ProductSubCategoryViewModel>>(entities);
-
-            return View(models);
-        }
-
-        [HttpGet]
-        [Route("admin/{productcategoryid}/productsubcategories/{id}")]
+        [Authorize]
+        [Route("admin/productsubcategories/read")]
         public ActionResult Read(int id)
         {
             var entity = _productSubCategoryService.GetSingleOrDefault(id);
@@ -121,8 +98,24 @@ namespace EquipmentStore.Web.Controllers
         }
 
         [HttpGet]
+        [Route("productsubcategories/read")]
+        public ActionResult UserReadAll(int id)
+        {
+            var subCategory = _productSubCategoryService.GetSingleOrDefault(id);
+
+            if (subCategory == null)
+            {
+                return HttpNotFound("Подкатегория с таким id не существует");
+            }
+
+            var model = _mapper.Map<ProductSubCategory, ProductSubCategoryViewModel>(subCategory);
+
+            return View(model);
+        }
+
+        [HttpGet]
         [Authorize]
-        [Route("admin/{productcategoryid}/productsubcategories/update/{id}")]
+        [Route("admin/productsubcategories/update")]
         public ActionResult Update(int id)
         {
             var entity = _productSubCategoryService.GetSingleOrDefault(id);
@@ -141,7 +134,7 @@ namespace EquipmentStore.Web.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route("admin/{productcategoryid}/productsubcategories/update")]
+        [Route("admin/productsubcategories/update")]
         public ActionResult Update(ProductSubCategoryViewModel model)
         {
             var entityExists = _productSubCategoryService.CheckIfExists(model.Id);
