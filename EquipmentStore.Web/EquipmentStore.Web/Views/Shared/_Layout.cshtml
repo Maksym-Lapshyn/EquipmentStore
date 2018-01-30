@@ -1,96 +1,98 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Продажа, монтаж и сервисное обслуживание автоматического термоформовочного упаковочного оборудования, линий фасовки и упаковки продукции в полимерную тару с последующей этикеровкой, а также дозаторов различного принципа действия.">
-	<meta name="keywords" content="дозаторы, термоформовочное оборудование, упаковочное оборудование, ампулы, фасовка, упаковка, пластиковые контейнеры">
-	<title>@ViewBag.Title - Автоматическое термоформовочное упаковочное оборудование. Дозаторы и ампулы.</title>
-	@Styles.Render("~/Content/css")
-	@Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Продажа, монтаж и сервисное обслуживание автоматического термоформовочного упаковочного оборудования, линий фасовки и упаковки продукции в полимерную тару с последующей этикеровкой, а также дозаторов различного принципа действия.">
+    <meta name="keywords" content="дозаторы, термоформовочное оборудование, упаковочное оборудование, ампулы, фасовка, упаковка, пластиковые контейнеры">
+    <title>@ViewBag.Title - Автоматическое термоформовочное упаковочное оборудование. Дозаторы и ампулы.</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
 
-	<div class="content">
-		<div class="content-inside">
-			<div class="navbar navbar-default navbar-static-top">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						@Html.ActionLink("НОВФИЛПАК", "Index", "Home", null, new { @class = "navbar-brand" })
-					</div>
+    <div class="content">
+        <div class="content-inside">
+            @*<div class="navbar navbar-default navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            @Html.ActionLink("НОВФИЛПАК", "Index", "Home", null, new { @class = "navbar-brand" })
+                        </div>
 
-					<div class="navbar-collapse collapse">
-						<ul class="nav navbar-nav">
-						    <li>@Html.ActionLink("Главная", "Index", "Home", null, new {style = "font-size: 20px;" })</li>
-						    <li>@Html.ActionLink("Оборудование", "ReadAll", "Machine", null, new { style = "font-size: 20px;" })</li>
-							<li>@Html.ActionLink("Услуги", "ReadAll", "Labour", null, new { style = "font-size: 20px;" })</li>
-							<li>@Html.ActionLink("Производство", "ReadAll", "Output", null, new { style = "font-size: 20px;" })</li>
-							<li>@Html.ActionLink("Контакты", "Contact", "Home", null, new { style = "font-size: 20px;" })</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Главная", "Index", "Home", null, new {style = "font-size: 20px;" })</li>
+                                <li>@Html.ActionLink("Оборудование", "ReadAll", "Machine", null, new { style = "font-size: 20px;" })</li>
+                                <li>@Html.ActionLink("Услуги", "ReadAll", "Labour", null, new { style = "font-size: 20px;" })</li>
+                                <li>@Html.ActionLink("Производство", "ReadAll", "Output", null, new { style = "font-size: 20px;" })</li>
+                                <li>@Html.ActionLink("Контакты", "Contact", "Home", null, new { style = "font-size: 20px;" })</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>*@
 
-			<div class="container">
-				@if (TempData["Error"] != null)
-			{
-					<div class="alert alert-danger alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						@TempData["Error"]
-					</div>
-			}
+            @Html.Action("Header", "Home")
 
-				@if (TempData["Message"] != null)
-			{
-					<div class="alert alert-success alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						@TempData["Message"]
-					</div>
-			}
+            <div class="container">
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @TempData["Error"]
+                    </div>
+                }
 
-				@RenderBody()
-			</div>
-		</div>
-	</div>
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @TempData["Message"]
+                    </div>
+                }
 
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4">
-					<p>
-						<span class="glyphicon glyphicon-flag"></span> Адрес:
-					</p>
-					<p>62300, Харьковская область, Дергачевский район</p>
-					<p>г. Дергачи, ул. Леонова, 1, корпус А-2</p>
-				</div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
 
-				<div class="col-lg-4">
-					<p>
-						<span class="glyphicon glyphicon-phone-alt"></span> Контакты:
-					</p>
-					<p>+38-050-633-2-633, +38-095-100-83-27</p>
-					<p>y.novoselov17@gmail.com</p>
-				</div>
-				
-				<div class="col-lg-4">
-					<p>Все права защищены novfilpack.com.ua&copy; @DateTime.Now.Year</p>
-					<p>This website is created by maxon_adc</p>
-					<p>
-						Icons made by Freepik from <a href="http://www.flaticon.com/">www.flaticon.com</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <p>
+                        <span class="glyphicon glyphicon-flag"></span> Адрес:
+                    </p>
+                    <p>62300, Харьковская область, Дергачевский район</p>
+                    <p>г. Дергачи, ул. Леонова, 1, корпус А-2</p>
+                </div>
 
-	@Scripts.Render("~/bundles/jquery")
-	@Scripts.Render("~/bundles/bootstrap")
-	@RenderSection("scripts", required: false)
+                <div class="col-lg-4">
+                    <p>
+                        <span class="glyphicon glyphicon-phone-alt"></span> Контакты:
+                    </p>
+                    <p>+38-050-633-2-633, +38-095-100-83-27</p>
+                    <p>y.novoselov17@gmail.com</p>
+                </div>
 
+                <div class="col-lg-4">
+                    <p>Все права защищены novfilpack.com.ua&copy; @DateTime.Now.Year</p>
+                    <p>This website is created by maxon_adc</p>
+                    <p>
+                        Icons made by Freepik from <a href="http://www.flaticon.com/">www.flaticon.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Site.js"></script>
 </body>
 </html>

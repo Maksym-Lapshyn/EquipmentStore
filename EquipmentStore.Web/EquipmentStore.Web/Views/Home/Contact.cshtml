@@ -80,16 +80,16 @@
 </div>
 
 <script>
-	function initMap() {
-		var place = { lat: 50.102875, lng: 36.135065 };
-		var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 13,
-			center: place
-		});
-		var marker = new google.maps.Marker({
-			position: place,
-			map: map
-		});
-	}
+    function initMap() {
+        var place = { lat: 50.102875, lng: 36.135065 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 13,
+            center: place
+        });
+        var marker = new google.maps.Marker({
+            position: place,
+            map: map
+        });
+    }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCD1c95y4cUC8P3cggUUm7iIy0KjyQGWf4&callback=initMap"></script>

@@ -1,0 +1,99 @@
+﻿@model EquipmentStore.Web.Models.HeaderViewModel
+
+<div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("НОВФИЛПАК", "Index", "Home", null, new { @class = "navbar-brand" })
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Главная", "Index", "Home", null, new { style = "font-size: 20px;" })</li>
+
+                <li class="dropdown pumps-dropdown">
+                    <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+                        <span style="font-size: 20px;">Перистальтические насосы <span class="caret"></span></span>
+                    </a>
+
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                        @for (var i = 0; i < Model.PumpCategories.Count; i++)
+                        {
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">
+                                    @Model.PumpCategories[i].Name
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    @for (var j = 0; j < Model.PumpCategories[i].Pumps.Count; j++)
+                                    {
+                                        <li>
+                                            <a href=@Url.Action("UserRead", "Pump", new { id = Model.PumpCategories[i].Pumps[j].Id })>
+                                                @Model.PumpCategories[i].Pumps[j].Name
+                                            </a>
+                                        </li>
+
+                                        if (j < Model.PumpCategories[i].Pumps.Count - 1)
+                                        {
+                                            <li class="divider"></li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+
+                            if (i < Model.PumpCategories.Count - 1)
+                            {
+                                <li class="divider"></li>
+                            }
+                        }
+                    </ul>
+                </li>
+
+                <li class="dropdown products-dropdown">
+                    <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+                        <span style="font-size: 20px;">Каталог оборудования<span class="caret"></span></span>
+                    </a>
+
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                        @for (var i = 0; i < Model.ProductCategories.Count; i++)
+                        {
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">
+                                    @Model.ProductCategories[i].Name
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    @for (var j = 0; j < Model.ProductCategories[i].ProductSubCategories.Count; j++)
+                                    {
+                                        <li>
+                                            <a href=@Url.Action("UserRead", "ProductSubCategory", new { id = Model.ProductCategories[i].ProductSubCategories[j].Id })>
+                                                @Model.ProductCategories[i].ProductSubCategories[j].Name
+                                            </a>
+                                        </li>
+
+                                        if (j < Model.ProductCategories[i].ProductSubCategories.Count - 1)
+                                        {
+                                            <li class="divider"></li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+
+                            if (i < Model.ProductCategories.Count - 1)
+                            {
+                                <li class="divider"></li>
+                            }
+                        }
+                    </ul>
+                </li>
+
+                <li>@Html.ActionLink("Производство", "UserReadAll", "Output", null, new { style = "font-size: 20px;" })</li>
+                <li>@Html.ActionLink("Контакты", "Contact", "Home", null, new { style = "font-size: 20px;" })</li>
+            </ul>
+        </div>
+    </div>
+</div>

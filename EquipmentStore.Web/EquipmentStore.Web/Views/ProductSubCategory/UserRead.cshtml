@@ -1,0 +1,34 @@
+﻿@model EquipmentStore.Web.Models.ProductSubCategoryViewModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<div class="row">
+    @foreach (var product in Model.Products)
+    {
+        string imageSource = null;
+
+        if (product.ProductImage != null)
+        {
+            var base64 = Convert.ToBase64String(product.ProductImage.Data);
+            imageSource = $"data:{product.ProductImage.MimeType};base64,{base64}";
+        }
+
+        <div class="col-lg-4 text-center">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5>@product.Name</h5>
+                </div>
+
+                <div class="panel-body">
+                    <img src="@imageSource" class="img-responsive" alt="@product.Name" />
+                </div>
+
+                <div class="panel-footer">
+                    <p>@Html.ActionLink("Подробнее", "UserRead", "Product", new { id = product.Id }, new { @class = "btn btn-default" })</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

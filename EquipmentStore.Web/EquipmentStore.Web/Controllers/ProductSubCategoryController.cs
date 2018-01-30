@@ -99,7 +99,7 @@ namespace EquipmentStore.Web.Controllers
 
         [HttpGet]
         [Route("productsubcategories/read")]
-        public ActionResult UserReadAll(int id)
+        public ActionResult UserRead(int id)
         {
             var subCategory = _productSubCategoryService.GetSingleOrDefault(id);
 
