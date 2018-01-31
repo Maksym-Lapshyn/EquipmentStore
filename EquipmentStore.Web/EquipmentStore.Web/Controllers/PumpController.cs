@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
+using EquipmentStore.Core.Exceptions;
+using EquipmentStore.Core.Loggers;
 using EquipmentStore.Web.Models;
-using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
 {
-    public class PumpController : Controller
+    public class PumpController : BaseController
 	{
 		private const string TempDataMessageKey = "Message";
 		private const string TempDataErrorKey = "Error";
@@ -19,7 +20,8 @@ namespace EquipmentStore.Web.Controllers
 
         public PumpController(IService<Pump> pumpService,
             IService<PumpCategory> pumpCategoryService,
-			IMapper mapper)
+			IMapper mapper,
+            ILogger logger) : base(logger)
 		{
 			_pumpService = pumpService;
             _pumpCategoryService = pumpCategoryService;
@@ -94,7 +96,7 @@ namespace EquipmentStore.Web.Controllers
 
             if (entity == null)
             {
-                return HttpNotFound("Насос с таким id не существует");
+                throw new NotFoundException();
             }
 
             var model = _mapper.Map<Pump, PumpViewModel>(entity);

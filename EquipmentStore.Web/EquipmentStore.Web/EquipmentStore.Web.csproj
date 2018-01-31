@@ -224,6 +224,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PumpController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -397,6 +398,8 @@
     <Content Include="Views\ProductSubCategory\Update.cshtml" />
     <Content Include="Views\PumpCategory\Read.cshtml" />
     <Content Include="Views\Home\Header.cshtml" />
+    <Content Include="Views\Error\NotFoundHandler.cshtml" />
+    <Content Include="Views\Error\GeneralHandler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

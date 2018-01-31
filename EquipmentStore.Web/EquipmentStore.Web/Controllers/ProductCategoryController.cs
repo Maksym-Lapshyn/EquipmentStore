@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
+using EquipmentStore.Core.Loggers;
 using EquipmentStore.Web.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
 {
-    public class ProductCategoryController : Controller
+    public class ProductCategoryController : BaseController
     {
         private const string TempDataMessageKey = "Message";
         private const string TempDataErrorKey = "Error";
@@ -16,7 +17,8 @@ namespace EquipmentStore.Web.Controllers
         private readonly IMapper _mapper;
 
         public ProductCategoryController(IService<ProductCategory> productCategoryService,
-            IMapper mapper)
+            IMapper mapper,
+            ILogger logger) : base(logger)
         {
             _productCategoryService = productCategoryService;
             _mapper = mapper;

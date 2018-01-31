@@ -1,8 +1,5 @@
-﻿using EquipmentStore.Core.Loggers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using EquipmentStore.Core.Exceptions;
+using EquipmentStore.Core.Loggers;
 using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
@@ -22,16 +19,14 @@ namespace EquipmentStore.Web.Controllers
 
             _logger.LogError(filterContext.Exception, filterContext.Exception.Message);
 
-            if (filterContext.HttpContext.Response.StatusCode == 500)
-            {
-                filterContext.Result = RedirectToAction("Error", "InternalErrorHandler");
-            }
-
-            else if (filterContext.HttpContext.Response.StatusCode == 404)
+            if (filterContext.Exception.GetType() == typeof(NotFoundException))
             {
                 filterContext.Result = RedirectToAction("Error", "NotFoundHandler");
             }
-
+            else
+            {
+                filterContext.Result = RedirectToAction("Error", "GeneralHandler");
+            }
         }
     }
 }

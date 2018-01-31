@@ -62,6 +62,7 @@
     <Compile Include="Entities\ProductImage.cs" />
     <Compile Include="Entities\Output.cs" />
     <Compile Include="Entities\OutputImage.cs" />
+    <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Loggers\ILogger.cs" />
     <Compile Include="Loggers\NLogLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

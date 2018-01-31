@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
 	{
 		private const string ApplicationEmail = "feedback@novfilpack.com.ua";
 		private const string ReceiverEmail = "y.novoselov17@gmail.com";
@@ -27,7 +27,7 @@ namespace EquipmentStore.Web.Controllers
             IService<PumpCategory> pumpCategoryService,
             IEmailSender emailSender,
 			ILogger logger,
-            IMapper mapper)
+            IMapper mapper) : base(logger)
 		{
             _productCategoryService = productCategoryService;
             _pumpCategoryService = pumpCategoryService;

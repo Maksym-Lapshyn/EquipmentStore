@@ -1,13 +1,15 @@
 ﻿using AutoMapper;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
+using EquipmentStore.Core.Exceptions;
+using EquipmentStore.Core.Loggers;
 using EquipmentStore.Web.Models;
 using System.IO;
 using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         private const string TempDataMessageKey = "Message";
         private const string TempDataErrorKey = "Error";
@@ -18,7 +20,8 @@ namespace EquipmentStore.Web.Controllers
 
         public ProductController(IService<Product> productService,
             IService<ProductSubCategory> productSubCategoryService,
-            IMapper mapper)
+            IMapper mapper,
+            ILogger logger) : base(logger)
         {
             _productService = productService;
             _productSubCategoryService = productSubCategoryService;
@@ -93,7 +96,7 @@ namespace EquipmentStore.Web.Controllers
 
             if (entity == null)
             {
-                return HttpNotFound("Оборудование с таким id не существует");
+                throw new NotFoundException();
             }
 
             var model = _mapper.Map<Product, ProductViewModel>(entity);

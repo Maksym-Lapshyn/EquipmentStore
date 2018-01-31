@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
+using EquipmentStore.Core.Loggers;
 using EquipmentStore.Web.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
 {
-    public class OutputController : Controller
+    public class OutputController : BaseController
 	{
 		private readonly OutputService _outputService;
 		private readonly IMapper _mapper;
@@ -17,7 +18,8 @@ namespace EquipmentStore.Web.Controllers
 		private const string TempDataErrorKey = "Error";
 
 		public OutputController(OutputService outputService,
-			IMapper mapper)
+			IMapper mapper,
+            ILogger logger) : base(logger)
 		{
 			_outputService = outputService;
 			_mapper = mapper;
@@ -127,7 +129,9 @@ namespace EquipmentStore.Web.Controllers
 		{
             if(!_outputService.CheckIfExists(model.Id))
             {
-                return new HttpNotFoundResult("Производство с таким id не сушествует");
+                TempData[TempDataErrorKey] = "Производство с таким id не сушествует";
+
+                return RedirectToAction("Index", "Admin");
             }
 
 			if (model.ImageInput == null && model.OutputImage == null)

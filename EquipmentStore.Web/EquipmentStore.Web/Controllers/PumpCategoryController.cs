@@ -1,13 +1,15 @@
 ﻿using AutoMapper;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
+using EquipmentStore.Core.Exceptions;
+using EquipmentStore.Core.Loggers;
 using EquipmentStore.Web.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
 {
-    public class PumpCategoryController : Controller
+    public class PumpCategoryController : BaseController
     {
         private const string TempDataMessageKey = "Message";
         private const string TempDataErrorKey = "Error";
@@ -16,7 +18,8 @@ namespace EquipmentStore.Web.Controllers
         private readonly IMapper _mapper;
 
         public PumpCategoryController(IService<PumpCategory> pumpCategoryService,
-            IMapper mapper)
+            IMapper mapper,
+            ILogger logger) : base(logger)
         {
             _pumpCategoryService = pumpCategoryService;
             _mapper = mapper;
@@ -110,7 +113,7 @@ namespace EquipmentStore.Web.Controllers
 
             if (entity == null)
             {
-                return HttpNotFound("Категория с таким id не существует");
+                throw new NotFoundException();
             }
 
             var model = _mapper.Map<PumpCategory, PumpCategoryViewModel>(entity);

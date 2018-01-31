@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
+using EquipmentStore.Core.Exceptions;
+using EquipmentStore.Core.Loggers;
 using EquipmentStore.Web.Models;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
 {
-    public class ProductSubCategoryController : Controller
+    public class ProductSubCategoryController : BaseController
     {
         private const string TempDataMessageKey = "Message";
         private const string TempDataErrorKey = "Error";
@@ -18,7 +19,8 @@ namespace EquipmentStore.Web.Controllers
 
         public ProductSubCategoryController(IService<ProductSubCategory> productSubCategoryService,
             IService<ProductCategory> productCategoryService,
-            IMapper mapper)
+            IMapper mapper,
+            ILogger logger) : base(logger)
         {
             _productSubCategoryService = productSubCategoryService;
             _productCategoryService = productCategoryService;
@@ -105,7 +107,7 @@ namespace EquipmentStore.Web.Controllers
 
             if (subCategory == null)
             {
-                return HttpNotFound("Подкатегория с таким id не существует");
+                throw new NotFoundException();
             }
 
             var model = _mapper.Map<ProductSubCategory, ProductSubCategoryViewModel>(subCategory);
