@@ -25,7 +25,7 @@
                         {
                             <li class="dropdown-submenu">
                                 <a tabindex="-1" href="#">
-                                    @Model.PumpCategories[i].Name
+                                    <span style="white-space: pre-line">@Model.PumpCategories[i].Name</span>
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -33,7 +33,7 @@
                                     {
                                         <li>
                                             <a href=@Url.Action("UserRead", "Pump", new { id = Model.PumpCategories[i].Pumps[j].Id })>
-                                                @Model.PumpCategories[i].Pumps[j].Name
+                                                <span style="white-space: pre-line">@Model.PumpCategories[i].Pumps[j].Name</span>
                                             </a>
                                         </li>
 
@@ -63,7 +63,7 @@
                         {
                             <li class="dropdown-submenu">
                                 <a tabindex="-1" href="#">
-                                    @Model.ProductCategories[i].Name
+                                    <span style="white-space: pre-line">@Model.ProductCategories[i].Name</span> 
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -71,7 +71,7 @@
                                     {
                                         <li>
                                             <a href=@Url.Action("UserRead", "ProductSubCategory", new { id = Model.ProductCategories[i].ProductSubCategories[j].Id })>
-                                                @Model.ProductCategories[i].ProductSubCategories[j].Name
+                                                <span style="white-space: pre-line">@Model.ProductCategories[i].ProductSubCategories[j].Name</span>
                                             </a>
                                         </li>
 

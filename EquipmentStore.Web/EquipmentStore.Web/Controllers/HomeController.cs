@@ -45,6 +45,7 @@ namespace EquipmentStore.Web.Controllers
 
         [ChildActionOnly]
         [Route("header")]
+        [OutputCache(Duration = 300)]
         public PartialViewResult Header()
         {
             var productCategories = _productCategoryService.GetAll();

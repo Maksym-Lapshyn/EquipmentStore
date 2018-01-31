@@ -16,7 +16,7 @@
                 @Html.LabelFor(m => m.Name)
             </b>
             <p>
-                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.TextAreaFor(m => m.Name, 2, 1, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Name)
             </p>
         </div>
