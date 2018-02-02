@@ -21,11 +21,11 @@ namespace EquipmentStore.Web.Controllers
 
             if (filterContext.Exception.GetType() == typeof(NotFoundException))
             {
-                filterContext.Result = RedirectToAction("Error", "NotFoundHandler");
+                filterContext.Result = RedirectToAction("NotFoundHandler", "Error");
             }
             else
             {
-                filterContext.Result = RedirectToAction("Error", "GeneralHandler");
+                filterContext.Result = RedirectToAction("GeneralHandler", "Error");
             }
         }
     }

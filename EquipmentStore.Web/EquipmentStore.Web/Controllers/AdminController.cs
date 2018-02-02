@@ -25,7 +25,7 @@ namespace EquipmentStore.Web.Controllers
 			_mapper = mapper;
 		}
 
-		//[Authorize]
+		[Authorize]
 		[HttpGet]
 		[Route("admin")]
 		public ActionResult Index()

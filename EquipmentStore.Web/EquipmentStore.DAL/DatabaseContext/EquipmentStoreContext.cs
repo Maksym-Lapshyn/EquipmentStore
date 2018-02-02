@@ -5,6 +5,10 @@ namespace EquipmentStore.DAL.DatabaseContext
 {
     public class EquipmentStoreContext : DbContext
 	{
+        public EquipmentStoreContext() : base("name=EquipmentStore")
+        {
+        }
+
 		public EquipmentStoreContext(string connectionString) : base(connectionString)
 		{
 		}
