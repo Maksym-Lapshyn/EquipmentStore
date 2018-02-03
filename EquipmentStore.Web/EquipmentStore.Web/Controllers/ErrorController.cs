@@ -6,7 +6,7 @@ namespace EquipmentStore.Web.Controllers
     {
         [HttpGet]
         [Route("error/notfound")]
-        public ViewResult NotFoundHandler()
+        public ViewResult NotFoundHandler(string aspxerrorpath = null)
         {
             Response.StatusCode = 404;
 
@@ -15,7 +15,7 @@ namespace EquipmentStore.Web.Controllers
 
         [HttpGet]
         [Route("error/general")]
-        public ViewResult GeneralHandler()
+        public ViewResult GeneralHandler(string aspxerrorpath = null)
         {
             Response.StatusCode = 500;
 
