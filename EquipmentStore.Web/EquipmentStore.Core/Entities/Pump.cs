@@ -15,9 +15,33 @@ namespace EquipmentStore.Core.Entities
 
         public string Tubes { get; set; }
 
-        public string Costs { get; set; }
+        public string Costs { get; set; }   
 
         public double Weight { get; set; }
+
+        public string Heads4 { get; set; }
+
+        public string Tubes4 { get; set; }
+
+        public string Costs4 { get; set; }
+
+        public double Weight4 { get; set; }
+
+        public string Heads2 { get; set; }
+
+        public string Tubes2 { get; set; }
+
+        public string Costs2 { get; set; }
+
+        public double Weight2 { get; set; }
+
+        public string Heads3 { get; set; }
+
+        public string Tubes3 { get; set; }
+
+        public string Costs3 { get; set; }
+
+        public double Weight3 { get; set; }
 
         [ForeignKey("PumpCategory")]
         public int PumpCategoryId { get; set; }
