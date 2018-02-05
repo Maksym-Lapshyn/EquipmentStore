@@ -46,7 +46,7 @@ html, body {
 }
 
 .panel-default .panel-body, .panel-footer p {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .panel-default .panel-footer .table td {
@@ -152,4 +152,16 @@ li.dropdown:hover > .dropdown-menu {
         width: 20%;
         float: left;
     }
+}
+
+.cell-header {
+    font-size:18px;
+}
+
+.vertical-align {
+    vertical-align: middle !important;
+}
+
+.img-container {
+
 }
