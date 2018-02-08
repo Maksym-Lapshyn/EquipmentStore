@@ -14,8 +14,6 @@ namespace EquipmentStore.Web.Models
 
         public int ProductCategoryId { get; set; }
 
-        public ProductCategoryViewModel ProductCategory { get; set; }
-
         public List<ProductViewModel> Products { get; set; }
     }
 }

@@ -91,7 +91,5 @@ namespace EquipmentStore.Web.Models
 
 		[DisplayName("Главное изображение")]
 		public HttpPostedFileBase ImageInput { get; set; }
-
-        public PumpCategoryViewModel PumpCategory { get; set; }
     }
 }
