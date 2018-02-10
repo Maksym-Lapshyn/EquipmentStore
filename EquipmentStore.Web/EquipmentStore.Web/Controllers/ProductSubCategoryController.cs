@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿using ExpressMapper;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
 using EquipmentStore.Core.Exceptions;
@@ -15,11 +15,11 @@ namespace EquipmentStore.Web.Controllers
 
         private readonly IService<ProductSubCategory> _productSubCategoryService;
         private readonly IService<ProductCategory> _productCategoryService;
-        private readonly IMapper _mapper;
+        private readonly IMappingServiceProvider _mapper;
 
         public ProductSubCategoryController(IService<ProductSubCategory> productSubCategoryService,
             IService<ProductCategory> productCategoryService,
-            IMapper mapper,
+            IMappingServiceProvider mapper,
             ILogger logger) : base(logger)
         {
             _productSubCategoryService = productSubCategoryService;

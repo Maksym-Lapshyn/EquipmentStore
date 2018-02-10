@@ -1,6 +1,6 @@
-﻿using AutoMapper;
-using EquipmentStore.Core.Entities;
+﻿using EquipmentStore.Core.Entities;
 using EquipmentStore.DAL.UnitOfWork;
+using ExpressMapper;
 using System.Collections.Generic;
 
 namespace EquipmentStore.BLL.Services
@@ -8,10 +8,10 @@ namespace EquipmentStore.BLL.Services
     public class OutputService : IService<Output>
 	{
 		private readonly IUnitOfWork _unitOfWork;
-		private readonly IMapper _mapper;
+		private readonly IMappingServiceProvider _mapper;
 
 		public OutputService(IUnitOfWork unitOfWork,
-			IMapper mapper)
+            IMappingServiceProvider mapper)
 		{
 			_unitOfWork = unitOfWork;
 			_mapper = mapper;

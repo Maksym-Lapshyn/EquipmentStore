@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿using ExpressMapper;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
 using EquipmentStore.Core.Loggers;
@@ -12,13 +12,13 @@ namespace EquipmentStore.Web.Controllers
     public class OutputController : BaseController
 	{
 		private readonly OutputService _outputService;
-		private readonly IMapper _mapper;
+		private readonly IMappingServiceProvider _mapper;
 
 		private const string TempDataMessageKey = "Message";
 		private const string TempDataErrorKey = "Error";
 
 		public OutputController(OutputService outputService,
-			IMapper mapper,
+            IMappingServiceProvider mapper,
             ILogger logger) : base(logger)
 		{
 			_outputService = outputService;

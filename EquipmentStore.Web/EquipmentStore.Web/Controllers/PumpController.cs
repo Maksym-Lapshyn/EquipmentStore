@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿using ExpressMapper;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
 using EquipmentStore.Core.Exceptions;
@@ -16,11 +16,11 @@ namespace EquipmentStore.Web.Controllers
 
 		private readonly IService<Pump> _pumpService;
         private readonly IService<PumpCategory> _pumpCategoryService;
-		private readonly IMapper _mapper;
+		private readonly IMappingServiceProvider _mapper;
 
         public PumpController(IService<Pump> pumpService,
             IService<PumpCategory> pumpCategoryService,
-			IMapper mapper,
+            IMappingServiceProvider mapper,
             ILogger logger) : base(logger)
 		{
 			_pumpService = pumpService;

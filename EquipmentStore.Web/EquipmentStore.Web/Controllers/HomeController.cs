@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿using ExpressMapper;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
 using EquipmentStore.Core.Loggers;
@@ -21,13 +21,13 @@ namespace EquipmentStore.Web.Controllers
         private readonly IService<PumpCategory> _pumpCategoryService;
 		private readonly IEmailSender _emailSender;
 		private readonly ILogger _logger;
-        private readonly IMapper _mapper;
+        private readonly IMappingServiceProvider _mapper;
 
 		public HomeController(IService<ProductCategory> productCategoryService,
             IService<PumpCategory> pumpCategoryService,
             IEmailSender emailSender,
 			ILogger logger,
-            IMapper mapper) : base(logger)
+            IMappingServiceProvider mapper) : base(logger)
 		{
             _productCategoryService = productCategoryService;
             _pumpCategoryService = pumpCategoryService;

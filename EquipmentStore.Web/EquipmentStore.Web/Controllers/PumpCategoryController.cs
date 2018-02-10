@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿using ExpressMapper;
 using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
 using EquipmentStore.Core.Exceptions;
@@ -15,10 +15,10 @@ namespace EquipmentStore.Web.Controllers
         private const string TempDataErrorKey = "Error";
 
         private readonly IService<PumpCategory> _pumpCategoryService;
-        private readonly IMapper _mapper;
+        private readonly IMappingServiceProvider _mapper;
 
         public PumpCategoryController(IService<PumpCategory> pumpCategoryService,
-            IMapper mapper,
+            IMappingServiceProvider mapper,
             ILogger logger) : base(logger)
         {
             _pumpCategoryService = pumpCategoryService;

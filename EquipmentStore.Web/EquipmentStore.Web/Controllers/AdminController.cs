@@ -1,7 +1,7 @@
-﻿using AutoMapper;
-using EquipmentStore.BLL.Services;
+﻿using EquipmentStore.BLL.Services;
 using EquipmentStore.Core.Entities;
 using EquipmentStore.Core.Loggers;
+using ExpressMapper;
 using System.Web.Mvc;
 
 namespace EquipmentStore.Web.Controllers
@@ -11,12 +11,12 @@ namespace EquipmentStore.Web.Controllers
 		private readonly IService<Product> _productService;
 		private readonly IService<Pump> pumpService;
 		private readonly IService<Output> _outputService;
-		private readonly IMapper _mapper;
+		private readonly IMappingServiceProvider _mapper;
 
 		public AdminController(IService<Product> productService,
 			IService<Pump> pumpService,
 			IService<Output> outputService,
-			IMapper mapper,
+            IMappingServiceProvider mapper,
             ILogger logger) : base(logger)
 		{
 			_productService = productService;
